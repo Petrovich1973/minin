@@ -10,9 +10,14 @@ body {
   font-weight: 100;
   background-color: #f8f9fa;
   color: #212529;
+  @media (max-width: 1000px) {
+    & {
+      font-size: 1.6vw;
+    }
+  }
 }
 
-h1, h2, h3, h4 {font-weight: 300;}
+h1, h2, h3, h4 {font-weight: 300; text-transform: uppercase}
 
 .align-center {
   text-align: center;

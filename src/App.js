@@ -9,9 +9,9 @@ const App = () => (
     <React.Fragment>
         <Header/>
         <main>
-            <Aside side={'left'} list={[...Array(20).keys()]}/>
+            <Aside title={'Мои скины'} side={'left'} list={[...Array(20).keys()]}/>
             <MainSection list={[...Array(500).keys()]}/>
-            <Aside side={'right'} list={[...Array(20).keys()]}/>
+            <Aside title={'Скины Бота'} side={'right'} list={[...Array(20).keys()]}/>
         </main>
         <Footer/>
     </React.Fragment>

@@ -1,5 +1,6 @@
 import React from 'react'
 import ListScroll from "./ListScroll";
+import Filter from "./Filter";
 
 const MainSection = ({list = []}) => (
     <section>
@@ -8,9 +9,7 @@ const MainSection = ({list = []}) => (
             <span>баланс обмена</span>
             <span>$203.00</span>
         </h3>
-        <div className="filter">
-            <p>filter</p>
-        </div>
+        <Filter/>
         <ListScroll list={list}/>
     </section>
 )
