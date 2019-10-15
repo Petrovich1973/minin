@@ -1,12 +1,20 @@
 import React from 'react';
 import './App.scss';
+import Header from "./Components/Header";
+import Footer from "./Components/Footer";
+import Aside from "./Components/Aside";
+import MainSection from "./Components/MainSection";
 
-function App() {
-  return (
-    <div className="App">
-      Minin
-    </div>
-  );
-}
+const App = () => (
+    <React.Fragment>
+        <Header/>
+        <main>
+            <Aside side={'left'} list={[...Array(20).keys()]}/>
+            <MainSection list={[...Array(500).keys()]}/>
+            <Aside side={'right'} list={[...Array(20).keys()]}/>
+        </main>
+        <Footer/>
+    </React.Fragment>
+)
 
 export default App;
