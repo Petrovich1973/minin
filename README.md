@@ -1,0 +1,2 @@
+# minin
+static templares
