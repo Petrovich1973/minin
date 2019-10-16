@@ -1,6 +1,22 @@
+$primary-color: #343a40 !default;
+$accent-color: #f8f9fa !default;
+
+$size-base: 1rem;
+
+@mixin dark-theme {
+  background-color: $primary-color;
+  color: $accent-color;
+}
+
+@mixin flex-horizontal {
+  display: flex;
+  align-items: center;
+}
+
 html {
   background-color: #000;
 }
+
 body {
   margin: 0;
   height: 100vh;
@@ -10,6 +26,9 @@ body {
   font-weight: 100;
   background-color: #f8f9fa;
   color: #212529;
+  * {
+    box-sizing: border-box;
+  }
   @media (max-width: 1000px) {
     & {
       font-size: 1.6vw;
@@ -17,14 +36,19 @@ body {
   }
 }
 
-h1, h2, h3, h4 {font-weight: 300; text-transform: uppercase}
+h1, h2, h3, h4 {
+  font-weight: 300;
+  text-transform: uppercase
+}
 
 .align-center {
   text-align: center;
 }
+
 .align-left {
   text-align: left;
 }
+
 .align-right {
   text-align: right;
 }
@@ -48,12 +72,78 @@ h1, h2, h3, h4 {font-weight: 300; text-transform: uppercase}
   }
 
   header {
+    @include dark-theme;
     padding: 1rem;
-    background-color: #343a40;
-    color: #f8f9fa;
+    @include flex-horizontal;
+    justify-content: space-between;
+    & > * {
+      flex: 1;
+    }
+    .app-logo {
+      a {
+        font-weight: 700;
+        text-transform: uppercase;
+        text-decoration: none;
+        white-space: nowrap;
+        color: $accent-color;
+      }
+    }
+    .group-center {
+      @include flex-horizontal;
+    }
+    .nav {
+      .navbar {
+        @include flex-horizontal;
+        margin: 0 $size-base;
+        padding: 0;
+        list-style: none;
+        a {
+          @include flex-horizontal;
+          padding: 0 $size-base;
+          white-space: nowrap;
+          text-decoration: none;
+          color: $accent-color;
+          & > * + * {
+            margin-left: ($size-base / 2);
+          }
+        }
+      }
+    }
+    .user {
+      @include flex-horizontal;
+      & > * + * {
+        margin-left: $size-base;
+      }
+      .user-avatar {
+        width: ($size-base * 2.8);
+        height: ($size-base * 2.8);
+        border-radius: 100%;
+        background-color: $accent-color;
+        position: relative;
+        margin-top: -$size-base;
+        margin-bottom: -$size-base;
+        @media (max-width: 768px) {
+          & {
+            width: ($size-base * 1.8);
+            height: ($size-base * 1.8);
+          }
+        }
+      }
+      .user-name > * {
+        display: block;
+        max-width: ($size-base * 10);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    .logout {
+      white-space: nowrap;
+      color: $accent-color;
+    }
   }
   footer {
-    padding: 1rem;
+    padding: $size-base;
   }
   main {
     flex: 1;
@@ -85,11 +175,9 @@ h1, h2, h3, h4 {font-weight: 300; text-transform: uppercase}
           bottom: 2px;
           left: 2px;
           right: 2px;
-          display: flex;
+          @include flex-horizontal;
           justify-content: center;
-          align-items: center;
-          background-color: #343a40;
-          color: #f8f9fa;
+          @include dark-theme;
         }
         @media (max-width: 1400px) {
           & {
@@ -153,12 +241,57 @@ h1, h2, h3, h4 {font-weight: 300; text-transform: uppercase}
 }
 
 .row-group {
-  display: flex;
+  @include flex-horizontal;
   justify-content: center;
-  align-items: center;
   & > * {
     display: block;
     padding: 0 1rem;
+  }
+}
+
+////////////////// Home /////////////////
+
+main#home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  & > * {
+    height: initial;
+  }
+  .select-action {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    li {
+      & + li {
+        margin-top: ($size-base / 2)
+      }
+      a {
+        @include flex-horizontal;
+        justify-content: center;
+        @include dark-theme;
+        padding: $size-base;
+        width: ($size-base * 15);
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+////////////////// end Home /////////////////
+
+@media (max-width: 1000px) {
+  .medium-hide1000 {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  .medium-hide768 {
+    display: none;
   }
 }
 

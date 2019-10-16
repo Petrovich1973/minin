@@ -6,7 +6,7 @@ const MainSection = ({list = []}) => (
     <section>
         <h3 className="title-block row-group">
             <span>$200.00</span>
-            <span>баланс обмена</span>
+            <strong>«обмен»</strong>
             <span>$203.00</span>
         </h3>
         <Filter/>

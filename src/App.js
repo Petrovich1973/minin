@@ -1,20 +1,22 @@
 import React from 'react';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import './App.scss';
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
-import Aside from "./Components/Aside";
-import MainSection from "./Components/MainSection";
+import ModeChange from "./Components/ModeChange";
+import Home from "./Components/Home";
 
 const App = () => (
-    <React.Fragment>
-        <Header/>
-        <main>
-            <Aside title={'Мои скины'} side={'left'} list={[...Array(20).keys()]}/>
-            <MainSection list={[...Array(500).keys()]}/>
-            <Aside title={'Скины Бота'} side={'right'} list={[...Array(20).keys()]}/>
-        </main>
-        <Footer/>
-    </React.Fragment>
+    <BrowserRouter>
+        <React.Fragment>
+            <Header/>
+            <Switch>
+                <Route exact path='/' component={Home}/>
+                <Route path='/mode-change' component={ModeChange}/>
+            </Switch>
+            <Footer/>
+        </React.Fragment>
+    </BrowserRouter>
 )
 
 export default App;
