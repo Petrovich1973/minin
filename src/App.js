@@ -5,6 +5,7 @@ import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import ModeChange from "./Components/ModeChange";
 import Home from "./Components/Home";
+import ModeMarket from "./Components/ModeMarket";
 
 const App = () => (
     <BrowserRouter>
@@ -13,6 +14,7 @@ const App = () => (
             <Switch>
                 <Route exact path='/' component={Home}/>
                 <Route path='/mode-change' component={ModeChange}/>
+                <Route path='/mode-market' component={ModeMarket}/>
             </Switch>
             <Footer/>
         </React.Fragment>

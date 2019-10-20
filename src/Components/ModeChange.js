@@ -1,6 +1,6 @@
 import React from 'react'
-import Aside from "./Aside";
-import MainSection from "./MainSection";
+import Aside from "./Aside"
+import MainSection from "./MainSection"
 
 const ModeChange = () => (
     <main>

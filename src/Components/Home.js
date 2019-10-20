@@ -12,7 +12,7 @@ const Home = () => (
                 <Link to={'/mode-change'}><span>Обменять</span></Link>
             </li>
             <li>
-                <Link to={'/mode-change'}><span>Продать</span></Link>
+                <Link to={'/mode-market'}><span>Продать</span></Link>
             </li>
             <li>
                 <Link to={'/mode-change'}><span>Вывести в Steam</span></Link>
