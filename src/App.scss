@@ -1,7 +1,14 @@
 $primary-color: #343a40 !default;
 $accent-color: #f8f9fa !default;
 
+$red-color: red;
+$green-color: green;
+$blue-color: blue;
+$orange-color: orange;
+
+
 $size-base: 1rem;
+$font-sm: 11px;
 
 @mixin dark-theme {
   background-color: $primary-color;
@@ -58,6 +65,22 @@ h1, h2, h3, h4 {
   margin: 1rem;
 }
 
+.color-green {
+  color: lighten($green-color, 40%);
+}
+.box-green {
+  background-color: $green-color;
+  color: $accent-color;
+}
+
+.color-orange {
+  color: lighten($orange-color, 10%);
+}
+.box-orange {
+  background-color: $orange-color;
+  color: $accent-color;
+}
+
 #root {
   height: 100vh;
   width: 100vw;
@@ -110,9 +133,22 @@ h1, h2, h3, h4 {
       }
     }
     .user {
+      position: relative;
+      padding: $size-base;
+      margin: -$size-base 0;
       @include flex-horizontal;
-      & > * + * {
+      & > * + *:not(.drop-down) {
         margin-left: $size-base;
+      }
+      .drop-down {
+        padding-top: $size-base;
+        padding-bottom: $size-base;
+        display: none;
+      }
+      &:hover {
+        .drop-down {
+          display: block;
+        }
       }
       .user-avatar {
         width: ($size-base * 2.8);
@@ -143,7 +179,27 @@ h1, h2, h3, h4 {
     }
   }
   footer {
-    padding: $size-base;
+    padding: $size-base 0;
+    background-color: lighten($primary-color, 80%);
+    @include flex-horizontal;
+    justify-content: space-between;
+    .links {
+      @include flex-horizontal;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      & > * {
+        margin: 0 $size-base;
+        white-space: nowrap;
+        a {
+          font-size: $font-sm;
+          white-space: nowrap;
+        }
+        & > * + * {
+          margin-left: $size-base;
+        }
+      }
+    }
   }
   main {
     flex: 1;
@@ -249,6 +305,50 @@ h1, h2, h3, h4 {
   }
 }
 
+.drop-down {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: $primary-color;
+  & > ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li {
+      padding: ($size-base / 2) $size-base;
+      & > * + * {
+        margin-left: ($size-base / 2);
+      }
+      a {
+        @include flex-horizontal;
+        color: $accent-color;
+        text-decoration: none;
+        & > * + * {
+          margin-left: ($size-base / 2);
+        }
+      }
+    }
+  }
+}
+
+.table-transactions {
+  table {
+    margin: 0 auto;
+    th, td {
+      padding: $size-base / 2;
+      font-weight: 400;
+      .label {
+        display: inline-block;
+        margin-left: $size-base / 2;
+        padding: ($size-base / 4) ($size-base / 2);
+        font-weight: 300;
+        font-size: $font-sm;
+      }
+    }
+  }
+
+}
+
 ////////////////// Home /////////////////
 
 main#home {
@@ -286,12 +386,13 @@ main#home {
 
 @media (max-width: 1000px) {
   .medium-hide1000 {
-    display: none;
+    display: none !important;
   }
 }
+
 @media (max-width: 768px) {
   .medium-hide768 {
-    display: none;
+    display: none !important;
   }
 }
 

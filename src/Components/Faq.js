@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react'
 
-const ModeMarket = () => {
+const Faq = () => {
 
     useEffect(() => {
+
         // eslint-disable-next-line
     }, [])
 
@@ -10,11 +11,11 @@ const ModeMarket = () => {
         <main>
             <div style={{flex: 1}}>
 
-                <h3 className="title-block row-group">Продать</h3>
+                <h3 className="title-block row-group">Faq</h3>
 
             </div>
         </main>
     )
 }
 
-export default ModeMarket
+export default Faq
