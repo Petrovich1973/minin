@@ -1002,7 +1002,7 @@ const Transactions = () => {
                     "type": "partner"
                 }],
                 "source": "offers",
-                "status": "completed",
+                "status": "rejected",
                 "time": 1570379795
             }]
         }
@@ -1917,6 +1917,7 @@ const Transactions = () => {
     const statusMapping = status => {
         if (status === 'completed') return <span className="label box-green">{status}</span>
         if (status === 'canceled') return <span className="label box-orange">{status}</span>
+        if (status === 'rejected') return <span className="label box-red">{status}</span>
     }
 
     return (
