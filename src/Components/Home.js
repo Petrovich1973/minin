@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Home = () => (
     <main id="home">
-        <h2>Выберите действие</h2>
+        <h2 className="align-center">Выберите действие</h2>
         <ul className="select-action">
             <li>
                 <Link to={'/mode-buy'}><span>Купить у бота</span></Link>

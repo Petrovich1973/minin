@@ -6,9 +6,9 @@ $orange-color: orange;
 $red-color: red;
 $blue-color: blue;
 
-
-$size-base: 1rem;
+$font-size: 18px;
 $font-sm: 11px;
+$size-base: 1rem;
 
 @mixin dark-theme {
   background-color: $primary-color;
@@ -28,7 +28,7 @@ body {
   margin: 0;
   height: 100vh;
   overflow: auto;
-  font-size: 1.2vw;
+  font-size: $font-size;
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
   background-color: #f8f9fa;
@@ -68,8 +68,9 @@ h1, h2, h3, h4 {
 ///////////// Color schemes ///////////////
 
 .color-green {
-  color: lighten($green-color, 40%);
+  color: lighten($green-color, 20%);
 }
+
 .box-green {
   background-color: $green-color;
   color: $accent-color;
@@ -78,6 +79,7 @@ h1, h2, h3, h4 {
 .color-orange {
   color: lighten($orange-color, 10%);
 }
+
 .box-orange {
   background-color: $orange-color;
   color: $accent-color;
@@ -86,6 +88,7 @@ h1, h2, h3, h4 {
 .color-red {
   color: lighten($red-color, 10%);
 }
+
 .box-red {
   background-color: $red-color;
   color: $accent-color;
@@ -94,6 +97,7 @@ h1, h2, h3, h4 {
 .color-blue {
   color: lighten($blue-color, 10%);
 }
+
 .box-blue {
   background-color: $blue-color;
   color: $accent-color;
@@ -229,6 +233,7 @@ h1, h2, h3, h4 {
       flex-direction: column;
       box-sizing: border-box;
       height: 100%;
+      width: 100%;
     }
 
     .list-scroll {
@@ -383,6 +388,12 @@ h1, h2, h3, h4 {
 
 }
 
+.container {
+  margin: 0 auto;
+  width: 1400px;
+  max-width: 100%;
+}
+
 ////////////////// Home /////////////////
 
 main#home {
@@ -417,6 +428,75 @@ main#home {
 }
 
 ////////////////// end Home /////////////////
+
+////////////////// Profile /////////////////
+
+.profile-page {
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  @media (max-width: 1000px) {
+    & {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  & > * {
+    margin: $size-base;
+  }
+  .avatar {
+    position: relative;
+    overflow: hidden;
+    width: 400px;
+    padding-top: 100%;
+    border-radius: 100%;
+    img {
+      display: block;
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    &:after {
+      display: block;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      border-radius: 100%;
+      box-shadow: inset 0 0 80px 0 rgba(0, 0, 0, .7);
+    }
+  }
+  .metrics {
+    table {
+      tr {
+        td {
+          text-align: left;
+          vertical-align: top;
+          padding: $size-base;
+          border-bottom: 1px dotted $primary-color;
+          &:first-child {
+            text-align: right;
+            white-space: nowrap;
+            font-size: $font-sm + 4;
+            font-weight: 500;
+            border-right: 1px dotted $primary-color;
+          }
+        }
+        &:last-child {
+          td {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+////////////////// end Profile /////////////////
 
 @media (max-width: 1000px) {
   .medium-hide1000 {

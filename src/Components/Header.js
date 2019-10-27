@@ -5,7 +5,7 @@ const Header = () => (
     <header>
         <div>
             <div className="app-logo">
-                <Link to={'/'}>Logo.type</Link>
+                <Link to={'/'}>Logo$type</Link>
             </div>
         </div>
         <div className="group-center">
@@ -17,7 +17,7 @@ const Header = () => (
                         </Link>
                     </li>
                     <li className="medium-hide1000">
-                        <Link to="/profile"><i className="fa fa-angle-down color-green"/>
+                        <Link to="/profile"><i className="fa fa-angle-double-down color-green"/>
                             <nobr className="color-green">5% комиссия</nobr>
                         </Link>
                     </li>
@@ -61,7 +61,7 @@ const Header = () => (
                     </li>*/}
                     <li className="medium-hide1000">
                         <Link to="/settings"><i className="fa fa-cogs"/>
-                            <nobr>Settings</nobr>
+                            <nobr>View settings</nobr>
                         </Link>
                     </li>
                 </ul>

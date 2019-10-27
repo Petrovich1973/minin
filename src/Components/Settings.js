@@ -11,7 +11,7 @@ const Settings = () => {
         <main>
             <div style={{flex: 1}}>
 
-                <h3 className="title-block row-group">Settings</h3>
+                <h3 className="title-block row-group">View Settings</h3>
 
             </div>
         </main>
