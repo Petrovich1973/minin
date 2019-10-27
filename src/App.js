@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {UserProvider} from './UserContext'
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import './App.scss';
 import Header from "./Components/Header";
@@ -12,25 +13,54 @@ import Transactions from "./Components/Transactions";
 import Profile from "./Components/Profile";
 import Settings from "./Components/Settings";
 import Faq from "./Components/Faq";
+import Login from "./Components/Login";
+import NotFound from "./Components/NotFound";
 
-const App = () => (
-    <BrowserRouter>
-        <React.Fragment>
-            <Header/>
-            <Switch>
-                <Route exact path='/' component={Home}/>
-                <Route path='/mode-change' component={ModeChange}/>
-                <Route path='/mode-market' component={ModeMarket}/>
-                <Route path='/mode-buy' component={ModeBuy}/>
-                <Route path='/mode-move-to-steam' component={ModeMoveToSteam}/>
-                <Route path='/transactions' component={Transactions}/>
-                <Route path='/profile' component={Profile}/>
-                <Route path='/settings' component={Settings}/>
-                <Route path='/faq' component={Faq}/>
-            </Switch>
-            <Footer/>
-        </React.Fragment>
-    </BrowserRouter>
-)
+const App = () => {
+
+    const [user, setUser] = useState({
+        auth: false,
+        login: null,
+        password: null,
+        avatar_img: 'https://cdn.pixabay.com/photo/2016/11/24/21/39/sexy-1857310_960_720.jpg',
+        background: 'transparent',
+        color: 'inherit'
+    })
+
+    const handleChangeLogin = value => setUser(value)
+
+
+    return (
+        <UserProvider value={{user, handleChangeLogin}}>
+            <BrowserRouter>
+                <React.Fragment>
+
+                    <Header {...{user}}/>
+
+                    <Switch>
+                        {user.auth ? (
+                            <React.Fragment>
+                                <Route exact path='/' component={Home}/>
+                                <Route path='/mode-change' component={ModeChange}/>
+                                <Route path='/mode-market' component={ModeMarket}/>
+                                <Route path='/mode-buy' component={ModeBuy}/>
+                                <Route path='/mode-move-to-steam' component={ModeMoveToSteam}/>
+                                <Route path='/transactions' component={Transactions}/>
+                                <Route path='/profile' component={Profile}/>
+                                <Route path='/settings' component={Settings}/>
+                                <Route path='/faq' component={Faq}/>
+                            </React.Fragment>
+                        ) : (
+                            <Route exact path='/'><Login {...{user, handleChangeLogin}}/></Route>
+                        )}
+                        {!user.auth ? <Route path='/faq' component={Faq}/> : null}
+                        <Route path='**' component={NotFound}/>
+                    </Switch>
+                    <Footer/>
+                </React.Fragment>
+            </BrowserRouter>
+        </UserProvider>
+    )
+}
 
 export default App;

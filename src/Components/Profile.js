@@ -1,7 +1,10 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
+import {UserConsumer} from '../UserContext'
 
 const Profile = () => {
+
+    const [modeEditLogin, setModeEditLogin] = useState(false)
 
     useEffect(() => {
 
@@ -15,75 +18,108 @@ const Profile = () => {
     }, [])
 
     return (
-        <main>
-            <div style={{flex: 1}}>
+        <UserConsumer>
+            {props => {
+                const {user, handleChangeLogin} = props
 
-                <h3 className="title-block row-group">You profile</h3>
+                const styles = {
+                    background: user.background,
+                    color: user.color
+                }
 
-                <div className="profile-page container">
-                    <div>
-                        <div className="avatar">
-                            <img
-                                src={/*`data:image/png;base64,
-                                    iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcS
-                                    JAAAADUlEQVR42mNsaGj8DwAFiwKCS2XWTgAAAABJRU5ErkJggg==`*/'https://cdn.pixabay.com/photo/2016/11/24/21/39/sexy-1857310_960_720.jpg'}
-                                width={500}
-                                height={500}
-                                alt=""/>
+                const handleDown = e => {
+                    if (e.keyCode === 13) {
+                        setModeEditLogin(false)
+                    }
+                }
+
+                return (
+                    <main>
+                        <div style={{flex: 1, ...styles}}>
+
+                            <h3 className="title-block row-group">You profile</h3>
+
+                            <div className="profile-page container">
+                                <div>
+                                    <div className="avatar">
+                                        <img
+                                            src={user.avatar_img}
+                                            alt=""/>
+                                    </div>
+                                </div>
+                                <div className="list-scroll" style={{flex: 1}}>
+                                    <div className="metrics">
+                                        <table>
+                                            <tbody>
+                                            <tr>
+                                                <td>Login</td>
+                                                <td>
+                                                    {!modeEditLogin ?
+                                                        <i
+                                                            className="fa fa-edit pointer"
+                                                            onClick={() => setModeEditLogin(true)}/> :
+                                                        null}
+                                                </td>
+                                                <td>{modeEditLogin ?
+                                                    <input
+                                                        className="input"
+                                                        type="text"
+                                                        value={user.login}
+                                                        onKeyDown={handleDown}
+                                                        onBlur={() => setModeEditLogin(false)}
+                                                        onChange={e => handleChangeLogin({
+                                                            ...user,
+                                                            login: e.target.value.trim()
+                                                        })}/> :
+                                                    <span>{user.login || 'minin-deniska@gmail.com'}</span>}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Баланс</td>
+                                                <td><i className="fa fa-plus-circle"/></td>
+                                                <td>$ 2 000.34</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Бонус -2% комиссии</td>
+                                                <td/>
+                                                <td><i className="fa fa-check color-green"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Steam Guard</td>
+                                                <td/>
+                                                <td><i className="fa fa-check color-green"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Trade URL</td>
+                                                <td><i className="fa fa-edit"/></td>
+                                                <td>https://steamcommunity.com/traseoffer/new/?partner=34676787&token=Wk4u9PHw</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Seller Link</td>
+                                                <td><i className="fa fa-copy"/></td>
+                                                <td>https://steamcommunity.com/traseoffer/new/?partner=34676787&token=Wk4u9PHw</td>
+                                            </tr>
+                                            <tr>
+                                                <td>SteamID64</td>
+                                                <td/>
+                                                <td>76561197998942485</td>
+                                            </tr>
+                                            <tr>
+                                                <td><Link to={'/transactions'}>Транзакции</Link></td>
+                                                <td/>
+                                                <td/>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
-                    </div>
-                    <div className="list-scroll" style={{flex: 1}}>
-                        <div className="metrics">
-                            <table>
-                                <tbody>
-                                <tr>
-                                    <td>Login</td>
-                                    <td><i className="fa fa-edit"/></td>
-                                    <td>minin-deniska@gmail.com</td>
-                                </tr>
-                                <tr>
-                                    <td>Баланс</td>
-                                    <td><i className="fa fa-plus-circle"/></td>
-                                    <td>$ 2 000.34</td>
-                                </tr>
-                                <tr>
-                                    <td>Бонус -2% комиссии</td>
-                                    <td/>
-                                    <td><i className="fa fa-check color-green"/></td>
-                                </tr>
-                                <tr>
-                                    <td>Steam Guard</td>
-                                    <td/>
-                                    <td><i className="fa fa-check color-green"/></td>
-                                </tr>
-                                <tr>
-                                    <td>Trade URL</td>
-                                    <td><i className="fa fa-edit"/></td>
-                                    <td>https://steamcommunity.com/traseoffer/new/?partner=34676787&token=Wk4u9PHw</td>
-                                </tr>
-                                <tr>
-                                    <td>Seller Link</td>
-                                    <td><i className="fa fa-copy"/></td>
-                                    <td>https://steamcommunity.com/traseoffer/new/?partner=34676787&token=Wk4u9PHw</td>
-                                </tr>
-                                <tr>
-                                    <td>SteamID64</td>
-                                    <td/>
-                                    <td>76561197998942485</td>
-                                </tr>
-                                <tr>
-                                    <td><Link to={'/transactions'}>Транзакции</Link></td>
-                                    <td/>
-                                    <td/>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </main>
+                    </main>
+                )
+            }}
+        </UserConsumer>
     )
 }
 
