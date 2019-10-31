@@ -50,6 +50,14 @@ h1, h2, h3, h4 {
 
 .btn:not(:disabled) {
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: ($size-base / 2) $size-base;
+  border: none;
+  & > * + * {
+    margin-left: $size-base / 2;
+  }
 }
 
 .align-center {
@@ -70,6 +78,14 @@ h1, h2, h3, h4 {
 }
 
 ///////////// Color schemes ///////////////
+
+.color-primary {
+  color: $primary-color;
+}
+
+.box-primary {
+  @include dark-theme;
+}
 
 .color-green {
   color: lighten($green-color, 20%);
@@ -188,7 +204,6 @@ h1, h2, h3, h4 {
         margin-top: -$size-base;
         margin-bottom: -$size-base;
         overflow: hidden;
-        position: relative;
         @media (max-width: 768px) {
           & {
             width: ($size-base * 1.8);
@@ -243,12 +258,62 @@ h1, h2, h3, h4 {
   main {
     flex: 1;
     height: 100%;
+    position: relative;
     & > * {
       display: flex;
       flex-direction: column;
       box-sizing: border-box;
       height: 100%;
       width: 100%;
+      &.DialogAction {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        overflow: auto;
+        background-color: rgba(255, 255, 255, .97);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .btnConfirm {
+          padding: $size-base;
+        }
+        .payList {
+          display: flex;
+          & > * {
+            font-size: 500%;
+            margin: $size-base;
+            cursor: pointer;
+            opacity: .7;
+            &:hover {
+              opacity: 1;
+            }
+          }
+        }
+        .payForm {
+          display: flex;
+          margin-bottom: $size-base * 2;
+          & > * {
+            display: flex;
+            flex-direction: column;
+            & + * {
+              margin-left: $size-base * 2;
+            }
+            input, button {
+              display: block;
+              width: 100%;
+              border: none;
+              background-color: white;
+              padding: $size-base;
+            }
+            .btn:disabled {
+              opacity: .4;
+            }
+          }
+        }
+      }
     }
 
     .list-scroll {
@@ -365,6 +430,7 @@ h1, h2, h3, h4 {
   top: 100%;
   left: 0;
   background-color: $primary-color;
+  z-index: 1;
   & > ul {
     margin: 0;
     padding: 0;

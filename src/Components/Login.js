@@ -39,6 +39,7 @@ const Login = ({user, handleChangeLogin}) => {
                         <button
                             onClick={() => handleChangeLogin({...user, auth: true, ...data})}
                             disabled={isDisabled}
+                            style={{padding: '1rem'}}
                             className="btn login">Войти</button>
                     </div>
                 </div>

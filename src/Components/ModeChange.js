@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import Aside from "./Aside"
 import MainSection from "./MainSection"
+import DialogAction from "./DialogAction";
 
 const ModeChange = () => {
 
@@ -15,19 +16,36 @@ const ModeChange = () => {
         }
     })
 
+    const [btn] = useState({
+        label: 'Обменять',
+        isDisabled: false
+    })
+
+    const [stepCurrent, setStepCurrent] = useState(0)
+
+    const handleClickBtn = () => {
+        setStepCurrent(1)
+
+        setTimeout(() => setStepCurrent(2), 3000)
+    }
+
+    const handleClickConfirm = () => {
+        setStepCurrent(0)
+    }
+
     const handleSelectSkin = (name, from) => {
 
         const obj = {...skins[name]}
 
-        if(from === 'balance') {
+        if (from === 'balance') {
             const count = obj.selected < 21 ? 1 : 0
             obj.balance -= count
             obj.selected += count
-            if(!count) alert('Это предел!')
+            if (!count) alert('Это предел!')
         }
-        if(from === 'selected') {
+        if (from === 'selected') {
             obj.balance += 1
-            obj.selected -=1
+            obj.selected -= 1
         }
 
         setSkins({
@@ -52,6 +70,8 @@ const ModeChange = () => {
                 list={[...Array(skins.left.selected).keys()]}/>
 
             <MainSection
+                btn={btn}
+                handleClickBtn={handleClickBtn}
                 activeList={activeList}
                 handleClickSkin={handleSelectSkin}
                 list={[...Array(skins[activeList].balance).keys()]}/>
@@ -63,6 +83,23 @@ const ModeChange = () => {
                 title={'Скины Бота'}
                 side={'right'}
                 list={[...Array(skins.right.selected).keys()]}/>
+
+            {stepCurrent === 1 ? <DialogAction>
+                    <i className="fa fa-spinner fa-spin fa-4x"/>
+                    <h2>Подготовка обмена</h2>
+                </DialogAction> :
+                stepCurrent === 2 ? <DialogAction>
+                    <h2>Все готово к обмену!</h2>
+                    <h3
+                        className="align-center"
+                        style={{width: 500}}>
+                        Скины будут отправлены в ваш виртуальный инвентарь
+                        CS. MONEY. Вы сможете их вывести.
+                    </h3>
+                    <button
+                        className="btn btnConfirm box-primary"
+                        onClick={handleClickConfirm}>Подтвердить обмен</button>
+                </DialogAction> : null}
 
         </main>
     )
