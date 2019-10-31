@@ -34,7 +34,7 @@ const ModeMarket = () => {
         const obj = {...skins[name]}
 
         if (from === 'balance') {
-            const count = obj.selected < 21 ? 1 : 0
+            const count = obj.selected < 20 ? 1 : 0
             obj.balance -= count
             obj.selected += count
             if (!count) {

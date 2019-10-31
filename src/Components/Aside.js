@@ -18,7 +18,7 @@ const Aside = ({
             <h3 className={classnames(
                 "title-block",
                 side === 'right' ? 'align-lift' : 'align-right'
-            )}>{title}</h3>
+            )}>{title}({list.length})</h3>
             <ListScroll
                 handleClickSkin={handleClick}
                 list={list} direction={side === 'right' ? 'ltr' : 'rtl'}/>
