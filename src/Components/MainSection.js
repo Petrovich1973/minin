@@ -7,21 +7,16 @@ const MainSection = ({
                          activeList,
                          handleClickSkin,
                          handleClickBtn,
-                         btn: {label = '', isDisabled = false}
+                         title = null,
+                         btn = null
                      }) => {
 
     const handleClick = () => handleClickSkin(activeList, 'balance')
 
     return (
         <section>
-            <h3 className="title-block row-group">
-                <span>$200.00</span>
-                <button
-                    className="btn box-primary"
-                    disabled={isDisabled}
-                    onClick={handleClickBtn}>{label}</button>
-                <span>$203.00</span>
-            </h3>
+            {title}
+            {btn}
             <Filter/>
             <ListScroll handleClickSkin={handleClick} list={list}/>
         </section>

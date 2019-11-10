@@ -20,13 +20,13 @@ const ModeMarket = () => {
 
     const [stepCurrent, setStepCurrent] = useState(0)
 
-    const handleClickBtn = () => {
-        setStepCurrent(1)
-    }
-
     const handleClickConfirm = () => {
         setStepCurrent(2)
-        setTimeout(() => setStepCurrent(0), 2000)
+        setTimeout(() => setStepCurrent(3), 2000)
+    }
+
+    const closeModal = () => {
+        setStepCurrent(0)
     }
 
     const handleSelectSkin = (name, from) => {
@@ -62,12 +62,19 @@ const ModeMarket = () => {
                 <Aside
                     disabled={false}
                     handleClickSkin={handleSelectSkin}
-                    title={'Мои скины'}
+                    title={'Выбрано'}
+                    btn={<div
+                        className="btn box-primary"
+                        style={{padding: '0 1rem', fontSize: 'inherit'}}
+                        disabled={btn.isDisabled}
+                        onClick={handleClickConfirm}><p>$203.00 {btn.label}</p></div>}
                     side={'left'}
                     list={[...Array(skins.left.selected).keys()]}/>
 
                 <MainSection
-                    btn={btn}
+                    title={<h3 className="title-block row-group">
+                        <span>мои скины</span>
+                    </h3>}
                     handleClickBtn={handleClickConfirm}
                     activeList={activeList}
                     handleClickSkin={handleSelectSkin}
@@ -110,6 +117,14 @@ const ModeMarket = () => {
                 <i className="fa fa-spinner fa-spin fa-4x"/>
                 <h2>Подготовка к продаже</h2>
             </DialogAction> : null}
+
+            {stepCurrent === 3 ?
+                <DialogAction>
+                    <div className="align-center" onClick={closeModal}>
+                        <h2>Спасибо за покупку!</h2>
+                    </div>
+                </DialogAction> :
+                null}
 
         </main>
     )

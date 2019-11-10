@@ -29,7 +29,7 @@ const Faq = () => {
                             </div>
 
                             <div className="list-scroll">
-                                <div className="container">
+                                <div className="container x-1000">
                                     <p><strong>
                                         ЧТО ДАЕТ РЕЖИМ «КУПИТЬ СКИНЫ»?
                                     </strong></p>

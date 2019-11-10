@@ -39,7 +39,7 @@ const App = () => {
                     <Header {...{user}}/>
 
                     <Switch>
-                        {!user.auth ? (
+                        {user.auth ? (
                             <React.Fragment>
                                 <Route exact path='/' component={Home}/>
                                 <Route path='/mode-change' component={ModeChange}/>

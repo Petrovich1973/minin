@@ -399,7 +399,7 @@ h1, h2, h3, h4 {
       position: relative;
       &[class^=side-] {
         .list-scroll {
-          padding: 0 1rem;
+          padding: 1rem;
           .element {
             width: 33%;
             padding-top: 33%;
@@ -523,6 +523,7 @@ h1, h2, h3, h4 {
 
 .container {
   margin: 0 auto;
+  padding: 0 $size-base;
   width: 1400px;
   max-width: 100%;
   &.x-1000 {
@@ -597,7 +598,7 @@ h1, h2, h3, h4 {
     flex-direction: column;
     cursor: pointer;
     opacity: .7;
-    border: ($size-base / 2) solid lighten($primary-color, 20%);
+    border: ($size-base / 2) solid lighten($primary-color, 30%);
     &:hover, &.active {
       opacity: 1;
       border-color: $primary-color;

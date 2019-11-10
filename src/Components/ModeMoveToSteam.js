@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import Aside from "./Aside";
 import MainSection from "./MainSection";
-import img from "../anychart.png";
 import DialogAction from "./DialogAction";
 
 const ModeMoveToSteam = () => {
@@ -30,13 +29,17 @@ const ModeMoveToSteam = () => {
             }
         })
         setOutList({list: [1, 2, 3], done: []})
-        setStepCurrent(0)
+        setStepCurrent(3)
     }
 
     const handleClickConfirm = () => {
         setStepCurrent(1)
         setOutList({...outList, list: [...Array(skins.left.selected).keys()]})
         setTimeout(() => setStepCurrent(2), 2000)
+    }
+
+    const closeModal = () => {
+        setStepCurrent(0)
     }
 
     const handleSelectSkin = (name, from) => {
@@ -68,12 +71,19 @@ const ModeMoveToSteam = () => {
                 <Aside
                     disabled={false}
                     handleClickSkin={handleSelectSkin}
-                    title={'Мои скины'}
+                    title={'Выбрано'}
+                    btn={<div
+                        className="btn box-primary"
+                        style={{padding: '0 1rem', fontSize: 'inherit'}}
+                        disabled={btn.isDisabled}
+                        onClick={handleClickConfirm}><p>$203.00 {btn.label}</p></div>}
                     side={'left'}
                     list={[...Array(skins.left.selected).keys()]}/>
 
                 <MainSection
-                    btn={btn}
+                    title={<h3 className="title-block row-group">
+                        <span>мои скины</span>
+                    </h3>}
                     handleClickBtn={handleClickConfirm}
                     activeList={activeList}
                     handleClickSkin={handleSelectSkin}
@@ -111,6 +121,14 @@ const ModeMoveToSteam = () => {
                 </button>
 
             </DialogAction> : null}
+
+            {stepCurrent === 3 ?
+                <DialogAction>
+                    <div className="align-center" onClick={closeModal}>
+                        <h2>Спасибо за покупку!</h2>
+                    </div>
+                </DialogAction> :
+                null}
 
         </main>
     )

@@ -6,6 +6,7 @@ const Aside = ({
                    side = '',
                    title = 'Title aside',
                    list = [],
+                   btn = null,
                    disabled = false,
                    handleSwitchList,
                    handleClickSkin
@@ -17,8 +18,9 @@ const Aside = ({
         <aside className={classnames(side === 'right' ? 'side-right' : 'side-left')}>
             <h3 className={classnames(
                 "title-block",
-                side === 'right' ? 'align-lift' : 'align-right'
+                side === 'right' ? 'align-center' : 'align-center'
             )}>{title}({list.length})</h3>
+            {btn}
             <ListScroll
                 handleClickSkin={handleClick}
                 list={list} direction={side === 'right' ? 'ltr' : 'rtl'}/>

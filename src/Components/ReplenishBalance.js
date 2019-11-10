@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
-import classnames from "classnames";
-import Step_0 from "./PaymentSteps/Step_0";
-import Step_1 from "./PaymentSteps/Step_1";
-import Step_2 from "./PaymentSteps/Step_2";
+import classnames from "classnames"
+import Step0 from "./PaymentSteps/Step_0"
+import Step1 from "./PaymentSteps/Step_1"
+import Step2 from "./PaymentSteps/Step_2"
 
 const ReplenishBalance = () => {
 
@@ -30,11 +30,11 @@ const ReplenishBalance = () => {
     const [wizard, setWizard] = useState({
         steps: {
             0: {
-                title: 'Выберите способ оплаты',
+                title: 'Выбрать способ оплаты',
                 status: null
             },
             1: {
-                title: 'Выберите сумму пополнения',
+                title: 'Выбрать сумму пополнения',
                 status: null
             },
             2: {
@@ -50,18 +50,27 @@ const ReplenishBalance = () => {
 
     const handleChangePaySystem = paySystem => {
         setResult(result => ({...result, paySystem}))
-        setWizard(wizard => ({...wizard, steps: {...wizard.steps, 0: {...wizard.steps[0], status: 'done'}}}))
+        setWizard(wizard => ({
+            ...wizard,
+            steps: {...wizard.steps, 0: {...wizard.steps[0], status: 'done'}}
+        }))
     }
 
     const handleChangePayment = payment => {
         setResult(result => ({...result, payment}))
-        if(payment > 9) {
-            setWizard(wizard => ({...wizard, steps: {...wizard.steps, 1: {...wizard.steps[1], status: 'done'}}}))
+        if (payment > 9) {
+            setWizard(wizard => ({
+                ...wizard,
+                steps: {...wizard.steps, 1: {...wizard.steps[1], status: 'done'}}
+            }))
         }
     }
 
     const handleChangeGetLink = () => {
-        setWizard(wizard => ({...wizard, steps: {...wizard.steps, 2: {...wizard.steps[2], status: 'done'}}}))
+        setWizard(wizard => ({
+            ...wizard,
+            steps: {...wizard.steps, 2: {...wizard.steps[2], status: 'done'}}
+        }))
     }
 
     return (
@@ -98,7 +107,7 @@ const ReplenishBalance = () => {
                         </ul>
 
                         {result.current === 0 ?
-                            <Step_0 {...{
+                            <Step0 {...{
                                 paySystems,
                                 payments,
                                 result,
@@ -107,7 +116,7 @@ const ReplenishBalance = () => {
                             }}/> : null}
 
                         {result.current === 1 ?
-                            <Step_1 {...{
+                            <Step1 {...{
                                 paySystems,
                                 payments,
                                 result,
@@ -116,7 +125,7 @@ const ReplenishBalance = () => {
                             }}/> : null}
 
                         {result.current === 2 ?
-                            <Step_2 {...{
+                            <Step2 {...{
                                 paySystems,
                                 payments,
                                 result,

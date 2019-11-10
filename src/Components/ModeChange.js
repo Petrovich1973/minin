@@ -30,6 +30,10 @@ const ModeChange = () => {
     }
 
     const handleClickConfirm = () => {
+        setStepCurrent(3)
+    }
+
+    const closeModal = () => {
         setStepCurrent(0)
     }
 
@@ -65,12 +69,19 @@ const ModeChange = () => {
                 disabled={activeList !== 'left'}
                 handleSwitchList={handleSwitchList}
                 handleClickSkin={handleSelectSkin}
-                title={'Мои скины'}
+                title={'Выбрано'}
+                btn={<div
+                    className="btn box-primary"
+                    style={{padding: '0 1rem', fontSize: 'inherit'}}
+                    disabled={btn.isDisabled}
+                    onClick={handleClickBtn}><p>$203.00 {btn.label}</p></div>}
                 side={'left'}
                 list={[...Array(skins.left.selected).keys()]}/>
 
             <MainSection
-                btn={btn}
+                title={<h3 className="title-block row-group">
+                    <span>{activeList === 'left' ? 'мои скины' : 'скины бота'}</span>
+                </h3>}
                 handleClickBtn={handleClickBtn}
                 activeList={activeList}
                 handleClickSkin={handleSelectSkin}
@@ -80,7 +91,12 @@ const ModeChange = () => {
                 disabled={activeList !== 'right'}
                 handleSwitchList={handleSwitchList}
                 handleClickSkin={handleSelectSkin}
-                title={'Скины Бота'}
+                title={'Выбрано'}
+                btn={<div
+                    className="btn box-primary"
+                    style={{padding: '0 1rem', fontSize: 'inherit'}}
+                    disabled={btn.isDisabled}
+                    onClick={handleClickBtn}><p>$203.00 {btn.label}</p></div>}
                 side={'right'}
                 list={[...Array(skins.right.selected).keys()]}/>
 
@@ -100,6 +116,13 @@ const ModeChange = () => {
                         className="btn btnConfirm box-primary"
                         onClick={handleClickConfirm}>Подтвердить обмен</button>
                 </DialogAction> : null}
+            {stepCurrent === 3 ?
+                <DialogAction>
+                    <div className="align-center" onClick={closeModal}>
+                        <h2>Спасибо за покупку!</h2>
+                    </div>
+                </DialogAction> :
+                null}
 
         </main>
     )

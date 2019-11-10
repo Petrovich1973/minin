@@ -20,7 +20,7 @@ const Step_1 = ({
         </p>
         <ul className="paymentList">
             {Object.keys(payments).map((pay, idx) => {
-                const isActive = payment === pay
+                const isActive = payment === +pay
                 return (
                     <li
                         key={idx}
