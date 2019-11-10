@@ -36,6 +36,12 @@ const Header = ({user}) => (
                 <div className="drop-down">
                     <ul>
                         <li>
+                            <Link to="/replenish-balance">
+                                <i className="fa fa-plus-circle"/>
+                                <span>Пополнить баланс</span>
+                            </Link>
+                        </li>
+                        <li>
                             <Link to="/profile">
                                 <i className="fa fa-user-o"/>
                                 <span>You profile</span>

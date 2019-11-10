@@ -2,11 +2,15 @@ import React from 'react'
 import ListScroll from "./ListScroll";
 import Filter from "./Filter";
 
-const MainSection = ({list = [], activeList, handleClickSkin, handleClickBtn, btn: {label = '', isDisabled = false}}) => {
+const MainSection = ({
+                         list = [],
+                         activeList,
+                         handleClickSkin,
+                         handleClickBtn,
+                         btn: {label = '', isDisabled = false}
+                     }) => {
 
     const handleClick = () => handleClickSkin(activeList, 'balance')
-
-    // console.log(handleClickBtn)
 
     return (
         <section>

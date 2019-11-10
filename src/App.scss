@@ -280,18 +280,6 @@ h1, h2, h3, h4 {
         .btnConfirm {
           padding: $size-base;
         }
-        .payList {
-          display: flex;
-          & > * {
-            font-size: 500%;
-            margin: $size-base;
-            cursor: pointer;
-            opacity: .7;
-            &:hover {
-              opacity: 1;
-            }
-          }
-        }
         .payForm {
           display: flex;
           margin-bottom: $size-base * 2;
@@ -313,6 +301,45 @@ h1, h2, h3, h4 {
             }
           }
         }
+        .outList {
+          margin: 0 0 ($size-base * 2);
+          padding: 0;
+          list-style: none;
+          li {
+            display: flex;
+            & > * {
+              display: block;
+              font-size: 80%;
+              line-height: 1;
+            }
+            .skin {
+              width: 30px;
+              height: 30px;
+              background-color: $primary-color;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              i {
+                opacity: 0;
+              }
+              & + span {
+                padding: ($size-base / 2) $size-base;
+              }
+            }
+            &.complete {
+              .skin {
+                color: $green-color;
+                background-color: transparent;
+                i {
+                  opacity: 1;
+                }
+              }
+            }
+            & + * {
+              margin-top: $size-base / 2;
+            }
+          }
+        }
       }
     }
 
@@ -326,8 +353,8 @@ h1, h2, h3, h4 {
       .element {
         float: left;
         display: inline-flex;
-        width: 10%;
-        padding-top: 10%;
+        width: 8.33%;
+        padding-top: 8.33%;
         position: relative;
 
         & > * {
@@ -342,8 +369,8 @@ h1, h2, h3, h4 {
         }
         @media (max-width: 1400px) {
           & {
-            width: 14.25%;
-            padding-top: 14.25%;
+            width: 12.5%;
+            padding-top: 12.5%;
           }
         }
         @media (max-width: 1000px) {
@@ -401,6 +428,19 @@ h1, h2, h3, h4 {
         background-color: #f8f9fa;
         opacity: .7;
         cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        & > * {
+          display: none;
+          padding: $size-base;
+        }
+        &:hover {
+          opacity: 1;
+          & > * {
+            display: block;
+          }
+        }
       }
     }
   }
@@ -408,6 +448,14 @@ h1, h2, h3, h4 {
 
 .pointer {
   cursor: pointer;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: white;
+  padding: $size-base;
 }
 
 .filter {
@@ -477,6 +525,98 @@ h1, h2, h3, h4 {
   margin: 0 auto;
   width: 1400px;
   max-width: 100%;
+  &.x-1000 {
+    width: 1000px;
+  }
+}
+
+.payList {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  & > * {
+    font-size: 500%;
+    margin: $size-base;
+    cursor: pointer;
+    opacity: .7;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  &.selectItem {
+    margin: 0 -($size-base);
+    i.fa {
+      padding: 0 ($size-base / 2);
+    }
+    .active {
+      opacity: 1;
+      i {
+        box-shadow: 0 0 $size-base 0 rgba(0, 0, 0, .7)
+      }
+    }
+  }
+}
+
+.wizard-nav {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0 -($size-base);
+  list-style: none;
+  & > * {
+    font-size: 80%;
+    margin: $size-base;
+    cursor: pointer;
+    opacity: .7;
+    &:hover, &.active {
+      opacity: 1;
+    }
+    & > * + * {
+      margin-left: $size-base / 2;
+    }
+  }
+}
+
+.wizard-current {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.paymentList {
+  display: flex;
+  padding: 0;
+  margin: 0 -($size-base);
+  list-style: none;
+  & > * {
+    margin: $size-base;
+    padding: $size-base;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    opacity: .7;
+    border: ($size-base / 2) solid lighten($primary-color, 20%);
+    &:hover, &.active {
+      opacity: 1;
+      border-color: $primary-color;
+    }
+  }
+}
+
+.paymentResult {
+  display: flex;
+  padding: 0;
+  margin: 0 -($size-base);
+  & > * {
+    margin: $size-base;
+    display: flex;
+    align-items: center;
+    & > * + * {
+      margin-left: $size-base;
+    }
+  }
 }
 
 ////////////////// Login /////////////////

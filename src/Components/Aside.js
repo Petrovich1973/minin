@@ -22,7 +22,9 @@ const Aside = ({
             <ListScroll
                 handleClickSkin={handleClick}
                 list={list} direction={side === 'right' ? 'ltr' : 'rtl'}/>
-            {disabled ? <div className="maskList" onClick={() => handleSwitchList(side)}/> : null}
+            {disabled ? <div className="maskList" onClick={() => handleSwitchList(side)}>
+                <div className="align-center">Выбрать<br/>{title}</div>
+            </div> : null}
         </aside>
     )
 }

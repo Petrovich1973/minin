@@ -15,6 +15,7 @@ import Settings from "./Components/Settings";
 import Faq from "./Components/Faq";
 import Login from "./Components/Login";
 import NotFound from "./Components/NotFound";
+import ReplenishBalance from "./Components/ReplenishBalance";
 
 const App = () => {
 
@@ -38,7 +39,7 @@ const App = () => {
                     <Header {...{user}}/>
 
                     <Switch>
-                        {user.auth ? (
+                        {!user.auth ? (
                             <React.Fragment>
                                 <Route exact path='/' component={Home}/>
                                 <Route path='/mode-change' component={ModeChange}/>
@@ -49,6 +50,7 @@ const App = () => {
                                 <Route path='/profile' component={Profile}/>
                                 <Route path='/settings' component={Settings}/>
                                 <Route path='/faq' component={Faq}/>
+                                <Route path='/replenish-balance' component={ReplenishBalance}/>
                             </React.Fragment>
                         ) : (
                             <Route exact path='/'><Login {...{user, handleChangeLogin}}/></Route>
