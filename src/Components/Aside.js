@@ -25,7 +25,7 @@ const Aside = ({
                 handleClickSkin={handleClick}
                 list={list} direction={side === 'right' ? 'ltr' : 'rtl'}/>
             {disabled ? <div className="maskList" onClick={() => handleSwitchList(side)}>
-                <div className="align-center">Выбрать<br/>{title}</div>
+                <div className="align-center">Выбрать</div>
             </div> : null}
         </aside>
     )

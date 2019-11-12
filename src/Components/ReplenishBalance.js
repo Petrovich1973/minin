@@ -1,10 +1,43 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import classnames from "classnames"
 import Step0 from "./PaymentSteps/Step_0"
 import Step1 from "./PaymentSteps/Step_1"
 import Step2 from "./PaymentSteps/Step_2"
 
+const initialSateResult = {
+    current: 0,
+    paySystem: '',
+    payment: 0
+}
+const initialSateWizard = {
+    steps: {
+        0: {
+            title: 'Выбрать способ оплаты',
+            status: null
+        },
+        1: {
+            title: 'Выбрать сумму пополнения',
+            status: null
+        },
+        2: {
+            title: 'Проверьте введенные данные',
+            status: null
+        }
+    }
+}
+
 const ReplenishBalance = () => {
+
+    useEffect(() => {
+
+        const elements = document.querySelectorAll('.drop-down')
+        elements.forEach(el => {
+            el.style.display = 'none'
+            setTimeout(() => el.style.display = null, 100)
+        })
+
+        // eslint-disable-next-line
+    }, [])
 
     const [paySystems] = useState({
         mastercard: {name: 'mastercard', icon: 'fa fa-cc-mastercard', bonus: 1.3},
@@ -21,28 +54,9 @@ const ReplenishBalance = () => {
         200: {bonus: 60}
     })
 
-    const [result, setResult] = useState({
-        current: 0,
-        paySystem: '',
-        payment: 0
-    })
+    const [result, setResult] = useState(initialSateResult)
 
-    const [wizard, setWizard] = useState({
-        steps: {
-            0: {
-                title: 'Выбрать способ оплаты',
-                status: null
-            },
-            1: {
-                title: 'Выбрать сумму пополнения',
-                status: null
-            },
-            2: {
-                title: 'Проверьте введенные данные',
-                status: null
-            }
-        }
-    })
+    const [wizard, setWizard] = useState(initialSateWizard)
 
     const handleChangeStep = current => {
         setResult(result => ({...result, current}))
@@ -71,6 +85,11 @@ const ReplenishBalance = () => {
             ...wizard,
             steps: {...wizard.steps, 2: {...wizard.steps[2], status: 'done'}}
         }))
+    }
+
+    const handleReset = () => {
+        setResult({...initialSateResult})
+        setWizard({...initialSateWizard})
     }
 
     return (
@@ -130,7 +149,8 @@ const ReplenishBalance = () => {
                                 payments,
                                 result,
                                 handleChangeStep,
-                                handleChangeGetLink
+                                handleChangeGetLink,
+                                handleReset
                             }}/> : null}
 
                     </div>

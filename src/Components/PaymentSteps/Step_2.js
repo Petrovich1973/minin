@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import classnames from 'classnames'
 
 const Step_2 = ({
                     paySystems = {},
@@ -9,7 +10,8 @@ const Step_2 = ({
                         payment = ''
                     },
                     handleChangeStep,
-                    handleChangeGetLink
+                    handleChangeGetLink,
+                    handleReset
                 }) => {
 
     const [isLink, setIsLink] = useState(false)
@@ -43,7 +45,7 @@ const Step_2 = ({
                     <span>Платежная система:</span>
                     <i
                         style={{fontSize: '300%'}}
-                        className={paySystems[paySystem].icon}/>
+                        className={classnames([paySystem] in paySystems && paySystems[paySystem].icon)}/>
                 </div>
                 <div>
                     <span>Сумма:</span>
@@ -65,6 +67,11 @@ const Step_2 = ({
                     </button>
                 </div>
             </div>
+
+            <p
+                className="align-center pointer effect_01"
+                style={{fontSize: '300%'}}
+                onClick={handleReset}><span>&#10005;</span></p>
 
         </div>
     )

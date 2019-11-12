@@ -3,6 +3,7 @@ import MainSection from "./MainSection";
 import Aside from "./Aside";
 import DialogAction from "./DialogAction";
 import img from '../anychart.png'
+import skin from "../skin.jpg";
 
 const ModeMarket = () => {
 
@@ -82,13 +83,18 @@ const ModeMarket = () => {
             </React.Fragment> : null}
 
             {stepCurrent === 1 ? <React.Fragment>
-                <aside className="side-left">
+                <aside className="side-left" style={{flex: '0 0 30vw'}}>
                     <h3 className="title-block">&nbsp;</h3>
                     <div className="list-scroll" style={{paddingTop: '1rem'}}>
-                        <div style={{
-                            width: '100%',
-                            height: '100%',
-                            backgroundColor: 'black'}}/>
+                        <div
+                            style={{
+                                 width: '100%',
+                                 height: '100%',
+                                 backgroundColor: 'black',
+                                 backgroundImage: `url(${skin})`,
+                                 backgroundSize: 'contain',
+                                 backgroundPosition: 'center',
+                                 backgroundRepeat: 'no-repeat'}}/>
                     </div>
                 </aside>
                 <section>
@@ -120,8 +126,9 @@ const ModeMarket = () => {
 
             {stepCurrent === 3 ?
                 <DialogAction>
-                    <div className="align-center" onClick={closeModal}>
+                    <div className="align-center pointer effect_01" onClick={closeModal}>
                         <h2>Спасибо за покупку!</h2>
+                        <p style={{fontSize: '300%'}}><span>&#10005;</span></p>
                     </div>
                 </DialogAction> :
                 null}

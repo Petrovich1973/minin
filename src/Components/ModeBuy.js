@@ -128,8 +128,9 @@ const ModeBuy = () => {
                 </DialogAction> : null}
             {stepCurrent === 3 ?
             <DialogAction>
-                <div className="align-center" onClick={closeModal}>
+                <div className="align-center pointer effect_01" onClick={closeModal}>
                     <h2>Спасибо за покупку!</h2>
+                    <p style={{fontSize: '300%'}}><span>&#10005;</span></p>
                 </div>
             </DialogAction> :
             null}

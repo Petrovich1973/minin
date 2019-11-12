@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {UserProvider} from './UserContext'
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import './App.scss';
@@ -17,7 +17,26 @@ import Login from "./Components/Login";
 import NotFound from "./Components/NotFound";
 import ReplenishBalance from "./Components/ReplenishBalance";
 
+const appName = 'mininDenisApp'
+
 const App = () => {
+
+    useEffect(() => {
+
+        const ls = localStorage.getItem(appName)
+
+        if(ls) {
+            const payload = JSON.parse(ls)
+            setUser(user => ({
+                ...user,
+                ...payload
+            }))
+        } else {
+            localStorage.setItem(appName, JSON.stringify({}))
+        }
+
+        // eslint-disable-next-line
+    }, [])
 
     const [user, setUser] = useState({
         auth: false,
@@ -28,7 +47,10 @@ const App = () => {
         color: 'inherit'
     })
 
-    const handleChangeLogin = value => setUser(value)
+    const handleChangeLogin = value => {
+        setUser(value)
+        localStorage.setItem(appName, JSON.stringify({...value}))
+    }
 
 
     return (

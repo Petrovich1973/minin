@@ -76,7 +76,7 @@ const ModeMoveToSteam = () => {
                         className="btn box-primary"
                         style={{padding: '0 1rem', fontSize: 'inherit'}}
                         disabled={btn.isDisabled}
-                        onClick={handleClickConfirm}><p>$203.00 {btn.label}</p></div>}
+                        onClick={handleClickConfirm}><p>{btn.label}</p></div>}
                     side={'left'}
                     list={[...Array(skins.left.selected).keys()]}/>
 
@@ -124,8 +124,9 @@ const ModeMoveToSteam = () => {
 
             {stepCurrent === 3 ?
                 <DialogAction>
-                    <div className="align-center" onClick={closeModal}>
+                    <div className="align-center pointer effect_01" onClick={closeModal}>
                         <h2>Спасибо за покупку!</h2>
+                        <p style={{fontSize: '300%'}}><span>&#10005;</span></p>
                     </div>
                 </DialogAction> :
                 null}
