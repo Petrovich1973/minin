@@ -16,6 +16,7 @@ import Faq from "./Components/Faq";
 import Login from "./Components/Login";
 import NotFound from "./Components/NotFound";
 import ReplenishBalance from "./Components/ReplenishBalance";
+import Sidebar from "./Components/Sidebar";
 
 const appName = 'mininDenisApp'
 
@@ -60,26 +61,33 @@ const App = () => {
 
                     <Header {...{user}}/>
 
-                    <Switch>
-                        {user.auth ? (
-                            <React.Fragment>
-                                <Route exact path='/' component={Home}/>
-                                <Route path='/mode-change' component={ModeChange}/>
-                                <Route path='/mode-market' component={ModeMarket}/>
-                                <Route path='/mode-buy' component={ModeBuy}/>
-                                <Route path='/mode-move-to-steam' component={ModeMoveToSteam}/>
-                                <Route path='/transactions' component={Transactions}/>
-                                <Route path='/profile' component={Profile}/>
-                                <Route path='/settings' component={Settings}/>
-                                <Route path='/faq' component={Faq}/>
-                                <Route path='/replenish-balance' component={ReplenishBalance}/>
-                            </React.Fragment>
-                        ) : (
-                            <Route exact path='/'><Login {...{user, handleChangeLogin}}/></Route>
-                        )}
-                        {!user.auth ? <Route path='/faq' component={Faq}/> : null}
-                        <Route path='**' component={NotFound}/>
-                    </Switch>
+                    <div className="main">
+
+                        <Sidebar/>
+
+                        <Switch>
+                            {user.auth ? (
+                                <React.Fragment>
+                                    <Route exact path='/' component={Home}/>
+                                    <Route path='/mode-change' component={ModeChange}/>
+                                    <Route path='/mode-market' component={ModeMarket}/>
+                                    <Route path='/mode-buy' component={ModeBuy}/>
+                                    <Route path='/mode-move-to-steam' component={ModeMoveToSteam}/>
+                                    <Route path='/transactions' component={Transactions}/>
+                                    <Route path='/profile' component={Profile}/>
+                                    <Route path='/settings' component={Settings}/>
+                                    <Route path='/faq' component={Faq}/>
+                                    <Route path='/replenish-balance' component={ReplenishBalance}/>
+                                </React.Fragment>
+                            ) : (
+                                <Route exact path='/'><Login {...{user, handleChangeLogin}}/></Route>
+                            )}
+                            {!user.auth ? <Route path='/faq' component={Faq}/> : null}
+                            <Route path='**' component={NotFound}/>
+                        </Switch>
+
+                    </div>
+
                     <Footer/>
                 </React.Fragment>
             </BrowserRouter>
