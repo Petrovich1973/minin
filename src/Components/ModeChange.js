@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import Aside from "./Aside"
 import MainSection from "./MainSection"
 import DialogAction from "./DialogAction";
+import ListScroll from "./ListScroll";
 
 const ModeChange = () => {
 
@@ -105,21 +106,34 @@ const ModeChange = () => {
                     <h2>Подготовка обмена</h2>
                 </DialogAction> :
                 stepCurrent === 2 ? <DialogAction>
-                    <h2>Все готово к обмену!</h2>
+                    <h2>Все готово к виртуальному обмену!</h2>
                     <h3
                         className="align-center"
                         style={{width: 500}}>
                         Скины будут отправлены в ваш виртуальный инвентарь
                         CS. MONEY. Вы сможете их вывести.
                     </h3>
-                    <button
-                        className="btn btnConfirm box-primary"
-                        onClick={handleClickConfirm}>Подтвердить обмен</button>
+                    <div className="align-center">
+                        <div>Вы обмениваете:</div>
+                        <div style={{width: 500}}><ListScroll
+                            list={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}/></div>
+                    </div>
+                    <div>
+                        <button
+                            className="btn btnConfirm box-primary"
+                            onClick={handleClickConfirm}>Подтвердить обмен</button>
+                    </div>
+                    <div>
+                        <button
+                            className="btn btnConfirm"
+                            onClick={closeModal}>Отменить обмен</button>
+                    </div>
+
                 </DialogAction> : null}
             {stepCurrent === 3 ?
                 <DialogAction>
                     <div className="align-center pointer effect_01" onClick={closeModal}>
-                        <h2>Спасибо за покупку!</h2>
+                        <h2>Спасибо за обмен!</h2>
                         <p style={{fontSize: '300%'}}><span>&#10005;</span></p>
                     </div>
                 </DialogAction> :
