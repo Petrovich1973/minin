@@ -1,4 +1,4 @@
-## minin templates
+## minin prototype
 
 In the project directory, you can run:
 
