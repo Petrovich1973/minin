@@ -1,12 +1,15 @@
 import React, {useEffect} from 'react'
 import {UserConsumer} from '../UserContext'
 
+const options = {
+    skinSize: [
+        {label: 'Малюсенький', value: 0},
+        {label: 'Средненький', value: 1},
+        {label: 'Как у слона', value: 2},
+    ]
+}
+
 const Settings = () => {
-
-    useEffect(() => {
-
-        // eslint-disable-next-line
-    }, [])
 
     return (
         <UserConsumer>
@@ -59,6 +62,64 @@ const Settings = () => {
                                                 color: e.target.value
                                             })}
                                             value={user.color}/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Отображать Float на скинах</td>
+                                        <td>
+                                            {user.isVisibleFloat ?
+                                                <i
+                                                    className="icon fa fa-toggle-on pointer"
+                                                    onClick={() => handleChangeLogin({
+                                                        ...user,
+                                                        isVisibleFloat: !user.isVisibleFloat
+                                                    })}/> :
+                                                <i
+                                                    className="icon fa fa-toggle-off pointer"
+                                                    onClick={() => handleChangeLogin({
+                                                        ...user,
+                                                        isVisibleFloat: !user.isVisibleFloat
+                                                    })}/>}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Вклчить виртуальный обмен</td>
+                                        <td>
+                                            {user.virtualExchange ?
+                                                <i
+                                                    className="icon fa fa-toggle-on pointer"
+                                                    onClick={() => handleChangeLogin({
+                                                        ...user,
+                                                        virtualExchange: !user.virtualExchange
+                                                    })}/> :
+                                                <i
+                                                    className="icon fa fa-toggle-off pointer"
+                                                    onClick={() => handleChangeLogin({
+                                                        ...user,
+                                                        virtualExchange: !user.virtualExchange
+                                                    })}/>}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Размер скинов</td>
+                                        <td>
+                                            <select
+                                                className="select"
+                                                value={user.skinSize}
+                                                onChange={e => handleChangeLogin({
+                                                    ...user,
+                                                    skinSize: +e.target.value
+                                                })}>
+                                                {options.skinSize
+                                                    .map((option, i) => (
+                                                            <option
+                                                                key={i}
+                                                                value={option.value}>
+                                                                {option.label}
+                                                            </option>
+                                                        )
+                                                    )}
+                                            </select>
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>

@@ -45,7 +45,10 @@ const App = () => {
         password: null,
         avatar_img: 'https://cdn.pixabay.com/photo/2016/11/24/21/39/sexy-1857310_960_720.jpg',
         background: 'transparent',
-        color: 'inherit'
+        color: 'inherit',
+        isVisibleFloat: true,
+        virtualExchange: true,
+        skinSize: 1
     })
 
     const handleChangeLogin = value => {
