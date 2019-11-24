@@ -1,6 +1,9 @@
 $primary-color: #343a40 !default;
 $accent-color: #f8f9fa !default;
 
+$backgroundColor: #484f55;
+$fontColor: #b6b6b6;
+
 $green-color: green;
 $orange-color: orange;
 $red-color: red;
@@ -31,8 +34,8 @@ body {
   font-size: $font-size;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
-  background-color: #f8f9fa;
-  color: #212529;
+  background-color: $backgroundColor;
+  color: $fontColor;
   * {
     box-sizing: border-box;
   }
@@ -240,7 +243,7 @@ p {
   }
   footer {
     padding: $size-base 0;
-    background-color: lighten($primary-color, 80%);
+    //background-color: lighten($primary-color, 10%);
     @include flex-horizontal;
     justify-content: space-between;
     .links {
@@ -254,6 +257,7 @@ p {
         a {
           font-size: $font-sm;
           white-space: nowrap;
+          color: inherit;
         }
         & > * + * {
           margin-left: $size-base;
@@ -265,10 +269,10 @@ p {
     flex: 1;
     height: 100%;
     .sidebar {
-      background-color: $primary-color;
       color: $accent-color;
       padding: $size-base;
       flex-direction: column;
+      border-right: 1px dashed;
       a {
         color: darken($accent-color, 20%);
       }
@@ -444,7 +448,7 @@ p {
           left: 0;
           right: 0;
           bottom: 0;
-          background-color: #f8f9fa;
+          background-color: rgba(255, 255, 255, .4);
           opacity: .7;
           cursor: pointer;
           display: flex;
@@ -456,7 +460,7 @@ p {
           }
           &:hover {
             opacity: 1;
-            box-shadow: inset 0 0 0 1rem #ccc;
+            box-shadow: inset 0 0 0 ($size-base / 2) rgba(255, 255, 255, .2);
             & > * {
               display: block;
             }
@@ -486,7 +490,6 @@ p {
   display: flex;
   padding: 0;
   background-color: #343a40;
-  color: #f8f9fa;
   .input, .select {
     padding: $size-base / 2;
     margin-top: -($size-base / 2);
@@ -500,12 +503,17 @@ p {
       color: $primary-color;
     }
   }
+  .icon {
+    display: inline-block;
+    margin-left: ($size-base / 2);
+  }
   & > * {
     display: block;
     padding: $size-base;
   }
   .search {
     display: flex;
+    align-items: flex-start;
     & > * + * {
       margin-left: $size-base / 2;
     }
@@ -528,6 +536,7 @@ p {
     width: 100%;
     background-color: inherit;
     color: inherit;
+    box-shadow: 0 20px 10px 0 rgba(0, 0, 0, .3);
     table td {
       padding: ($size-base / 2) 0;
     }
@@ -578,6 +587,20 @@ p {
           margin-left: ($size-base / 2);
         }
       }
+    }
+  }
+}
+
+.horizontal-slider {
+  display: inline-block;
+  width: 100px;
+  height: 1px;
+  background-color: $fontColor;
+  .example-thumb {
+    cursor: pointer;
+    bottom: 1px;
+    &:focus {
+      outline: none;
     }
   }
 }
