@@ -105,9 +105,19 @@ const Profile = () => {
                                                 <td>76561197998942485</td>
                                             </tr>
                                             <tr>
+                                                <td>Язык</td>
+                                                <td/>
+                                                <td>RU</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Валюта</td>
+                                                <td/>
+                                                <td>$</td>
+                                            </tr>
+                                            <tr>
+                                                <td>History</td>
+                                                <td/>
                                                 <td><Link to={'/transactions'}>Транзакции</Link></td>
-                                                <td/>
-                                                <td/>
                                             </tr>
                                             </tbody>
                                         </table>

@@ -269,6 +269,9 @@ p {
       color: $accent-color;
       padding: $size-base;
       flex-direction: column;
+      a {
+        color: darken($accent-color, 20%);
+      }
     }
     main {
       display: flex;
@@ -731,11 +734,13 @@ main#home {
       }
       a {
         @include flex-horizontal;
-        justify-content: center;
         @include dark-theme;
         padding: $size-base;
         width: ($size-base * 15);
         text-decoration: none;
+        & > * + * {
+          margin-left: $size-base;
+        }
       }
     }
   }

@@ -11,11 +11,11 @@ const Header = ({user}) => (
         <div className="group-center">
             <div className="nav">
                 <ul className="navbar">
-                    <li className="medium-hide768">
+                    {/*<li className="medium-hide768">
                         <Link to="/faq"><i className="fa fa-question-circle-o"/>
                             <nobr>F.A.Q.</nobr>
                         </Link>
-                    </li>
+                    </li>*/}
                     {user.auth ? <li className="medium-hide1000">
                         <Link to="/profile"><i className="fa fa-angle-double-down color-green"/>
                             <nobr className="color-green">5% комиссия</nobr>
@@ -25,7 +25,7 @@ const Header = ({user}) => (
             </div>
             {user.auth ? <div className="user">
                 <div className="user-balance">
-                    <nobr>2 000.34</nobr>
+                    <nobr>$ 2 000.34</nobr>
                 </div>
                 <div className="user-avatar">
                     <img src={user.avatar_img} alt=""/>
@@ -60,7 +60,7 @@ const Header = ({user}) => (
                     </ul>
                 </div>
             </div> : null}
-            {user.auth ? <div className="nav">
+            {/*{user.auth ? <div className="nav">
                 <ul className="navbar">
                     <li className="medium-hide1000">
                         <Link to="/settings"><i className="fa fa-cogs"/>
@@ -68,7 +68,7 @@ const Header = ({user}) => (
                         </Link>
                     </li>
                 </ul>
-            </div> : null}
+            </div> : null}*/}
         </div>
         <div className="align-right">
             {user.auth ? <a className="logout" href="/">Log out</a> : null}
