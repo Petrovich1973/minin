@@ -482,6 +482,7 @@ p {
 }
 
 .filter {
+  position: relative;
   display: flex;
   padding: 0;
   background-color: #343a40;
@@ -493,6 +494,7 @@ p {
     margin-left: ($size-base / 2);
     background-color: rgba(255, 255, 255, .3);
     color: $accent-color;
+    border: none;
     &:focus {
       background-color: $accent-color;
       color: $primary-color;
@@ -516,6 +518,23 @@ p {
       & + * {
         margin-left: $size-base;
       }
+    }
+  }
+  .detail {
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: inherit;
+    color: inherit;
+    table td {
+      padding: ($size-base / 2) 0;
+    }
+  }
+  .result {
+    & > * + * {
+      margin-left: $size-base;
     }
   }
 }

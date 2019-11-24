@@ -47,6 +47,7 @@ const ModeMarket = () => {
         if (from === 'selected') {
             obj.balance += 1
             obj.selected -= 1
+            setStepCurrent(0)
         }
 
         setSkins({
@@ -83,18 +84,38 @@ const ModeMarket = () => {
             </React.Fragment> : null}
 
             {stepCurrent === 1 ? <React.Fragment>
-                <aside className="side-left" style={{flex: '0 0 30vw'}}>
+                <aside className="side-left" style={{flex: '0 0 20vw'}}>
                     <h3 className="title-block">&nbsp;</h3>
                     <div className="list-scroll" style={{paddingTop: '1rem'}}>
                         <div
                             style={{
                                  width: '100%',
-                                 height: '100%',
+                                 height: '50%',
                                  backgroundColor: 'black',
                                  backgroundImage: `url(${skin})`,
                                  backgroundSize: 'contain',
                                  backgroundPosition: 'center',
                                  backgroundRepeat: 'no-repeat'}}/>
+                    </div>
+                </aside>
+                <aside className="side-right">
+                    <h3 className="title-block">Цена продажи</h3>
+                    <div className="list-scroll">
+                        <p style={{fontWeight: 700, fontSize: '200%'}}><strong>$ 2 000.00</strong></p>
+                        <div>
+                            <button
+                                style={{padding: '1rem'}}
+                                className="btn btnConfirm box-primary"
+                                onClick={() => setStepCurrent(0)}>Добавить для продажи
+                            </button>
+                        </div>
+                        <div>
+                            <button
+                                style={{padding: '1rem'}}
+                                className="btn btnConfirm"
+                                onClick={() => handleSelectSkin('left', 'selected')}>Отменить
+                            </button>
+                        </div>
                     </div>
                 </aside>
                 <section>
@@ -106,17 +127,6 @@ const ModeMarket = () => {
                             src={img}/>
                     </div>
                 </section>
-                <aside className="side-right">
-                    <h3 className="title-block">Цена продажи</h3>
-                    <div className="list-scroll">
-                        <p style={{fontWeight: 700, fontSize: '200%'}}><strong>$ 2 000.00</strong></p>
-                        <button
-                            style={{padding: '1rem'}}
-                            className="btn btnConfirm box-primary"
-                            onClick={() => setStepCurrent(0)}>Добавить для продажи
-                        </button>
-                    </div>
-                </aside>
             </React.Fragment> : null}
 
             {stepCurrent === 2 ? <DialogAction>
@@ -127,7 +137,7 @@ const ModeMarket = () => {
             {stepCurrent === 3 ?
                 <DialogAction>
                     <div className="align-center pointer effect_01" onClick={closeModal}>
-                        <h2>Спасибо за покупку!</h2>
+                        <h2>Спасибо за доверие!<br/>Ваш лот размещен на площадке продаж</h2>
                         <p style={{fontSize: '300%'}}><span>&#10005;</span></p>
                     </div>
                 </DialogAction> :
