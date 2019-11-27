@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import {UserConsumer} from '../UserContext'
 
 const options = {
@@ -30,7 +30,7 @@ const Settings = () => {
                             <div className="settings-page container list-scroll" style={{flex: 1}}>
                                 <table>
                                     <tbody>
-                                    <tr>
+                                    {/*<tr>
                                         <td>Avatar</td>
                                         <td><input
                                             type="text"
@@ -62,7 +62,7 @@ const Settings = () => {
                                                 color: e.target.value
                                             })}
                                             value={user.color}/></td>
-                                    </tr>
+                                    </tr>*/}
                                     <tr>
                                         <td>Отображать Float на скинах</td>
                                         <td>
