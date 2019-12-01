@@ -1,12 +1,7 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import {UserConsumer} from "../UserContext";
 
 const Faq = () => {
-
-    useEffect(() => {
-
-        // eslint-disable-next-line
-    }, [])
 
     return (
         <UserConsumer>

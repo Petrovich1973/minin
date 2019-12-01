@@ -4,7 +4,7 @@ $accent-color: #f8f9fa !default;
 $backgroundColor: #484f55;
 $fontColor: #b6b6b6;
 
-$green-color: green;
+$green-color: #2f804c;
 $orange-color: orange;
 $red-color: red;
 $blue-color: blue;
@@ -15,7 +15,7 @@ $size-base: 1rem;
 
 @mixin dark-theme {
   background-color: $primary-color;
-  color: $accent-color;
+  color: $fontColor;
 }
 
 @mixin flex-horizontal {
@@ -53,6 +53,14 @@ h1, h2, h3, h4 {
 
 p {
   margin: $size-base 0;
+}
+
+hr {
+  border-color: $fontColor;
+}
+
+.sm {
+  font-size: $font-sm;
 }
 
 .btn:not(:disabled) {
@@ -96,8 +104,17 @@ p {
   @include dark-theme;
 }
 
+.color-light {
+  color: $accent-color;
+}
+
+.box-light {
+  background-color: $accent-color;
+  color: $primary-color;
+}
+
 .color-green {
-  color: lighten($green-color, 20%);
+  color: lighten($green-color, 10%);
 }
 
 .box-green {
@@ -149,11 +166,16 @@ p {
 
   header {
     @include dark-theme;
-    padding: 1rem;
     @include flex-horizontal;
+    padding: $size-base;
+    width: 100%;
+    box-sizing: border-box;
     justify-content: space-between;
     & > * {
       flex: 1;
+    }
+    a {
+      color: $fontColor;
     }
     .app-logo {
       a {
@@ -161,7 +183,6 @@ p {
         text-transform: uppercase;
         text-decoration: none;
         white-space: nowrap;
-        color: $accent-color;
       }
     }
     .group-center {
@@ -179,7 +200,6 @@ p {
           padding: 0 $size-base;
           white-space: nowrap;
           text-decoration: none;
-          color: $accent-color;
           & > * + * {
             margin-left: ($size-base / 2);
           }
@@ -196,12 +216,16 @@ p {
       }
       .drop-down {
         padding-top: $size-base;
-        padding-bottom: $size-base;
         display: none;
+        background-color: $primary-color;
+        a:hover {
+          background-color: lighten($primary-color, 10%);
+        }
       }
       &:hover {
         .drop-down {
           display: block;
+          box-shadow: 0 10px 10px 0 $primary-color;
         }
       }
       .user-avatar {
@@ -238,13 +262,13 @@ p {
     }
     .logout {
       white-space: nowrap;
-      color: $accent-color;
     }
   }
   footer {
-    padding: $size-base 0;
-    //background-color: lighten($primary-color, 10%);
     @include flex-horizontal;
+    padding: $size-base 0;
+    width: 100%;
+    box-sizing: border-box;
     justify-content: space-between;
     .links {
       @include flex-horizontal;
@@ -255,6 +279,7 @@ p {
         margin: 0 $size-base;
         white-space: nowrap;
         a {
+          display: block;
           font-size: $font-sm;
           white-space: nowrap;
           color: inherit;
@@ -266,15 +291,20 @@ p {
     }
   }
   .main {
+    display: flex;
     flex: 1;
     height: 100%;
     .sidebar {
       color: $accent-color;
       padding: $size-base;
       flex-direction: column;
-      border-right: 1px dashed;
+      border-right: 1px dashed $fontColor;
       a {
         color: darken($accent-color, 20%);
+        &:hover, &.active, &:hover path {
+          color: $accent-color;
+          fill: $accent-color;
+        }
       }
     }
     main {
@@ -489,6 +519,8 @@ p {
   position: relative;
   display: flex;
   padding: 0;
+  width: 100%;
+  box-sizing: border-box;
   background-color: #343a40;
   .input, .select {
     padding: $size-base / 2;
@@ -534,17 +566,37 @@ p {
     top: 100%;
     left: 0;
     width: 100%;
+    max-height: 70vh;
+    overflow: auto;
     background-color: inherit;
     color: inherit;
     box-shadow: 0 20px 10px 0 rgba(0, 0, 0, .3);
+    h3, h4 {
+      margin: 0;
+    }
     table td {
       padding: ($size-base / 2) 0;
     }
+    .indent {
+      width: $size-base * 2;
+    }
   }
   .result {
-    & > * + * {
-      margin-left: $size-base;
+    @include flex-horizontal;
+    flex-wrap: wrap;
+    margin: -($size-base / 2) 0;
+    & > * {
+      padding: 0 ($size-base / 2);
     }
+  }
+}
+.react-tiny-popover-container {
+  overflow: visible !important;
+}
+.popover {
+  box-shadow: 0 5px 10px 0 #000;
+  img {
+    display: block;
   }
 }
 
@@ -568,24 +620,17 @@ p {
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: $primary-color;
   z-index: 1;
   & > ul {
     margin: 0;
     padding: 0;
     list-style: none;
-    li {
+    .item {
+      @include flex-horizontal;
+      text-decoration: none;
       padding: ($size-base / 2) $size-base;
       & > * + * {
         margin-left: ($size-base / 2);
-      }
-      a {
-        @include flex-horizontal;
-        color: $accent-color;
-        text-decoration: none;
-        & > * + * {
-          margin-left: ($size-base / 2);
-        }
       }
     }
   }

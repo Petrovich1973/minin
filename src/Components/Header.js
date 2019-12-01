@@ -1,7 +1,12 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-const Header = ({user}) => (
+const Header = ({user = {
+    auth: false,
+    login: 'UserLogin',
+    password: 'password',
+    avatar_img: 'https://cdn.pixabay.com/photo/2016/11/24/21/39/sexy-1857310_960_720.jpg'
+}}) => (
     <header>
         <div>
             <div className="app-logo">
@@ -11,11 +16,6 @@ const Header = ({user}) => (
         <div className="group-center">
             <div className="nav">
                 <ul className="navbar">
-                    {/*<li className="medium-hide768">
-                        <Link to="/faq"><i className="fa fa-question-circle-o"/>
-                            <nobr>F.A.Q.</nobr>
-                        </Link>
-                    </li>*/}
                     {user.auth ? <li className="medium-hide1000">
                         <Link to="/profile"><i className="fa fa-angle-double-down color-green"/>
                             <nobr className="color-green">5% комиссия</nobr>
@@ -36,42 +36,33 @@ const Header = ({user}) => (
                 <div className="drop-down">
                     <ul>
                         <li>
-                            <Link to="/replenish-balance">
+                            <Link className="item" to="/replenish-balance">
                                 <i className="fa fa-plus-circle"/>
-                                <span>Пополнить баланс</span>
+                                <nobr>Пополнить баланс</nobr>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/profile">
+                            <Link className="item" to="/profile">
                                 <i className="fa fa-user-o"/>
-                                <span>You profile</span>
+                                <nobr>You profile</nobr>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/transactions">
+                            <Link className="item" to="/transactions">
                                 <i className="fa fa-exchange"/>
-                                <span>Проведенные транзакции</span>
+                                <nobr>Проведенные транзакции</nobr>
                             </Link>
                         </li>
-                        <li className="box-green">
+                        <li className="item box-green">
                             <i className="fa fa-check"/>
-                            <span>Ссылка на обмен</span>
+                            <nobr>Ссылка на обмен</nobr>
                         </li>
                     </ul>
                 </div>
             </div> : null}
-            {/*{user.auth ? <div className="nav">
-                <ul className="navbar">
-                    <li className="medium-hide1000">
-                        <Link to="/settings"><i className="fa fa-cogs"/>
-                            <nobr>View settings</nobr>
-                        </Link>
-                    </li>
-                </ul>
-            </div> : null}*/}
         </div>
         <div className="align-right">
-            {user.auth ? <a className="logout" href="/">Log out</a> : null}
+            {user.auth ? <Link className="logout" to="/">Log out</Link> : null}
         </div>
     </header>
 )

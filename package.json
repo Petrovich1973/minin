@@ -10,10 +10,11 @@
     "react": "^16.10.2",
     "react-app-polyfill": "^1.0.4",
     "react-dom": "^16.10.2",
+    "react-onclickoutside": "^6.9.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "react-slider": "^1.0.1",
-    "react-tiny-popover": "^3.4.5"
+    "react-tiny-popover": "^4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
