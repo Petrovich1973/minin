@@ -6,6 +6,9 @@ const IconSell = ({width = 32, height = 32}) => {
     useEffect(() => {
         onChangeColor()
         window.addEventListener('click', onChangeColor, false)
+        return () => {
+            window.removeEventListener('click', onChangeColor, false)
+        }
     }, [])
     const onChangeColor = e => setColor(getComputedStyle(el.current, null)["color"])
     return (

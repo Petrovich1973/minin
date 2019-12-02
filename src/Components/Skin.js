@@ -10,6 +10,7 @@ const Skin = ({idx = 0, onClick, state, show, hide}) => {
             isOpen={state === idx}
             position={['top', 'bottom', 'left', 'right']} // preferred position
             onClickOutside={() => hide(idx)}
+            transitionDuration={1}
             content={({position, targetRect, popoverRect}) => (
                 <ArrowContainer // if you'd like an arrow, you can import the ArrowContainer!
                     position={position}

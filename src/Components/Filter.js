@@ -161,7 +161,8 @@ const Detail = ({
                             onClick={() => handleChangeFieldFilter({
                                 blocked: !blocked
                             })}/>}
-                    {blocked ? <span>&nbsp;не более&nbsp;
+                            &nbsp;
+                    {blocked ? <small>&nbsp;не более&nbsp;
                             <ReactSlider
                                 className="horizontal-slider"
                                 thumbClassName="example-thumb"
@@ -174,7 +175,7 @@ const Detail = ({
                                     blockedDays: value
                                 })}
                             />&nbsp;
-                            <span>дней</span></span> :
+                            <span>дней</span></small> :
                         null}
                 </td>
             </tr>
