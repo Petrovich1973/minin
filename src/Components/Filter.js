@@ -161,7 +161,7 @@ const Detail = ({
                             onClick={() => handleChangeFieldFilter({
                                 blocked: !blocked
                             })}/>}
-                            &nbsp;
+                    &nbsp;
                     {blocked ? <small>&nbsp;не более&nbsp;
                             <ReactSlider
                                 className="horizontal-slider"
@@ -369,6 +369,10 @@ const Detail = ({
                     </div>
                 </td>
             </tr>
+            </tbody>
+        </table>
+        <table>
+            <tbody>
             <tr>
                 <td colSpan={2} className="align-right">
                     &nbsp;

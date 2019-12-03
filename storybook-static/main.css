@@ -38,13 +38,14 @@ h1, h2, h3, h4 {
   text-transform: uppercase; }
 
 p {
-  margin: 1rem 0; }
+  margin: 1rem 0;
+  line-height: 1.6; }
 
 hr {
   border-color: #b6b6b6; }
 
 mark {
-  background-color: #ffdb99; }
+  background-color: #ffd099; }
 
 .sm {
   font-size: 11px; }
@@ -96,24 +97,24 @@ mark {
   color: #f8f9fa; }
 
 .color-orange {
-  color: #ffb733; }
+  color: #ffa133; }
 
 .box-orange {
-  background-color: orange;
+  background-color: #ff8900;
   color: #f8f9fa; }
 
 .color-red {
-  color: #ff3333; }
+  color: #ec0000; }
 
 .box-red {
-  background-color: red;
+  background-color: #b90000;
   color: #f8f9fa; }
 
 .color-blue {
-  color: #3333ff; }
+  color: #006cdf; }
 
 .box-blue {
-  background-color: blue;
+  background-color: #0053ac;
   color: #f8f9fa; }
 
 #root {
