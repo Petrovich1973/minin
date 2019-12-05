@@ -420,6 +420,10 @@ mark {
             bottom: 2px;
             left: 2px;
             right: 2px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
             @include flex-horizontal;
             justify-content: center;
             @include dark-theme;
