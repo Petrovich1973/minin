@@ -1,32 +1,35 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useEffect, useRef} from 'react'
 import Skin from "./Skin";
 
-const ListScroll = ({direction = 'ltr', list = [], handleClickSkin = () => {}}) => {
+const ListScroll = ({
+                        direction = 'ltr',
+                        list = [{id: 1}, {id: 2}, {id: 3}, {id: 4}, {id: 5}, {id: 6}, {id: 7}, {id: 8}, {id: 9}, {id: 10}, {id: 11}, {id: 12}],
+                        handleClickSkin = () => {
+                        },
+                        handleRightClickSkin = () => {
+                        },
+                        popoverId = null
+                    }) => {
 
     const scrollNode = useRef(null)
 
-    const [state, setState] = useState(null)
+    const onClickSkin = id => {
+        handleClickSkin(id)
+    }
+
+    const onRightClickSkin = id => {
+        handleRightClickSkin(id)
+    }
 
     const hide = () => {
-        setState(null)
+        handleRightClickSkin(null)
     }
-
-    const show = id => {
-        setState(id)
-    }
-
-    const onClickSkin = () => {
-        hide()
-        handleClickSkin()
-    }
-
-    const onScroll = () => hide()
 
     useEffect(() => {
-        const scr = scrollNode.current
-        scr.addEventListener('scroll', onScroll, false)
+        const scrollContainer = scrollNode.current
+        scrollContainer.addEventListener('scroll', hide, false)
         return () => {
-            scr.removeEventListener('scroll', onScroll, false)
+            scrollContainer.removeEventListener('scroll', hide, false)
         }
     })
 
@@ -34,11 +37,11 @@ const ListScroll = ({direction = 'ltr', list = [], handleClickSkin = () => {}}) 
         <div className="list-scroll" style={{direction}} ref={scrollNode}>
             {list.map((skin, idx) => <Skin
                 key={idx}
-                idx={idx}
+                skin={skin}
                 onClick={onClickSkin}
-                state={state}
-                show={show}
-                hide={hide}/>)}
+                onRightClick={onRightClickSkin}
+                hide={hide}
+                isPopover={popoverId === skin.id}/>)}
         </div>
     )
 }

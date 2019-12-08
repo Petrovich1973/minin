@@ -1,0 +1,32 @@
+@import "../../App/App.scss";
+
+.Settings {
+  flex-direction: column;
+  .flexCenter {
+    display: flex;
+    justify-content: center;
+  }
+  table {
+    tr {
+      td {
+        padding: $size-base;
+        white-space: nowrap;
+        text-align: left;
+        vertical-align: top;
+        border-bottom: 1px dotted darken($accent-color, 50%);
+      }
+    }
+  }
+  .input, .select {
+    padding: $size-base / 2;
+    margin-top: -($size-base / 2);
+    margin-bottom: -($size-base / 2);
+    background-color: rgba(255, 255, 255, .2);
+    color: $accent-color;
+    border: none;
+    &:focus {
+      background-color: $accent-color;
+      color: $primary-color;
+    }
+  }
+}

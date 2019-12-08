@@ -30,7 +30,8 @@ html {
 body {
   margin: 0;
   height: 100vh;
-  overflow: auto;
+  width: 100vw;
+  overflow: hidden;
   font-size: $font-size;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
@@ -182,7 +183,7 @@ mark {
       color: $fontColor;
     }
     .app-logo {
-      a {
+      & > * {
         font-weight: 700;
         text-transform: uppercase;
         text-decoration: none;
@@ -298,6 +299,8 @@ mark {
     display: flex;
     flex: 1;
     height: 100%;
+    width: 100vw;
+    overflow: hidden;
     .sidebar {
       color: $accent-color;
       padding: $size-base;
@@ -402,6 +405,7 @@ mark {
 
       .list-scroll {
         height: 100%;
+        max-width: 100%;
         overflow: auto;
         flex-wrap: wrap;
         box-sizing: border-box;
@@ -427,6 +431,10 @@ mark {
             @include flex-horizontal;
             justify-content: center;
             @include dark-theme;
+            font-weight: bold;
+            font-size: 140%;
+            color: $accent-color;
+            text-shadow: 2px 2px #000;
           }
           @media (max-width: 1400px) {
             & {
@@ -458,6 +466,12 @@ mark {
       aside {
         flex: 0 0 19.4vw;
         position: relative;
+        .actionBtn {
+          padding: $size-base;
+          &:hover {
+            background-color: lighten($primary-color, 5%);
+          }
+        }
         &[class^=side-] {
           .list-scroll {
             padding: 1rem;
@@ -564,6 +578,9 @@ mark {
       background-color: $accent-color;
       color: $primary-color;
     }
+  }
+  .select {
+    height: ($size-base * 2.3);
   }
   .icon {
     display: inline-block;
@@ -944,129 +961,6 @@ main#home {
 }
 
 ////////////////// end Home /////////////////
-
-////////////////// Profile /////////////////
-
-.profile-page {
-  height: 100%;
-  display: flex;
-  align-items: flex-start;
-  @media (max-width: 1000px) {
-    & {
-      flex-direction: column;
-      align-items: center;
-    }
-  }
-  & > * {
-    margin: $size-base;
-  }
-  .avatar {
-    position: relative;
-    overflow: hidden;
-    width: 400px;
-    padding-top: 100%;
-    border-radius: 100%;
-    img {
-      display: block;
-      position: absolute;
-      width: 100%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    &:after {
-      display: block;
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      border-radius: 100%;
-      box-shadow: inset 0 0 80px 0 rgba(0, 0, 0, .7);
-    }
-  }
-  .metrics {
-    table {
-      tr {
-        td {
-          text-align: left;
-          vertical-align: top;
-          padding: $size-base;
-          border-bottom: 1px dotted $primary-color;
-          &:first-child {
-            text-align: right;
-            white-space: nowrap;
-            font-size: $font-sm + 4;
-            font-weight: 500;
-            border-right: 1px dotted $primary-color;
-          }
-          .input {
-            display: block;
-            padding: $size-base;
-            margin: -($size-base) 0;
-            width: 100%;
-          }
-        }
-        &:last-child {
-          td {
-            border-bottom: none;
-          }
-        }
-      }
-    }
-  }
-}
-
-////////////////// end Profile /////////////////
-
-////////////////// Settings /////////////////
-
-.settings-page {
-  height: 100%;
-  width: 900px;
-  table {
-    display: inline-table;
-    width: 800px;
-    max-width: 100%;
-    margin: 0 auto;
-    tr {
-      td {
-        text-align: left;
-        vertical-align: top;
-        padding: $size-base;
-        border-bottom: 1px dotted $primary-color;
-        &:first-child {
-          text-align: right;
-          white-space: nowrap;
-          font-size: $font-sm + 4;
-          font-weight: 500;
-          width: 1%;
-          white-space: nowrap;
-        }
-        .input, .select {
-          padding: $size-base / 2;
-          margin-top: -($size-base / 2);
-          margin-bottom: -($size-base / 2);
-          background-color: rgba(255, 255, 255, .2);
-          color: $accent-color;
-          border: none;
-          &:focus {
-            background-color: $accent-color;
-            color: $primary-color;
-          }
-        }
-      }
-      &:last-child {
-        td {
-          border-bottom: none;
-        }
-      }
-    }
-  }
-}
-
-////////////////// end Settings /////////////////
 
 @media (max-width: 1000px) {
   .medium-hide1000 {

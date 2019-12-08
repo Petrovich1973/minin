@@ -3,13 +3,22 @@ import Popover, {ArrowContainer} from 'react-tiny-popover'
 import img from "../skin.png"
 import skin from "../skin.jpg"
 
-const Skin = ({idx = 0, onClick = () => {}, state, show, hide}) => {
+const Skin = ({
+                  skin: {id = 0},
+                  isPopover = null,
+                  onClick = () => {
+                  },
+                  onRightClick = () => {
+                  },
+                  hide = () => {
+                  }
+              }) => {
 
     return (
         <Popover
-            isOpen={state === idx}
+            isOpen={isPopover}
             position={['top', 'bottom', 'left', 'right']} // preferred position
-            onClickOutside={() => hide(idx)}
+            onClickOutside={hide}
             content={({position, targetRect, popoverRect}) => (
                 <ArrowContainer // if you'd like an arrow, you can import the ArrowContainer!
                     position={position}
@@ -26,14 +35,14 @@ const Skin = ({idx = 0, onClick = () => {}, state, show, hide}) => {
             )}>
             <div
                 className="element"
-                onContextMenu={(e) => {
+                onClick={() => onClick(id)}
+                onContextMenu={e => {
                     e.preventDefault()
-                    show(idx)
-                }}
-                onClick={onClick}>
+                    onRightClick(id)
+                }}>
                 <span style={{
                     backgroundImage: `url(${skin})`
-                }}>{idx}</span>
+                }}>{id}</span>
             </div>
         </Popover>
     )

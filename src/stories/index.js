@@ -7,7 +7,7 @@ import {withKnobs, text, boolean, number, select} from '@storybook/addon-knobs';
 import {withInfo} from '@storybook/addon-info';
 import './style.scss';
 import '../index.css';
-import '../App.scss';
+import '../App/App.scss';
 import Filter from "../Components/Filter";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
@@ -22,12 +22,8 @@ storiesOf('Модули', module)
     .addDecorator(withInfo)
     .add('Header', () => <BrowserRouter>
         <Header {...{
-            user: {
-                auth: boolean('isAuthorization', true),
-                login: text('login', 'UserLogin'),
-                password: 'password',
-                avatar_img: text('avatar', 'https://www.w3schools.com/images/colorpicker.gif')
-            }
+            login: text('login', 'UserLogin'),
+            avatar: text('avatar', 'https://www.w3schools.com/images/colorpicker.gif')
         }}/>
     </BrowserRouter>)
     .add('Footer', () => <Footer/>)
@@ -38,51 +34,51 @@ storiesOf('Модули', module)
     </BrowserRouter>)
     .add('Filter', () => <Filter/>)
     .add('DialogWindow', () => <>
-            <div className="inner_post">
-                <h4>Agents, Weapons, and More</h4>
-                <p>Operation Shattered Web features CS:GO’s first ‘agents,’ characters that can be equipped on the T or
-                    CT side. In addition to their unique look, Master Agents have special voice lines and
-                    animations–you’ll get one Master Agent when you earn your final reward. </p>
-                <p>Along the way, you’ll earn several Operation Shattered Web Weapon Cases, along with weapons from
-                    three brand new weapons collections featuring designs from community artists. You’ll also earn
-                    all-new graffiti and community-designed stickers!</p>
-                <h4>Missions Accomplished</h4>
-                <p>Each week, you’ll get access to new missions in various CS:GO game modes, including cooperative
-                    Guardian missions and an all-new Strike mission. Missions are available to all players, but you’ll
-                    need an Operation Pass to redeem your rewards.</p>
-                <p>You may recall that we recently shipped a few changes to bots in Deathmatch. Those bots will be ready
-                    for action in the Guardian and Strike missions, so watch out!</p>
-                <h4>New Maps</h4>
-                <p>We’re also shipping a few new maps today in various game modes. Defy gravity in the new Flying
-                    Scoutsman map Lunacy, and get ready to rumble in the community-made Danger Zone map Jungle. Looking
-                    for something more competitive? Try Studio, available as a Scrimmage or in the Casual Sigma map
-                    group!</p>
-                <h4>Performance is its own Reward</h4>
-                <p>Did you earn the most MVPs? The most enemies flashed? The most… something? Find out with Accolades,
-                    special call-outs at the end-of-match screen. </p>
-                <h4>Parting Shot</h4>
-                <p>We’re making adjustments to a few rifles in CS:GO. The SG553’s price has returned to $3000 to bring
-                    its price more in line with its value, and the FAMAS and Galil have both gotten $200 price cuts and
-                    buffs to their full-auto spraying accuracy. </p>
-            </div>
+        <div className="inner_post">
+            <h4>Agents, Weapons, and More</h4>
+            <p>Operation Shattered Web features CS:GO’s first ‘agents,’ characters that can be equipped on the T or
+                CT side. In addition to their unique look, Master Agents have special voice lines and
+                animations–you’ll get one Master Agent when you earn your final reward. </p>
+            <p>Along the way, you’ll earn several Operation Shattered Web Weapon Cases, along with weapons from
+                three brand new weapons collections featuring designs from community artists. You’ll also earn
+                all-new graffiti and community-designed stickers!</p>
+            <h4>Missions Accomplished</h4>
+            <p>Each week, you’ll get access to new missions in various CS:GO game modes, including cooperative
+                Guardian missions and an all-new Strike mission. Missions are available to all players, but you’ll
+                need an Operation Pass to redeem your rewards.</p>
+            <p>You may recall that we recently shipped a few changes to bots in Deathmatch. Those bots will be ready
+                for action in the Guardian and Strike missions, so watch out!</p>
+            <h4>New Maps</h4>
+            <p>We’re also shipping a few new maps today in various game modes. Defy gravity in the new Flying
+                Scoutsman map Lunacy, and get ready to rumble in the community-made Danger Zone map Jungle. Looking
+                for something more competitive? Try Studio, available as a Scrimmage or in the Casual Sigma map
+                group!</p>
+            <h4>Performance is its own Reward</h4>
+            <p>Did you earn the most MVPs? The most enemies flashed? The most… something? Find out with Accolades,
+                special call-outs at the end-of-match screen. </p>
+            <h4>Parting Shot</h4>
+            <p>We’re making adjustments to a few rifles in CS:GO. The SG553’s price has returned to $3000 to bring
+                its price more in line with its value, and the FAMAS and Galil have both gotten $200 price cuts and
+                buffs to their full-auto spraying accuracy. </p>
+        </div>
         <Modal>
-        <DialogWindow
-            width={number('width', 600)}
-            classNameHeader={select('Style name', {
-                Dark: 'box-primary',
-                Success: 'box-green',
-                Danger: 'box-red',
-                Warning: 'box-orange',
-                Info: 'box-blue'
-            }, 'box-primary')}
-            title={text('title', 'Защита криворуких, или неоговоренные действия админиситрации')}
-            content={<div style={{padding: '1rem'}}>
-                {text('content', 'Сегодня после очередной соревновательной игры в которой был в моей команде очень КРИВОРУКИЙ игрок (ссылка на таблицу http://c2n.me/3b5wN3J) , которого естественно пришлось выгнать чтобы не мешался получил наказание - БАН в соревновательных играх, за то, что "много выгнал игроков" вот скрин http://c2n.me/3b5voN3 . А куда деваться если такие есть? что с ними делать? играть только мешают. от БОТов толку больше. и где товарищи администраторы этот виртуальный счетчик выкинутых игроков? Где оговорено наказание за изгнание игроков? Выгоняю лишь тех, кто играть мешает, и что в итоге? наказывают нормальных игроков, а вот эти чудики дальше лазиют и мешают нормальной игре другим.')}
-                <p style={{display: 'flex', justifyContent: 'flex-end'}}>
-                    <button className="btn box-blue">Button Action</button>
-                </p>
-            </div>}/>
-    </Modal></>)
+            <DialogWindow
+                width={number('width', 600)}
+                classNameHeader={select('Style name', {
+                    Dark: 'box-primary',
+                    Success: 'box-green',
+                    Danger: 'box-red',
+                    Warning: 'box-orange',
+                    Info: 'box-blue'
+                }, 'box-primary')}
+                title={text('title', 'Защита криворуких, или неоговоренные действия админиситрации')}
+                content={<div style={{padding: '1rem'}}>
+                    {text('content', 'Сегодня после очередной соревновательной игры в которой был в моей команде очень КРИВОРУКИЙ игрок (ссылка на таблицу http://c2n.me/3b5wN3J) , которого естественно пришлось выгнать чтобы не мешался получил наказание - БАН в соревновательных играх, за то, что "много выгнал игроков" вот скрин http://c2n.me/3b5voN3 . А куда деваться если такие есть? что с ними делать? играть только мешают. от БОТов толку больше. и где товарищи администраторы этот виртуальный счетчик выкинутых игроков? Где оговорено наказание за изгнание игроков? Выгоняю лишь тех, кто играть мешает, и что в итоге? наказывают нормальных игроков, а вот эти чудики дальше лазиют и мешают нормальной игре другим.')}
+                    <p style={{display: 'flex', justifyContent: 'flex-end'}}>
+                        <button className="btn box-blue">Button Action</button>
+                    </p>
+                </div>}/>
+        </Modal></>)
     .add('ListSkins', () => <div className="main">
         <main>
             <section style={{height: '100vh'}}>
