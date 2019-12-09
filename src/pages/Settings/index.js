@@ -1,7 +1,7 @@
-import React, {useReducer} from 'react'
+import React from 'react'
+import {connect} from 'react-redux'
 import classnames from 'classnames'
 import './Settings.scss'
-import {initializeSettings, stateSettings} from "./reducerSettings"
 
 const options = {
     skinSize: [
@@ -11,8 +11,7 @@ const options = {
     ]
 }
 
-const Settings = () => {
-    const [settings, dispatch] = useReducer(stateSettings, initializeSettings)
+const Settings = ({settings = {}, dispatch}) => {
     return (
         <main className="Settings">
             <div>
@@ -82,4 +81,10 @@ const Settings = () => {
     )
 }
 
-export default Settings
+const mapStateToProps = state => {
+    return {
+        settings: state.settings
+    }
+}
+
+export default connect(mapStateToProps)(Settings)

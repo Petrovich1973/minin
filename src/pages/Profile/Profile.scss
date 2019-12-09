@@ -55,8 +55,7 @@
           }
           .input {
             display: block;
-            padding: $size-base;
-            margin: -($size-base) 0;
+            padding: $size-base / 2;
             width: 100%;
           }
         }

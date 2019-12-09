@@ -1,21 +1,20 @@
-import React, {useReducer, useState} from 'react'
-import {stateSkins, initializeSkins} from '../../App/reducerSkins'
+import React, {useState} from 'react'
+import { connect } from 'react-redux'
 import Filter from "../../Components/Filter"
 import ListScroll from "../../Components/ListScroll"
 
-const ModeBuy = () => {
-    const [skins, dispatch] = useReducer(stateSkins, initializeSkins)
+const ModeBuy = ({skins = [], dispatch}) => {
     const [popoverId, setPopoverId] = useState(null)
     const [selected, setSelected] = useState([])
 
     const onClickSkinBot = id => {
         setPopoverId(null)
         if(selected.length < 20) {
-            setSelected(selected.concat(skins.bot.find(el => el.id === id)))
+            setSelected(selected.concat(skins.find(el => el.id === id)))
             dispatch({
                 type: 'SKINS_UPDATE',
                 payload: {
-                    bot: skins.bot.filter(el => el.id !== id)
+                    bot: skins.filter(el => el.id !== id)
                 }
             })
         } else {
@@ -28,7 +27,7 @@ const ModeBuy = () => {
         dispatch({
             type: 'SKINS_UPDATE',
             payload: {
-                bot: skins.bot.concat(selected.find(el => el.id === id))
+                bot: skins.concat(selected.find(el => el.id === id))
             }
         })
     }
@@ -42,7 +41,7 @@ const ModeBuy = () => {
                 <Filter/>
                 <ListScroll {...{
                     direction: 'rtl',
-                    list: skins.bot,
+                    list: skins,
                     handleClickSkin: onClickSkinBot,
                     handleRightClickSkin: onRightClickSkin,
                     popoverId
@@ -65,4 +64,10 @@ const ModeBuy = () => {
     )
 }
 
-export default ModeBuy
+const mapStateToProps = state => {
+    return {
+        skins: state.skins.bot
+    }
+}
+
+export default connect(mapStateToProps)(ModeBuy)

@@ -1,11 +1,10 @@
-export const initializeSettings = {
+export const initialState = {
     isVisibleFloat: true,
     virtualExchange: true,
     skinSize: 1,
 }
 
-
-export const stateSettings = (state, action) => {
+const reducer = (state = initialState, action) => {
     switch (action.type) {
         case "SETTINGS_UPDATE":
             return {
@@ -16,3 +15,5 @@ export const stateSettings = (state, action) => {
             return state;
     }
 }
+
+export default reducer

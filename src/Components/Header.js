@@ -1,12 +1,13 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import connect from "react-redux/es/connect/connect";
 
-const Header = ({
+const Header = ({user: {
                     login = 'UserLogin',
                     avatar = 'https://cdn.pixabay.com/photo/2016/11/24/21/39/sexy-1857310_960_720.jpg',
                     balance = '',
                     currency = ''
-                }) => (
+                }}) => (
     <header>
         <div>
             <div className="app-logo">
@@ -67,4 +68,10 @@ const Header = ({
     </header>
 )
 
-export default Header
+const mapStateToProps = function(state) {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps)(Header)

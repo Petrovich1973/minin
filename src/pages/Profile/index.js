@@ -1,10 +1,9 @@
-import React, {useReducer} from 'react'
+import React from 'react'
 import {Link} from "react-router-dom"
+import {connect} from 'react-redux'
 import './Profile.scss'
-import {initializeUserCurrent, stateUserCurrent} from "../../App/reducerUserCurrent"
 
-const Profile = () => {
-    const [userCurrent] = useReducer(stateUserCurrent, initializeUserCurrent)
+const Profile = ({profile = {}, dispatch}) => {
     return (
         <main>
             <div className="Profile">
@@ -13,7 +12,7 @@ const Profile = () => {
                     <div>
                         <div className="avatar">
                             <img
-                                src={userCurrent.avatar}
+                                src={profile.avatar}
                                 alt=""/>
                         </div>
                     </div>
@@ -24,18 +23,28 @@ const Profile = () => {
                                 <tr>
                                     <td>Login</td>
                                     <td><i className="fa fa-edit"/></td>
-                                    <td>{userCurrent.login || 'minin-deniska@gmail.com'}</td>
+                                    <td>
+                                        <input
+                                            className="input"
+                                            value={profile.login || ''}
+                                            onChange={e => (
+                                                dispatch({
+                                                    type: 'USER_CURRENT_UPDATE',
+                                                    payload: {login: e.target.value}
+                                                })
+                                            )}/>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Баланс</td>
                                     <td><i className="fa fa-plus-circle"/></td>
-                                    <td>{userCurrent.currency} {userCurrent.balance}</td>
+                                    <td>{profile.currency} {profile.balance}</td>
                                 </tr>
                                 <tr>
                                     <td>Бонус -2% комиссии</td>
                                     <td/>
                                     <td>
-                                        {userCurrent.bonus ?
+                                        {profile.bonus ?
                                             <i className="fa fa-check color-green"/> :
                                             <span>—</span>}
                                     </td>
@@ -44,7 +53,7 @@ const Profile = () => {
                                     <td>Steam Guard</td>
                                     <td/>
                                     <td>
-                                        {userCurrent.steamGuard ?
+                                        {profile.steamGuard ?
                                             <i className="fa fa-check color-green"/> :
                                             <span>—</span>}
                                     </td>
@@ -52,27 +61,37 @@ const Profile = () => {
                                 <tr>
                                     <td>Trade URL</td>
                                     <td><i className="fa fa-edit"/></td>
-                                    <td>{userCurrent.tradeUrl}</td>
+                                    <td>
+                                        <input
+                                            className="input"
+                                            value={profile.tradeUrl || ''}
+                                            onChange={e => (
+                                                dispatch({
+                                                    type: 'USER_CURRENT_UPDATE',
+                                                    payload: {tradeUrl: e.target.value}
+                                                })
+                                            )}/>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Seller Link</td>
                                     <td><i className="fa fa-copy"/></td>
-                                    <td>{userCurrent.sellerLink}</td>
+                                    <td>{profile.sellerLink}</td>
                                 </tr>
                                 <tr>
                                     <td>SteamID64</td>
                                     <td/>
-                                    <td>{userCurrent.steamID64}</td>
+                                    <td>{profile.steamID64}</td>
                                 </tr>
                                 <tr>
                                     <td>Язык</td>
                                     <td/>
-                                    <td>{userCurrent.language}</td>
+                                    <td>{profile.language}</td>
                                 </tr>
                                 <tr>
                                     <td>Валюта</td>
                                     <td/>
-                                    <td>{userCurrent.currency}</td>
+                                    <td>{profile.currency}</td>
                                 </tr>
                                 <tr>
                                     <td>History</td>
@@ -91,4 +110,10 @@ const Profile = () => {
     )
 }
 
-export default Profile
+const mapStateToProps = state => {
+    return {
+        profile: state.user
+    }
+}
+
+export default connect(mapStateToProps)(Profile)
