@@ -1,14 +1,18 @@
 import React from "react"
+import classnames from 'classnames'
 import onClickOutside from "react-onclickoutside"
 
 const Popover = ({
-                     position: { x = 0, y = 0 },
+                     position: {x = 0, y = 0},
+                     className = null,
+                     style = {},
                      content = "content",
-                     onHide = () => {}
+                     onHide = () => {
+                     }
                  }) => {
     Popover.handleClickOutside = () => onHide()
     return (
-        <div className="popover" style={{ top: y, left: x }}>
+        <div className={classnames("popover", className)} style={{...style, top: y, left: x}}>
             {content}
         </div>
     )

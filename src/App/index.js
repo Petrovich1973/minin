@@ -1,4 +1,5 @@
 import React from 'react'
+import {connect} from 'react-redux'
 import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom'
 import {routes} from './routes'
 import './App.scss'
@@ -12,7 +13,7 @@ import NotFound from "../pages/NotFound"
 // const appName = 'mininDenisApp'
 //////////
 
-const App = () => {
+const App = ({user}) => {
 
     // useEffect(() => {
     //
@@ -35,7 +36,7 @@ const App = () => {
     return (
         <BrowserRouter>
             <>
-                <Header/>
+                <Header {...{user}}/>
 
                 <div className="main">
 
@@ -57,4 +58,10 @@ const App = () => {
     )
 }
 
-export default App;
+const mapStateToProps = function(state) {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps)(App)

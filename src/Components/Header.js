@@ -1,6 +1,5 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import connect from "react-redux/es/connect/connect";
 
 const Header = ({user: {
                     login = 'UserLogin',
@@ -68,10 +67,4 @@ const Header = ({user: {
     </header>
 )
 
-const mapStateToProps = function(state) {
-    return {
-        user: state.user
-    }
-}
-
-export default connect(mapStateToProps)(Header)
+export default Header

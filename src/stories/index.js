@@ -1,5 +1,7 @@
 import React from 'react';
 import {BrowserRouter} from 'react-router-dom';
+import {Provider} from 'react-redux'
+import store from '../store'
 import {storiesOf, addDecorator} from '@storybook/react';
 import {action} from '@storybook/addon-actions';
 import {linkTo} from '@storybook/addon-links';
@@ -15,17 +17,21 @@ import Sidebar from "../Components/Sidebar";
 import ListScroll from "../Components/ListScroll";
 import DialogWindow from "../Components/DialogWindow";
 import Modal from "../Components/Modal";
+import Popover from "../Components/Popover";
 
 //////////////////////
 storiesOf('Модули', module)
     .addDecorator(withKnobs)
     .addDecorator(withInfo)
-    .add('Header', () => <BrowserRouter>
+    .add('Header', () => <Provider store={store}><BrowserRouter>
         <Header {...{
-            login: text('login', 'UserLogin'),
-            avatar: text('avatar', 'https://www.w3schools.com/images/colorpicker.gif')
+            user: {
+                login: text('login', 'UserLogin'),
+                avatar: text('avatar', 'https://www.w3schools.com/images/colorpicker.gif'),
+                balance: text('Balance', '$ 2 000.34')
+            }
         }}/>
-    </BrowserRouter>)
+    </BrowserRouter></Provider>)
     .add('Footer', () => <Footer/>)
     .add('Sidebar', () => <BrowserRouter>
         <div className="main">
@@ -82,10 +88,14 @@ storiesOf('Модули', module)
     .add('ListSkins', () => <div className="main">
         <main>
             <section style={{height: '100vh'}}>
-                <ListScroll list={[...Array(number('Количество скинов', 5)).keys()]}/>
+                <ListScroll list={[...Array(number('Количество скинов', 5)).keys()].map(el => ({id: el + 1}))}/>
             </section>
         </main>
     </div>)
+    .add('Popover', () => <Popover {...{
+        position: {x: 10, y: 10},
+        content: <div><h4>Title content</h4><p>{text('Content', 'Lorem text lorem')}</p></div>
+    }}/>)
 storiesOf('Элементы', module)
     .addDecorator(withKnobs)
     .addDecorator(withInfo)
@@ -182,3 +192,79 @@ storiesOf('Элементы', module)
             </div>
         </div>
     </>)
+    .add('Controls', () => <div className="main" style={{height: '100vh'}}><main><div><div className="list-scroll">
+        <p className="buttons-list">
+            <button className="btn">Button</button>
+            &nbsp;
+            <button className="btn box-primary">Button</button>
+            &nbsp;
+            <button className="btn box-blue"><i className="fa fa-plus"/><span>{text('Text button', 'Button name')}</span></button>
+            &nbsp;
+            <button className="btn box-red"><i className="fa fa-save"/><span>Button</span></button>
+            &nbsp;
+            <button className="btn box-green">Button</button>
+            &nbsp;
+            <button className="btn box-orange">Button</button>
+            &nbsp;
+            <button disabled className="btn">Button</button>
+            &nbsp;
+        </p>
+        <p className="buttons-list">
+            <button className="btn sm">Button</button>
+            &nbsp;
+            <button className="btn sm box-primary">Button</button>
+            &nbsp;
+            <button className="btn sm box-blue">Button</button>
+            &nbsp;
+            <button className="btn sm box-red">Button</button>
+            &nbsp;
+            <button className="btn sm box-green"><i className="fa fa-adjust"/><span>Button</span></button>
+            &nbsp;
+            <button className="btn sm box-orange">Button</button>
+            &nbsp;
+            <button disabled className="btn sm"><i className="fa fa-search"/><span>Button</span></button>
+            &nbsp;
+        </p>
+        <p className="buttons-list">
+            <button className="btn box-blue"><i className="fa fa-reddit color-orange"/></button>
+            &nbsp;
+            <button className="btn box-red"><i className="fa fa-taxi color-light"/></button>
+            &nbsp;
+            <button className="btn box-orange"><i className="fa fa-feed color-primary"/></button>
+            &nbsp;
+            <button className="btn box-transparent"><i className="fa fa-reddit color-orange"/></button>
+            &nbsp;
+            <button className="btn box-transparent"><i className="fa fa-taxi color-light"/></button>
+            &nbsp;
+            <button className="btn box-transparent"><i className="fa fa-feed color-green"/></button>
+            &nbsp;
+        </p>
+        <p className="buttons-list">
+            <span className="checkbox"><input type="checkbox"/><span/></span>
+            &nbsp;
+            <span className="checkbox box-red"><input type="checkbox"/><span/></span>
+            &nbsp;
+            <span className="checkbox box-orange"><input checked type="checkbox"/><span/></span>
+            &nbsp;
+            <span className="checkbox"><input checked type="checkbox"/><span/></span>
+            &nbsp;
+            <span className="checkbox radius"><input checked type="checkbox"/><span/></span>
+        </p>
+        <p className="buttons-list">
+            <input className="input" value={text('Text value input', 'Text value')} type="text"/>
+            &nbsp;
+            <input className="input" placeholder={'Text placeholder'} type="text"/>
+            &nbsp;
+            <div className="input-group">
+                <input
+                    className="input sm"
+                    value={'21.12.2019'}
+                    type="text"/>
+                <span><i className="fa fa-calendar"/></span>
+            </div>
+            &nbsp;
+            <input className="input sm" value={'Text value'} type="text"/>
+            &nbsp;
+            <input className="input sm" disabled value={'Text value'} type="text"/>
+        </p>
+    </div></div></main></div>)
