@@ -20,7 +20,20 @@ const Skin = ({
             onClick={() => onClick(id)}
             onContextMenu={e => {
                 e.preventDefault()
-                onRightClick(id)
+                const body = document.querySelector("body")
+                const x = Math.abs(
+                    body.scrollWidth > e.clientX + 300 ? e.clientX : e.clientX - 300
+                )
+                const y = Math.abs(
+                    body.scrollHeight > e.clientY + 500 ? e.clientY : e.clientY - 500
+                )
+                const popover = {
+                    isOpen: true,
+                    position: {x, y},
+                    id,
+                    content: 'Content Popover'
+                }
+                onRightClick(popover)
             }}>
                 <span style={{
                     backgroundImage: `url(${skin})`

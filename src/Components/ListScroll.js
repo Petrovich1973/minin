@@ -8,6 +8,8 @@ const ListScroll = ({
                         },
                         handleRightClickSkin = () => {
                         },
+                        onHidePopover = () => {
+                        },
                         popoverId = null
                     }) => {
 
@@ -17,19 +19,11 @@ const ListScroll = ({
         handleClickSkin(id)
     }
 
-    const onRightClickSkin = id => {
-        handleRightClickSkin(id)
-    }
-
-    const hide = () => {
-        handleRightClickSkin(null)
-    }
-
     useEffect(() => {
         const scrollContainer = scrollNode.current
-        scrollContainer.addEventListener('scroll', hide, false)
+        scrollContainer.addEventListener('scroll', onHidePopover, false)
         return () => {
-            scrollContainer.removeEventListener('scroll', hide, false)
+            scrollContainer.removeEventListener('scroll', onHidePopover, false)
         }
     })
 
@@ -39,8 +33,8 @@ const ListScroll = ({
                 key={idx}
                 skin={skin}
                 onClick={onClickSkin}
-                onRightClick={onRightClickSkin}
-                hide={hide}
+                onRightClick={handleRightClickSkin}
+                hide={onHidePopover}
                 isPopover={popoverId === skin.id}/>)}
         </div>
     )

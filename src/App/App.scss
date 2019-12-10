@@ -763,6 +763,20 @@ mark {
   }
 }
 
+.popover {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border: 1px solid #000;
+  width: 300px;
+  height: 500px;
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow: auto;
+  text-align: left;
+}
+
 .horizontal-slider {
   display: inline-block;
   width: 100px;
