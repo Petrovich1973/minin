@@ -6,7 +6,7 @@ const Popover = ({
                      position: {x = 0, y = 0},
                      className = null,
                      style = {},
-                     content = "content",
+                     content = "",
                      onHide = () => {
                      }
                  }) => {

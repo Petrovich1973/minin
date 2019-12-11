@@ -18,6 +18,7 @@ import ListScroll from "../Components/ListScroll";
 import DialogWindow from "../Components/DialogWindow";
 import Modal from "../Components/Modal";
 import Popover from "../Components/Popover";
+import img from "../skin.png";
 
 //////////////////////
 storiesOf('Модули', module)
@@ -94,7 +95,11 @@ storiesOf('Модули', module)
     </div>)
     .add('Popover', () => <Popover {...{
         position: {x: 10, y: 10},
-        content: <div><h4>Title content</h4><p>{text('Content', 'Lorem text lorem')}</p></div>
+        style: {
+            backgroundImage: `url(${img})`,
+            width: 266,
+            height: 437,
+        }
     }}/>)
 storiesOf('Элементы', module)
     .addDecorator(withKnobs)
@@ -241,14 +246,30 @@ storiesOf('Элементы', module)
         </p>
         <p className="buttons-list">
             <span className="checkbox"><input type="checkbox"/><span/></span>
-            &nbsp;
+            &nbsp;&nbsp;
             <span className="checkbox box-red"><input type="checkbox"/><span/></span>
-            &nbsp;
+            &nbsp;&nbsp;
             <span className="checkbox box-orange"><input checked type="checkbox"/><span/></span>
-            &nbsp;
+            &nbsp;&nbsp;
             <span className="checkbox"><input checked type="checkbox"/><span/></span>
-            &nbsp;
+            &nbsp;&nbsp;
             <span className="checkbox radius"><input checked type="checkbox"/><span/></span>
+            &nbsp;&nbsp;
+            <span className="checkbox box-red radius"><input checked type="checkbox"/><span/></span>
+            &nbsp;&nbsp;
+            <button className="btn box-transparent"><i className="fa fa-toggle-off color-light"/></button>
+            <button className="btn box-transparent"><i className="fa fa-toggle-on color-green"/></button>
+            &nbsp;&nbsp;
+            <button className="btn box-transparent"><i className="fa fa-spinner fa-spin fa-2x color-orange"/></button>
+            &nbsp;&nbsp;
+            <button className="btn box-transparent"><i className="fa fa-spinner fa-spin fa-2x color-blue"/></button>
+        </p>
+        <p className="buttons-list">
+            <div className="progress">
+                <div
+                    className="progress-bar progress-bar-animated progress-bar-striped"
+                     style={{width: `${number('Progress', 45)}%`}}/>
+            </div>
         </p>
         <p className="buttons-list">
             <input className="input" value={text('Text value input', 'Text value')} type="text"/>
@@ -266,5 +287,10 @@ storiesOf('Элементы', module)
             <input className="input sm" value={'Text value'} type="text"/>
             &nbsp;
             <input className="input sm" disabled value={'Text value'} type="text"/>
+            &nbsp;
+            <textarea
+                className="input"
+                style={{height: 200, minHeight: 60, resize: 'vertical'}}
+                value={text('Textarea', 'Text value lorem for textarea')}/>
         </p>
     </div></div></main></div>)
