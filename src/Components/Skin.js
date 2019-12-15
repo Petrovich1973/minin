@@ -1,6 +1,6 @@
 import React from 'react'
-import img from "../skin.png"
-import skin from "../skin.jpg"
+import classnames from 'classnames'
+import skin from '../skin.jpg'
 
 const size = {
     x: 266,
@@ -8,19 +8,17 @@ const size = {
 }
 
 const Skin = ({
-                  skin: {id = 0},
+                  skin: {id = 0, pic = ''},
                   isPopover = null,
                   onClick = () => {
                   },
                   onRightClick = () => {
-                  },
-                  hide = () => {
                   }
               }) => {
 
     return (
         <div
-            className="element"
+            className={classnames("element", isPopover && 'light')}
             onClick={() => onClick(id)}
             onContextMenu={e => {
                 e.preventDefault()
@@ -38,49 +36,29 @@ const Skin = ({
                     className: 'popoverMinin',
                     style: {
                         width: size.x,
-                        height: size.y,
-                        backgroundImage: `url(${img})`
+                        height: size.y
                     },
-                    content: 'Content Popover'
+                    content: {
+                        title: 'StatTrak™ Керамбит',
+                        sup: 'Кровавая паутина',
+                        exterior: 'Прямо с завода',
+                        days_left: 3,
+                        float_value: 30.06860896,
+                        float_chart: [7, 8, 23, 7, 55],
+                        link_inspect: 'https://s.cs.money/afb7Guo_image.jpg',
+                        link_on_bot: 'https://s.cs.money/afb7Guo_image.jpg',
+                        link_in_steam: 'https://s.cs.money/afb7Guo_image.jpg',
+                        price: '$ 200.00',
+                        pic: pic || skin
+                    }
                 }
                 onRightClick(popover)
             }}>
                 <span style={{
-                    backgroundImage: `url(${skin})`
+                    backgroundImage: `url(${pic || skin})`
                 }}>{id}</span>
         </div>
     )
 }
 
 export default Skin
-
-// <Popover
-// isOpen={isPopover}
-// position={['top', 'bottom', 'left', 'right']} // preferred position
-// onClickOutside={hide}
-// content={({position, targetRect, popoverRect}) => (
-//     <ArrowContainer // if you'd like an arrow, you can import the ArrowContainer!
-//         position={position}
-//         targetRect={targetRect}
-//         popoverRect={popoverRect}
-//         arrowColor={'white'}
-//         arrowSize={12}>
-//         <div className="popover">
-//             <img
-//                 alt={''}
-//                 src={img}/>
-//         </div>
-//     </ArrowContainer>
-// )}>
-// <div
-// className="element"
-// onClick={() => onClick(id)}
-// onContextMenu={e => {
-//     e.preventDefault()
-//     onRightClick(id)
-// }}>
-// <span style={{
-//     backgroundImage: `url(${skin})`
-// }}>{id}</span>
-// </div>
-// </Popover>

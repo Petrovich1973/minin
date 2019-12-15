@@ -490,6 +490,7 @@ mark {
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                user-select: none;
                 i {
                   opacity: 0;
                 }
@@ -528,6 +529,12 @@ mark {
           width: 8.33%;
           padding-top: 8.33%;
           position: relative;
+          user-select: none;
+
+          &.light {
+            background-color: rgba(255,255,255, .3);
+            box-shadow: 0 0 0 2px rgba(255,255,255, .3);
+          }
 
           & > * {
             position: absolute;
@@ -535,7 +542,7 @@ mark {
             bottom: 2px;
             left: 2px;
             right: 2px;
-            background-size: cover;
+            background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
 
@@ -724,6 +731,7 @@ mark {
     animation-duration: 400ms;
     animation-name: slidein;
     animation-fill-mode: forwards;
+    text-align: center;
     @keyframes slidein {
       to {
         transform: scale(1);
@@ -734,6 +742,7 @@ mark {
     }
     table {
       display: inline-table;
+      text-align: left;
       td {
         padding: ($size-base / 2) 0;
       }
@@ -862,9 +871,10 @@ mark {
   display: flex;
   flex-direction: column;
   background-color: $accent-color;
+  color: $primary-color;
   border: 1px solid #000;
-  width: 300px;
-  height: 500px;
+  width: 266px;
+  height: 437px;
   padding: 1rem;
   box-sizing: border-box;
   overflow: auto;
@@ -873,10 +883,71 @@ mark {
   img {
     display: block;
   }
+  .header {
+    .title {
+      font-size: 120%;
+      text-align: center;
+    }
+    .sup {
+      text-align: center;
+    }
+    .exterior {
+      font-size: 86%;
+      text-align: center;
+    }
+  }
+  .pic {
+    flex: 1;
+    margin-left: -$size-base;
+    margin-right: -$size-base;
+  }
+  .footer {
+    .days_left {
+      margin-bottom: $size-base / 2;
+      text-align: center;
+    }
+    .float_label {
+      font-size: 86%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .float_chart {
+      position: relative;
+      padding: ($size-base / 2) 0;
+      & > *:not(.current) {
+        height: 4px;
+        float: left;
+      }
+      .current {
+        position: absolute;
+        top: 0;
+        left: 0%;
+        width: 1px;
+        height: 100%;
+        background-color: $primary-color;
+      }
+    }
+    .links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      & > * {
+        padding: $size-base / 2;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: $primary-color;
+      }
+    }
+    .price {
+      font-size: 160%;
+      text-align: center;
+    }
+  }
 }
 
 .popoverMinin {
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
