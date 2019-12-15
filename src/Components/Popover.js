@@ -9,10 +9,9 @@ const Popover = ({
                      content: {
                          title = 'StatTrak™ Керамбит',
                          sup = 'Кровавая паутина',
-                         exterior = 'Прямо с завода',
                          days_left = 3,
-                         float_value = 0.06860896,
-                         float_chart = [7, 8, 23, 7, 55],
+                         float_value = 0.01,
+                         star = false,
                          link_inspect = '/',
                          link_on_bot = '/',
                          link_in_steam = '/',
@@ -24,23 +23,39 @@ const Popover = ({
                  }) => {
     Popover.handleClickOutside = () => onHide()
 
-    const chartRender = (arr, current) => {
-        const colors = ['blue', 'green', 'yellow', 'orange', 'red']
+    const floatConfig = [
+        {value: [0, 7], chart: 7, color: 'blue', label: 'FN', exterior: 'Прямо с завода'},
+        {value: [8, 15], chart: 8, color: 'green', label: 'MW', exterior: 'Немного поношенное'},
+        {value: [16, 38], chart: 23, color: 'yellow', label: 'FT', exterior: 'После полевых испытаний'},
+        {value: [39, 45], chart: 7, color: 'orange', label: 'WW', exterior: 'Поношенное'},
+        {value: [46, 100], chart: 55, color: 'red', label: 'BS', exterior: 'Закалённое в боях'}
+    ]
+
+    const chartRender = (current) => {
         return (
             <div className="float_chart">
-                {colors.map((el, i) => (
-                    <div key={i} style={{width: `${arr[i]}%`, backgroundColor: el}}/>
+                {floatConfig.map((el, i) => (
+                    <div key={i} style={{width: `${el.chart}%`, backgroundColor: el.color}}/>
                 ))}
-                <div className="current" style={{left: `${current}%`}}/>
+                <div className="current" style={{left: `${current * 100}%`}}/>
             </div>
         )
     }
+
+    const exteriorRender = (current = 0, name = 'exterior') => {
+        const _current = Math.floor(current * 100)
+        console.log(_current)
+        return floatConfig.find(s => (s.value[0] <= _current && s.value[1] >= _current))[name]
+    }
+
     return (
         <div className={classnames("popover", className)} style={{...style, top: y, left: x}}>
             <div className="header">
-                <div className="title">{title}</div>
+                <div className="title">{star && <i className="fa fa-star" title="StatTrak"/>} {title}</div>
                 <div className="sup sm">{sup}</div>
-                <div className="exterior"><strong>{exterior}</strong></div>
+                <div className="exterior">
+                    <strong>{exteriorRender(float_value, 'exterior')}</strong>
+                </div>
             </div>
 
             <div className="pic popoverMinin" style={{backgroundImage: `url(${pic})`}}/>
@@ -52,7 +67,7 @@ const Popover = ({
                         <span>Float</span>
                         <span>{float_value}</span>
                     </div>
-                    {chartRender(float_chart, float_value)}
+                    {chartRender(float_value)}
                 </div>
                 <div className="links sm">
                     <a href={link_inspect} target="_blank">Inspect</a>

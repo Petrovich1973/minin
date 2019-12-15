@@ -101,15 +101,8 @@ storiesOf('Модули', module)
         },
         content: {
             title: text('Наименование', 'StatTrak™ Керамбит'),
-            sup: 'Кровавая паутина',
-            exterior: 'Прямо с завода',
-            days_left: 3,
-            float_value: number('Float', 30.06860896),
-            float_chart: [7, 8, 23, 7, 55],
-            link_inspect: 'https://s.cs.money/afb7Guo_image.jpg',
-            link_on_bot: 'https://s.cs.money/afb7Guo_image.jpg',
-            link_in_steam: 'https://s.cs.money/afb7Guo_image.jpg',
-            price: '$ 200.00',
+            float_value: number('Float', 0.3006860896),
+            exterior: '',
             pic: text('Изображение скина https://s.cs.money/LMc1Q9f_preview.png?v=22', 'https://s.cs.money/XKSYtz5_preview.png')
         }
     }}/>)

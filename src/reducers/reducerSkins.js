@@ -10,11 +10,39 @@ const randomUrlsPic = [
     'https://pic.csgo.trade/730/p5n.jpg?v=22',
     'https://pic.csgo.trade/pbz.jpg?v=22'
 ]
+const randomTitles = [
+    'StatTrak™ Desert Eagle',
+    'Керамбит',
+    'StatTrak™ Керамбит',
+    'Перчатки спецназа',
+    'AK-47',
+    'USP-S',
+    'StatTrak™ Talon Knife'
+]
+const randomIntFromInterval = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
 
 
 export const initialState = {
-    user: [...Array(12).keys()].map(skin => ({id: skin + 1, pic: randomUrlsPic[Math.floor(Math.random() * randomUrlsPic.length)]})),
-    bot: [...Array(800).keys()].map(skin => ({id: skin + 1, pic: randomUrlsPic[Math.floor(Math.random() * randomUrlsPic.length)]})),
+    user: [...Array(12).keys()]
+        .map(skin => ({
+            id: skin + 1,
+            title: randomTitles[Math.floor(Math.random() * randomTitles.length)],
+            float: Math.random(),
+            star: Math.random() >= 0.5,
+            price: randomIntFromInterval(1, 14000),
+            pic: randomUrlsPic[Math.floor(Math.random() * randomUrlsPic.length)]
+        })),
+    bot: [...Array(400).keys()]
+        .map(skin => ({
+            id: skin + 1,
+            title: randomTitles[Math.floor(Math.random() * randomTitles.length)],
+            float: Math.random(),
+            star: Math.random() >= 0.5,
+            price: randomIntFromInterval(1, 14000),
+            pic: randomUrlsPic[Math.floor(Math.random() * randomUrlsPic.length)]
+        })),
     popover: {
         isOpen: false,
         position: { x: 200, y: 200 },

@@ -408,7 +408,11 @@ mark {
                 background-color: #343a40;
                 display: flex;
                 justify-content: center;
-                align-items: center; }
+                align-items: center;
+                -webkit-user-select: none;
+                   -moz-user-select: none;
+                    -ms-user-select: none;
+                        user-select: none; }
                 #root .main main > *.DialogAction .outList li .skin i {
                   opacity: 0; }
                 #root .main main > *.DialogAction .outList li .skin + span {
@@ -432,25 +436,42 @@ mark {
           display: inline-flex;
           width: 8.33%;
           padding-top: 8.33%;
-          position: relative; }
+          position: relative;
+          -webkit-user-select: none;
+             -moz-user-select: none;
+              -ms-user-select: none;
+                  user-select: none;
+          direction: ltr; }
+          #root .main main .list-scroll .element.light {
+            background-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3); }
+          #root .main main .list-scroll .element:hover *, #root .main main .list-scroll .element.light * {
+            opacity: 1; }
           #root .main main .list-scroll .element > * {
+            background-color: #343a40;
+            color: #b6b6b6;
             position: absolute;
             top: 2px;
             bottom: 2px;
             left: 2px;
             right: 2px;
-            background-size: cover;
+            padding: 6px;
+            background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #343a40;
-            color: #b6b6b6;
-            font-weight: bold;
-            font-size: 140%;
-            color: #f8f9fa;
+            flex-direction: column;
+            justify-content: space-between;
+            font-size: 70%;
+            line-height: 1;
             text-shadow: 2px 2px #000; }
+            #root .main main .list-scroll .element > * > * {
+              opacity: .7; }
+            #root .main main .list-scroll .element > * .title {
+              font-size: 90%; }
+            #root .main main .list-scroll .element > * .foot {
+              display: flex;
+              justify-content: space-between; }
           @media (max-width: 1400px) {
             #root .main main .list-scroll .element {
               width: 12.5%;
@@ -586,7 +607,8 @@ mark {
     -webkit-animation-name: slidein;
             animation-name: slidein;
     -webkit-animation-fill-mode: forwards;
-            animation-fill-mode: forwards; }
+            animation-fill-mode: forwards;
+    text-align: center; }
 
 @-webkit-keyframes slidein {
   to {
@@ -600,7 +622,8 @@ mark {
     .filter .detail h3, .filter .detail h4 {
       margin: 0; }
     .filter .detail table {
-      display: inline-table; }
+      display: inline-table;
+      text-align: left; }
       .filter .detail table td {
         padding: 0.5rem 0; }
     .filter .detail .indent {

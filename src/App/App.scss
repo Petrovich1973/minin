@@ -248,7 +248,15 @@ mark {
     -webkit-transition: width .6s ease;
     transition: width .6s ease;
     &.progress-bar-striped {
-      background-image: linear-gradient(45deg, hsla(0, 0%, 100%, .15) 25%, transparent 0, transparent 50%, hsla(0, 0%, 100%, .15) 0, hsla(0, 0%, 100%, .15) 75%, transparent 0, transparent);
+      background-image: linear-gradient(
+                      45deg,
+                      hsla(0, 0%, 100%, .15) 25%,
+                      transparent 0,
+                      transparent 50%,
+                      hsla(0, 0%, 100%, .15) 0,
+                      hsla(0, 0%, 100%, .15) 75%,
+                      transparent 0,
+                      transparent);
       background-size: 1rem 1rem;
     }
     &.progress-bar-animated {
@@ -530,29 +538,45 @@ mark {
           padding-top: 8.33%;
           position: relative;
           user-select: none;
+          direction: ltr;
 
           &.light {
-            background-color: rgba(255,255,255, .3);
-            box-shadow: 0 0 0 2px rgba(255,255,255, .3);
+            background-color: rgba(255, 255, 255, .3);
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, .3);
+          }
+
+          &:hover *, &.light * {
+            opacity: 1;
           }
 
           & > * {
+            @include dark-theme;
             position: absolute;
             top: 2px;
             bottom: 2px;
             left: 2px;
             right: 2px;
+            padding: 6px;
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
 
-            @include flex-horizontal;
-            justify-content: center;
-            @include dark-theme;
-            font-weight: bold;
-            font-size: 140%;
-            color: $accent-color;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-size: 70%;
+            line-height: 1;
             text-shadow: 2px 2px #000;
+            & > * {
+              opacity: .7;
+            }
+            .title {
+              font-size: 90%;
+            }
+            .foot {
+              display: flex;
+              justify-content: space-between;
+            }
           }
           @media (max-width: 1400px) {
             & {
