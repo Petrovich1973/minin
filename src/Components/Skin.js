@@ -75,7 +75,7 @@ const Skin = ({
                 }
                 onRightClick(popover)
             }}>
-                <span style={{backgroundImage: `url(${pic || skin})`}} title={floatRender(float, 'exterior')}>
+                <span style={{backgroundImage: `url(${pic || skin})`}}>
                     <span className="title">{star && <i className="fa fa-star" title="StatTrak"/>} {title}</span>
                     <span className="foot">
                         <span className="price">$ {price}.00</span>
