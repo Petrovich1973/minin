@@ -40,11 +40,11 @@ body {
   * {
     box-sizing: border-box;
   }
-  @media (max-width: 1000px) {
-    & {
-      font-size: 1.6vw;
-    }
-  }
+  //@media (max-width: 1000px) {
+  //  & {
+  //    font-size: 1.6vw;
+  //  }
+  //}
 }
 
 h1, h2, h3, h4 {
@@ -1012,12 +1012,15 @@ mark {
 }
 
 .container {
-  margin: 0 auto;
+  display: block;
   padding: 0 $size-base;
-  width: 1400px;
   max-width: 100%;
-  &.x-1000 {
-    width: 1000px;
+  & > * {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    width: 800px;
   }
 }
 
@@ -1053,7 +1056,6 @@ mark {
   display: flex;
   justify-content: center;
   padding: 0;
-  margin: 0 -($size-base);
   list-style: none;
   & > * {
     font-size: 80%;
@@ -1074,6 +1076,16 @@ mark {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  .input, .select {
+    padding: $size-base / 2;
+    background-color: rgba(255, 255, 255, .2);
+    color: $fontColor;
+    border: none;
+    &:focus {
+      background-color: $accent-color;
+      color: $primary-color;
+    }
+  }
 }
 
 .paymentList {
@@ -1082,13 +1094,17 @@ mark {
   margin: 0 -($size-base);
   list-style: none;
   & > * {
-    margin: $size-base;
+    margin: $size-base / 2;
     padding: $size-base;
     display: flex;
     flex-direction: column;
+    align-items: center;
     cursor: pointer;
-    opacity: .7;
+    opacity: .6;
     border: ($size-base / 2) solid lighten($primary-color, 30%);
+    span {
+      font-size: 80%;
+    }
     &:hover, &.active {
       opacity: 1;
       border-color: $primary-color;

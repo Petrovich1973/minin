@@ -14,10 +14,6 @@ const Step_1 = ({
                 }) => (
     <div className="wizard-current">
         <h4>Выберите сумму пополнения</h4>
-        <p>
-            <button onClick={() => handleChangeStep(0)}>Назад</button>
-            <button onClick={() => handleChangeStep(2)}>Далее</button>
-        </p>
         <ul className="paymentList">
             {Object.keys(payments).map((pay, idx) => {
                 const isActive = payment === +pay
@@ -25,15 +21,15 @@ const Step_1 = ({
                     <li
                         key={idx}
                         onClick={() => handleChangePayment(+pay)}
-                        className={classnames({'active': isActive})}>
+                        className={classnames({'active box-primary': isActive})}>
                         <strong>{pay}</strong>
-                        <span>(+ ${payments[pay].bonus} bonus)</span>
+                        <span>+ $ {payments[pay].bonus} bonus</span>
                     </li>
                 )
             })}
         </ul>
-        <p><
-            label><em>Или введите свою сумму</em></label>
+        <p className="align-center">
+            <label><em>Или введите свою сумму</em></label>
             <input
                 className="input"
                 value={payment}
@@ -48,6 +44,24 @@ const Step_1 = ({
                         handleChangeStep(2)
                     }
                 }}/>
+        </p>
+        <p style={{display: 'inline-flex'}}>
+            <button
+                className="btn"
+                onClick={() => handleChangeStep(0)}>
+                <i className="fa fa-arrow-left"/>
+                <span>Назад</span>
+            </button>
+            {payment > 0 ?
+                <>
+                    &nbsp;
+                    <button
+                        className="btn"
+                        onClick={() => handleChangeStep(2)}>
+                        <span>Далее</span>
+                        <i className="fa fa-arrow-right"/>
+                    </button>
+                </> : null}
         </p>
     </div>
 )

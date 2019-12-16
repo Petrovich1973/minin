@@ -18,7 +18,7 @@ import ListScroll from "../Components/ListScroll";
 import DialogWindow from "../Components/DialogWindow";
 import Modal from "../Components/Modal";
 import Popover from "../Components/Popover";
-import img from "../skin.png";
+import ReplenishBalance from "../Components/ReplenishBalance";
 
 //////////////////////
 storiesOf('Модули', module)
@@ -106,6 +106,7 @@ storiesOf('Модули', module)
             pic: text('Изображение скина https://s.cs.money/LMc1Q9f_preview.png?v=22', 'https://s.cs.money/XKSYtz5_preview.png')
         }
     }}/>)
+    .add('Replenishment', () => <ReplenishBalance/>)
 storiesOf('Элементы', module)
     .addDecorator(withKnobs)
     .addDecorator(withInfo)

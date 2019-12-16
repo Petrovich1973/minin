@@ -35,9 +35,6 @@ body {
   color: #b6b6b6; }
   body * {
     box-sizing: border-box; }
-  @media (max-width: 1000px) {
-    body {
-      font-size: 1.6vw; } }
 
 h1, h2, h3, h4 {
   font-weight: 300;
@@ -824,12 +821,15 @@ mark {
     color: #b6b6b6; }
 
 .container {
-  margin: 0 auto;
+  display: block;
   padding: 0 1rem;
-  width: 1400px;
   max-width: 100%; }
-  .container.x-1000 {
-    width: 1000px; }
+  .container > * {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    width: 800px; }
 
 .payList {
   display: flex;
@@ -856,7 +856,6 @@ mark {
   display: flex;
   justify-content: center;
   padding: 0;
-  margin: -1rem;
   list-style: none; }
   .wizard-nav > * {
     font-size: 80%;
@@ -873,6 +872,14 @@ mark {
   flex-direction: column;
   justify-content: center;
   align-items: center; }
+  .wizard-current .input, .wizard-current .select {
+    padding: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #b6b6b6;
+    border: none; }
+    .wizard-current .input:focus, .wizard-current .select:focus {
+      background-color: #f8f9fa;
+      color: #343a40; }
 
 .paymentList {
   display: flex;
@@ -880,13 +887,16 @@ mark {
   margin: -1rem;
   list-style: none; }
   .paymentList > * {
-    margin: 1rem;
+    margin: 0.5rem;
     padding: 1rem;
     display: flex;
     flex-direction: column;
+    align-items: center;
     cursor: pointer;
-    opacity: .7;
+    opacity: .6;
     border: 0.5rem solid #7a8793; }
+    .paymentList > * span {
+      font-size: 80%; }
     .paymentList > *:hover, .paymentList > *.active {
       opacity: 1;
       border-color: #343a40; }

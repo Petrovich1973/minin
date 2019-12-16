@@ -37,14 +37,13 @@ const Step_2 = ({
     return (
         <div className="wizard-current">
             <h4>Проверьте введенные данные</h4>
-            <p>
-                <button onClick={() => handleChangeStep(1)}>Назад</button>
-            </p>
+            {/*<p>*/}
+                {/*<button onClick={() => handleChangeStep(1)}>Назад</button>*/}
+            {/*</p>*/}
             <div className="paymentResult">
                 <div>
-                    <span>Платежная система:</span>
                     <i
-                        style={{fontSize: '300%'}}
+                        style={{fontSize: '400%'}}
                         className={classnames([paySystem] in paySystems && paySystems[paySystem].icon)}/>
                 </div>
                 <div>

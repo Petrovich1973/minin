@@ -98,32 +98,14 @@ const ReplenishBalance = () => {
 
                 <h3 className="title-block row-group">Пополнение баланса</h3>
 
-                <div className="container x-1000">
+                <div className="container">
                     <p className="align-center">
                         Пополняйте баланс любым удобным способом с новой системой бонусов!
                     </p>
                 </div>
 
                 <div className="list-scroll">
-                    <div className="container x-1000">
-                        <ul className="wizard-nav">
-                            {Object.keys(wizard.steps).map((item, idx) => {
-                                const isActive = result.current === +item
-                                return (
-                                    <li
-                                        className={classnames({'active': isActive})}
-                                        onClick={() => handleChangeStep(+item)}
-                                        key={idx}>
-                                        <i className={classnames(
-                                            wizard.steps[item].status === 'done' ?
-                                                'fa fa-check' :
-                                                'fa fa-circle'
-                                        )}/>
-                                        <span>{wizard.steps[item].title}</span>
-                                    </li>
-                                )
-                            })}
-                        </ul>
+                    <div className="container">
 
                         {result.current === 0 ?
                             <Step0 {...{
