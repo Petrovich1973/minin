@@ -70,9 +70,9 @@ const Popover = ({
                     {chartRender(float_value)}
                 </div>
                 <div className="links sm">
-                    <a href={link_inspect} target="_blank">Inspect</a>
-                    <a href={link_on_bot} target="_blank">On bot</a>
-                    <a href={link_in_steam} target="_blank">in steam</a>
+                    <a href={link_inspect} target="_blank" rel="noreferrer noopener">Inspect</a>
+                    <a href={link_on_bot} target="_blank" rel="noreferrer noopener">On bot</a>
+                    <a href={link_in_steam} target="_blank" rel="noreferrer noopener">in steam</a>
                 </div>
                 <div className="price">{price}</div>
             </div>

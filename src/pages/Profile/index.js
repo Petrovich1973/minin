@@ -76,7 +76,17 @@ const Profile = ({profile = {}, dispatch}) => {
                                 <tr>
                                     <td>Seller Link</td>
                                     <td><i className="fa fa-copy"/></td>
-                                    <td>{profile.sellerLink}</td>
+                                    <td>
+                                        <input
+                                            className="input"
+                                            value={profile.sellerLink || ''}
+                                            onChange={e => (
+                                                dispatch({
+                                                    type: 'USER_CURRENT_UPDATE',
+                                                    payload: {sellerLink: e.target.value}
+                                                })
+                                            )}/>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>SteamID64</td>
