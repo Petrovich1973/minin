@@ -19,6 +19,22 @@
   .buttons-list .btn {
     display: inline-flex; }
 
+.storybook-for-scroll-list .skinsWrapCenter {
+  width: 800px;
+  text-align: center; }
+  .storybook-for-scroll-list .skinsWrapCenter .element {
+    float: none !important; }
+    .storybook-for-scroll-list .skinsWrapCenter .element .title {
+      display: block !important;
+      width: 100%;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden; }
+    .storybook-for-scroll-list .skinsWrapCenter .element .foot {
+      justify-content: center !important; }
+      .storybook-for-scroll-list .skinsWrapCenter .element .foot .exterior {
+        display: none; }
+
 
 html {
   background-color: #000; }
@@ -370,7 +386,8 @@ mark {
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: center; }
+          justify-content: center;
+          color: #343a40; }
           #root .main main > *.DialogAction .btnConfirm {
             padding: 1rem; }
           #root .main main > *.DialogAction .payForm {
@@ -421,6 +438,21 @@ mark {
                   opacity: 1; }
               #root .main main > *.DialogAction .outList li + * {
                 margin-top: 0.5rem; }
+          #root .main main > *.DialogAction .skinsWrapCenter {
+            width: 100%;
+            text-align: center; }
+            #root .main main > *.DialogAction .skinsWrapCenter .element {
+              float: none; }
+              #root .main main > *.DialogAction .skinsWrapCenter .element .title {
+                display: block;
+                width: 100%;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden; }
+              #root .main main > *.DialogAction .skinsWrapCenter .element .foot {
+                justify-content: center; }
+                #root .main main > *.DialogAction .skinsWrapCenter .element .foot .exterior {
+                  display: none; }
       #root .main main .list-scroll {
         height: 100%;
         max-width: 100%;

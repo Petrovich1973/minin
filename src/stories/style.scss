@@ -23,3 +23,25 @@
     display: inline-flex;
   }
 }
+.storybook-for-scroll-list {
+  .skinsWrapCenter {
+    width: 800px;
+    text-align: center;
+    .element {
+      float: none !important;
+      .title {
+        display: block !important;
+        width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+      .foot {
+        justify-content: center !important;
+        .exterior {
+          display: none;
+        }
+      }
+    }
+  }
+}
