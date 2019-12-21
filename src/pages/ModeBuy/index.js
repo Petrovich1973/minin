@@ -3,10 +3,15 @@ import {connect} from 'react-redux'
 import Filter from "../../Components/Filter"
 import ListScroll from "../../Components/ListScroll"
 import Popover from "../../Components/Popover";
+import DialogAction from "../../Components/DialogAction";
+import Purchase from "../../Components/Purchase";
 
 const ModeBuy = ({skins: {bot = [], popover = {}}, dispatch}) => {
 
     const [selected, setSelected] = useState([])
+    const [purchase, setPurchase] = useState({
+        isActive: false
+    })
 
     const onClickSkinBot = id => {
         onHidePopover()
@@ -45,6 +50,18 @@ const ModeBuy = ({skins: {bot = [], popover = {}}, dispatch}) => {
             type: 'POPOVER_RESET'
         })
     }
+    const onPurchase = () => {
+        setPurchase(state => ({
+            ...state,
+            isActive: true
+        }))
+    }
+    const handleReset = () => {
+        setPurchase(state => ({
+            ...state,
+            isActive: false
+        }))
+    }
     return (
         <>
             <main>
@@ -62,7 +79,9 @@ const ModeBuy = ({skins: {bot = [], popover = {}}, dispatch}) => {
                 </section>
                 <aside className="side-right">
                     <h3 className="title-block row-group">Выбрано ({selected.length})</h3>
-                    <div className="btn actionBtn align-center box-primary">
+                    <div
+                        onClick={onPurchase}
+                        className="btn actionBtn align-center box-primary">
                         <span>Купить</span>
                     </div>
                     <ListScroll {...{
@@ -74,10 +93,16 @@ const ModeBuy = ({skins: {bot = [], popover = {}}, dispatch}) => {
                         popoverId: popover.id
                     }}/>
                 </aside>
+                {purchase.isActive ? (
+                    <DialogAction>
+                        <Purchase skins={selected} handleReset={handleReset}/>
+                    </DialogAction>
+                ) : null}
             </main>
             {popover.isOpen ? (
                 <Popover {...{...popover, onHide: onHidePopover}} />
             ) : null}
+
         </>
     )
 }

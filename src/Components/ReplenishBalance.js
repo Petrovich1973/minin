@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react'
-import classnames from "classnames"
 import Step0 from "./PaymentSteps/Step_0"
 import Step1 from "./PaymentSteps/Step_1"
 import Step2 from "./PaymentSteps/Step_2"

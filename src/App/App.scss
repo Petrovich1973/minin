@@ -456,6 +456,7 @@ mark {
           flex-direction: column;
           align-items: center;
           justify-content: center;
+          color: $primary-color;
           .btnConfirm {
             padding: $size-base;
           }
@@ -517,6 +518,26 @@ mark {
               }
               & + * {
                 margin-top: $size-base / 2;
+              }
+            }
+          }
+          .skinsWrapCenter {
+            width: 100%;
+            text-align: center;
+            .element {
+              float: none;
+              .title {
+                display: block;
+                width: 100%;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+              }
+              .foot {
+                justify-content: center;
+                .exterior {
+                  display: none;
+                }
               }
             }
           }
