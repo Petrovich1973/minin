@@ -17,10 +17,6 @@ const Step_2 = ({
     const [isLink, setIsLink] = useState(false)
     const [loader, setLoader] = useState(false)
 
-    const countBonus = value => {
-        return (value * 30 / 100)
-    }
-
     const toSend = async () => {
 
         setLoader(true)

@@ -23,9 +23,8 @@ const randomIntFromInterval = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
-
 export const initialState = {
-    user: [...Array(12).keys()]
+    user: [...Array(40).keys()]
         .map(skin => ({
             id: skin + 1,
             title: randomTitles[Math.floor(Math.random() * randomTitles.length)],
@@ -34,7 +33,7 @@ export const initialState = {
             price: randomIntFromInterval(1, 14000),
             pic: randomUrlsPic[Math.floor(Math.random() * randomUrlsPic.length)]
         })),
-    bot: [...Array(400).keys()]
+    bot: [...Array(240).keys()]
         .map(skin => ({
             id: skin + 1,
             title: randomTitles[Math.floor(Math.random() * randomTitles.length)],
@@ -57,6 +56,10 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 ...action.payload
+            }
+        case "SKINS_RESET":
+            return {
+                ...initialState
             }
         case "POPOVER_RESET":
             return {

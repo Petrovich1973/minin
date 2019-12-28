@@ -44,7 +44,6 @@ const Popover = ({
 
     const exteriorRender = (current = 0, name = 'exterior') => {
         const _current = Math.floor(current * 100)
-        console.log(_current)
         return floatConfig.find(s => (s.value[0] <= _current && s.value[1] >= _current))[name]
     }
 

@@ -3,7 +3,7 @@ import Skin from "./Skin";
 
 const ListScroll = ({
                         direction = 'ltr',
-                        list = [{id: 1}, {id: 2}, {id: 3}],
+                        list = [],
                         handleClickSkin = () => {
                         },
                         handleRightClickSkin = () => {
@@ -29,13 +29,17 @@ const ListScroll = ({
 
     return (
         <div className="list-scroll" style={{direction}} ref={scrollNode}>
-            {list.map((skin, idx) => <Skin
-                key={idx}
-                skin={skin}
-                onClick={onClickSkin}
-                onRightClick={handleRightClickSkin}
-                hide={onHidePopover}
-                isPopover={popoverId === skin.id}/>)}
+            {list.map((skin, idx) => {
+                return (
+                    <Skin
+                        key={idx}
+                        skin={skin}
+                        onClick={onClickSkin}
+                        onRightClick={handleRightClickSkin}
+                        hide={onHidePopover}
+                        isPopover={popoverId === skin.id}/>
+                )
+            })}
         </div>
     )
 }

@@ -63,27 +63,27 @@ const Replenishment = () => {
 
     const handleChangePaySystem = paySystem => {
         setResult(result => ({...result, paySystem}))
-        setWizard(wizard => ({
+        setWizard({
             ...wizard,
             steps: {...wizard.steps, 0: {...wizard.steps[0], status: 'done'}}
-        }))
+        })
     }
 
     const handleChangePayment = payment => {
         setResult(result => ({...result, payment}))
         if (payment > 9) {
-            setWizard(wizard => ({
+            setWizard({
                 ...wizard,
                 steps: {...wizard.steps, 1: {...wizard.steps[1], status: 'done'}}
-            }))
+            })
         }
     }
 
     const handleChangeGetLink = () => {
-        setWizard(wizard => ({
+        setWizard({
             ...wizard,
             steps: {...wizard.steps, 2: {...wizard.steps[2], status: 'done'}}
-        }))
+        })
     }
 
     const handleReset = () => {

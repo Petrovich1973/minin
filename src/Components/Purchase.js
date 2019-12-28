@@ -26,13 +26,15 @@ const initialSateWizard = {
 }
 
 const Purchase = ({
-                      skins = [], handleReset = () => {
-        console.log('handleReset')
-    }
+                      skins = [],
+                      handleReset = () => {
+                          console.log('handleReset')
+                      }
                   }) => {
 
     useEffect(() => {
         onChangePayment()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [skins])
 
     const [paySystems] = useState({
@@ -52,17 +54,17 @@ const Purchase = ({
 
     const handleChangePaySystem = paySystem => {
         setResult(result => ({...result, paySystem}))
-        setWizard(wizard => ({
+        setWizard({
             ...wizard,
             steps: {...wizard.steps, 0: {...wizard.steps[0], status: 'done'}}
-        }))
+        })
     }
 
     const handleChangeGetLink = () => {
-        setWizard(wizard => ({
+        setWizard({
             ...wizard,
             steps: {...wizard.steps, 2: {...wizard.steps[2], status: 'done'}}
-        }))
+        })
     }
 
     const onChangePayment = () => {

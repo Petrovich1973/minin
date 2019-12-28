@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 import Filter from "../../Components/Filter"
 import ListScroll from "../../Components/ListScroll"
@@ -12,6 +12,19 @@ const ModeBuy = ({skins: {bot = [], popover = {}}, dispatch}) => {
     const [purchase, setPurchase] = useState({
         isActive: false
     })
+
+    useEffect(() => {
+        return (
+            resetSkins()
+        )
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    const resetSkins = () => {
+        dispatch({
+            type: 'SKINS_RESET'
+        })
+    }
 
     const onClickSkinBot = id => {
         onHidePopover()

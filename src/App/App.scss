@@ -161,6 +161,20 @@ mark {
   margin: 1rem;
 }
 
+.nav {
+  .navItem {
+    cursor: pointer;
+    opacity: .4;
+    &:hover {
+      opacity: 1;
+    }
+    &.active {
+      opacity: 1;
+      cursor: default;
+    }
+  }
+}
+
 ///////////// Color schemes ///////////////
 
 .box-transparent {
