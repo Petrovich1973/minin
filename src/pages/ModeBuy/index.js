@@ -75,6 +75,11 @@ const ModeBuy = ({skins: {bot = [], popover = {}}, dispatch}) => {
             isActive: false
         }))
     }
+    const onTotalPrice = list => {
+        return list.reduce((prev, current) => {
+            return (prev + current.price)
+        }, 0)
+    }
     return (
         <>
             <main>
@@ -91,7 +96,8 @@ const ModeBuy = ({skins: {bot = [], popover = {}}, dispatch}) => {
                     }}/>
                 </section>
                 <aside className="side-right">
-                    <h3 className="title-block row-group">Выбрано ({selected.length})</h3>
+                    <h3 className="title-block row-group">Выбрано ({selected.length}) {selected.length ?
+                        `$ ${onTotalPrice(selected)}.00` : null}</h3>
                     <div
                         onClick={onPurchase}
                         className="btn actionBtn align-center box-primary">

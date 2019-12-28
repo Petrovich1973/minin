@@ -99,11 +99,18 @@ const ModeChange = ({skins: {bot = [], user = [], popover = {}}, dispatch}) => {
         })
     }
 
+    const onTotalPrice = list => {
+        return list.reduce((prev, current) => {
+            return (prev + current.price)
+        }, 0)
+    }
+
     return (
         <>
             <main>
                 <aside className="side-right">
-                    <h3 className="title-block row-group">Выбрано ({selectedUser.length})</h3>
+                    <h3 className="title-block row-group">Выбрано ({selectedUser.length}) {selectedUser.length ?
+                        `$ ${onTotalPrice(selectedUser)}.00` : null}</h3>
                     <div
                         onClick={onChangeOperation}
                         className="btn actionBtn align-center box-primary">
@@ -150,7 +157,8 @@ const ModeChange = ({skins: {bot = [], user = [], popover = {}}, dispatch}) => {
                         }}/>}
                 </section>
                 <aside className="side-left">
-                    <h3 className="title-block row-group">Выбрано ({selectedBot.length})</h3>
+                    <h3 className="title-block row-group">Выбрано ({selectedBot.length}) {selectedBot.length ?
+                        `$ ${onTotalPrice(selectedBot)}.00` : null}</h3>
                     <div
                         onClick={onChangeOperation}
                         className="btn actionBtn align-center box-primary">
