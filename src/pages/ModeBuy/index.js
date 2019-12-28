@@ -14,9 +14,9 @@ const ModeBuy = ({skins: {bot = [], popover = {}}, dispatch}) => {
     })
 
     useEffect(() => {
-        return (
+        return () => {
             resetSkins()
-        )
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 

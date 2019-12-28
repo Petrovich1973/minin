@@ -4,17 +4,22 @@ import classnames from 'classnames'
 import ListScroll from "../../Components/ListScroll";
 import Popover from "../../Components/Popover";
 import Filter from "../../Components/Filter";
+import DialogAction from "../../Components/DialogAction";
+import Exchange from "../../Components/Exchange";
 
 const ModeChange = ({skins: {bot = [], user = [], popover = {}}, dispatch}) => {
 
     const [activeSkins, setActiveSkins] = useState('bot')
     const [selectedBot, setSelectedBot] = useState([])
     const [selectedUser, setSelectedUser] = useState([])
+    const [exchange, setExchange] = useState({
+        isActive: false
+    })
 
     useEffect(() => {
-        return (
+        return () => {
             resetSkins()
-        )
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -25,7 +30,17 @@ const ModeChange = ({skins: {bot = [], user = [], popover = {}}, dispatch}) => {
     }
 
     const onChangeOperation = () => {
+        setExchange(state => ({
+            ...state,
+            isActive: true
+        }))
+    }
 
+    const handleReset = () => {
+        setExchange(state => ({
+            ...state,
+            isActive: false
+        }))
     }
 
     const onChangeNavActive = active => {
@@ -173,6 +188,11 @@ const ModeChange = ({skins: {bot = [], user = [], popover = {}}, dispatch}) => {
                         popoverId: popover.id
                     }}/>
                 </aside>
+                {exchange.isActive ? (
+                    <DialogAction>
+                        <Exchange skinsBot={selectedBot} skinsUser={selectedUser} handleReset={handleReset}/>
+                    </DialogAction>
+                ) : null}
             </main>
             {popover.isOpen ? (
                 <Popover {...{...popover, onHide: onHidePopover}} />
