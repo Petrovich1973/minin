@@ -14,15 +14,16 @@ const Step_1 = ({
                     handleReset
                 }) => (
     <div className="wizard-current">
-        <h4>Скины твои $ {paymentUser} - ({payment > 0 ?
-            <span className="color-green">+{payment}</span> :
-            <span className="color-red">{payment}</span>}) - Скины бота $ {paymentBot}</h4>
+        <h4>Скины твои <strong>$ {paymentUser}</strong> - ({payment > 0 ?
+            <strong className="color-green">+{payment}</strong> :
+            <strong className="color-red">{payment}</strong>}) - <strong>$ {paymentBot}</strong> Скины бота</h4>
         <div style={{width: 800}}>
-            <div className="skinsWrapCenter" style={{background: 'rgba(0,0,0,0.1)'}}>
-                <ListScroll list={skinsUser}/>
+            <div className="skinsWrapCenter" style={{background: 'rgba(0,0,0,0.06)'}}>
+                {skinsUser.length ? <ListScroll list={skinsUser}/> : <span>Не выбраны скины</span>}
             </div>
-            <div className="skinsWrapCenter" style={{background: 'rgba(0,0,0,0.1)'}}>
-                <ListScroll list={skinsBot}/>
+            <hr className="box-primary"/>
+            <div className="skinsWrapCenter" style={{background: 'rgba(0,0,0,0.06)'}}>
+                {skinsBot.length ? <ListScroll list={skinsBot}/> : <span>Не выбраны скины</span>}
             </div>
         </div>
 
@@ -30,7 +31,7 @@ const Step_1 = ({
 
         <p style={{display: 'inline-flex'}}>
             <button
-                className="btn"
+                className="btn box-primary"
                 onClick={() => handleChangeStep(2)}>
                 <span>Подтвердить обмен</span>
             </button>

@@ -16,11 +16,11 @@ const initialSateWizard = {
             status: null
         },
         1: {
-            title: 'Выбрать сумму пополнения',
+            title: 'Все готово к виртуальному обмену',
             status: null
         },
         2: {
-            title: 'Проверьте введенные данные',
+            title: 'Обмнен произведен',
             status: null
         }
     }

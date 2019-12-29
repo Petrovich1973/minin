@@ -108,7 +108,13 @@ storiesOf('Модули', module)
             pic: text('Изображение скина https://s.cs.money/LMc1Q9f_preview.png?v=22', 'https://s.cs.money/XKSYtz5_preview.png')
         }
     }}/>)
-    .add('Replenishment', () => <ReplenishBalance/>)
+    .add('Replenishment', () => <div className="main">
+        <main>
+            <section style={{height: '100vh'}} className="storybook-for-scroll-list">
+                <ReplenishBalance/>
+            </section>
+        </main>
+    </div>)
     .add('Purchase', () => <div className="main">
         <main>
             <section style={{height: '100vh'}} className="storybook-for-scroll-list">
