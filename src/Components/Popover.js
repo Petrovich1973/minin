@@ -16,7 +16,8 @@ const Popover = ({
                          link_on_bot = '/',
                          link_in_steam = '/',
                          price = '$ 200.00',
-                         pic = 'https://s.cs.money/XKSYtz5_preview.png'
+                         pic = 'https://s.cs.money/XKSYtz5_preview.png',
+                         stickers = ['https://pic.csgo.trade/pw7.jpg?v=22', 'https://pic.csgo.trade/pwe.jpg?v=22', 'https://pic.csgo.trade/rwl.jpg?v=22']
                      },
                      onHide = () => {
                      }
@@ -58,6 +59,10 @@ const Popover = ({
             </div>
 
             <div className="pic popoverMinin" style={{backgroundImage: `url(${pic})`}}/>
+
+            <div className="stickers">
+                {stickers.map((st, i) => <img alt="" key={i} src={st} width={40}/>)}
+            </div>
 
             <div className="footer">
                 <div className="days_left sm">Блокировка {days_left} дн.</div>

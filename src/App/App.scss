@@ -980,6 +980,14 @@ mark {
     margin-left: -$size-base;
     margin-right: -$size-base;
   }
+  .stickers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & > * {
+      width: 40px;
+    }
+  }
   .footer {
     .days_left {
       margin-bottom: $size-base / 2;
