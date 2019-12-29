@@ -178,6 +178,23 @@ mark {
   }
 }
 
+.metrics {
+  a {
+    color: inherit !important;
+  }
+}
+
+.input.dark, .select.dark {
+  padding: $size-base / 2;
+  background-color: rgba(255, 255, 255, .2);
+  color: $accent-color;
+  border: none;
+  &:focus {
+    background-color: $accent-color;
+    color: $primary-color;
+  }
+}
+
 ///////////// Color schemes ///////////////
 
 .box-transparent {
