@@ -4,14 +4,14 @@ import Filter from "../../Components/Filter"
 import ListScroll from "../../Components/ListScroll"
 import Popover from "../../Components/Popover"
 import DialogAction from "../../Components/DialogAction"
-import Purchase from "../../Components/Purchase"
 import img from "../../anychart.png"
+import Market from "../../Components/Market";
 
 const ModeMarket = ({skins: {user = [], popover = {}}, dispatch}) => {
 
     const [selected, setSelected] = useState([])
     const [metrics, setMetrics] = useState(null)
-    const [purchase, setPurchase] = useState({
+    const [market, setMarket] = useState({
         isActive: false
     })
 
@@ -71,14 +71,14 @@ const ModeMarket = ({skins: {user = [], popover = {}}, dispatch}) => {
             type: 'POPOVER_RESET'
         })
     }
-    const onPurchase = () => {
-        setPurchase(state => ({
+    const onMarket = () => {
+        setMarket(state => ({
             ...state,
             isActive: true
         }))
     }
     const handleReset = () => {
-        setPurchase(state => ({
+        setMarket(state => ({
             ...state,
             isActive: false
         }))
@@ -96,7 +96,7 @@ const ModeMarket = ({skins: {user = [], popover = {}}, dispatch}) => {
                             <h3 className="title-block row-group">Выбрано ({selected.length}) {selected.length ?
                                 `$ ${onTotalPrice(selected)}.00` : null}</h3>
                             <div
-                                onClick={onPurchase}
+                                onClick={onMarket}
                                 className="btn actionBtn align-center box-primary">
                                 <span>Продать</span>
                             </div>
@@ -183,9 +183,9 @@ const ModeMarket = ({skins: {user = [], popover = {}}, dispatch}) => {
                             </div>
                         </section>
                     </>}
-                {purchase.isActive ? (
+                {market.isActive ? (
                     <DialogAction>
-                        <Purchase skins={selected} handleReset={handleReset}/>
+                        <Market handleReset={handleReset}/>
                     </DialogAction>
                 ) : null}
             </main>
