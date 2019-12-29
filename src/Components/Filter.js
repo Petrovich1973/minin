@@ -139,14 +139,12 @@ const Detail = ({
         <table>
             <tbody>
             <tr>
-                <td colSpan={2} className="align-right">
+                <td colSpan={2}>
                     <h4>Скины</h4>
                 </td>
-                <td/>
             </tr>
             <tr>
-                <td className="indent"/>
-                <td className="align-right">
+                <td>
                     <small>Скины с блоком</small>
                 </td>
                 <td>
@@ -180,8 +178,7 @@ const Detail = ({
                 </td>
             </tr>
             <tr>
-                <td className="indent"/>
-                <td className="align-right">
+                <td>
                     <small>StatTrak</small>
                 </td>
                 <td>
@@ -199,8 +196,7 @@ const Detail = ({
                 </td>
             </tr>
             <tr>
-                <td className="indent"/>
-                <td className="align-right">
+                <td>
                     <small>Stickers</small>
                 </td>
                 <td>
@@ -218,8 +214,7 @@ const Detail = ({
                 </td>
             </tr>
             <tr>
-                <td className="indent"/>
-                <td className="align-right">
+                <td>
                     <small>Souvenir</small>
                 </td>
                 <td>
@@ -237,8 +232,7 @@ const Detail = ({
                 </td>
             </tr>
             <tr>
-                <td className="indent"/>
-                <td className="align-right">
+                <td>
                     <small>Nametag</small>
                 </td>
                 <td>
@@ -256,8 +250,7 @@ const Detail = ({
                 </td>
             </tr>
             <tr>
-                <td className="indent"/>
-                <td className="align-right">
+                <td>
                     <small>По цене</small>
                 </td>
                 <td>
@@ -292,8 +285,7 @@ const Detail = ({
                 </td>
             </tr>
             <tr>
-                <td className="indent"/>
-                <td className="align-right">
+                <td>
                     <small>Как искать</small>
                 </td>
                 <td>
@@ -318,8 +310,7 @@ const Detail = ({
                 </td>
             </tr>
             <tr>
-                <td className="indent"/>
-                <td className="align-right">
+                <td>
                     <small>По типу</small>
                 </td>
                 <td>
@@ -344,8 +335,7 @@ const Detail = ({
                 </td>
             </tr>
             <tr>
-                <td className="indent"/>
-                <td className="align-right">
+                <td>
                     <small>По качеству</small>
                 </td>
                 <td>
@@ -374,15 +364,13 @@ const Detail = ({
         <table>
             <tbody>
             <tr>
-                <td colSpan={2} className="align-right">
+                <td colSpan={2}>
                     &nbsp;
                     <h4>Наклейки</h4>
                 </td>
-                <td/>
             </tr>
             <tr>
-                <td className="indent"/>
-                <td className="align-right">
+                <td>
                     <small>Команды</small>
                 </td>
                 <td>
@@ -407,8 +395,7 @@ const Detail = ({
                 </td>
             </tr>
             <tr>
-                <td className="indent"/>
-                <td className="align-right">
+                <td>
                     <small>Коллекции</small>
                 </td>
                 <td>

@@ -30,7 +30,8 @@ html {
 body {
   margin: 0;
   height: 100vh;
-  overflow: auto;
+  width: 100vw;
+  overflow: hidden;
   font-size: $font-size;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
@@ -39,11 +40,11 @@ body {
   * {
     box-sizing: border-box;
   }
-  @media (max-width: 1000px) {
-    & {
-      font-size: 1.6vw;
-    }
-  }
+  //@media (max-width: 1000px) {
+  //  & {
+  //    font-size: 1.6vw;
+  //  }
+  //}
 }
 
 h1, h2, h3, h4 {
@@ -63,11 +64,20 @@ mark {
   background-color: lighten($orange-color, 30%);
 }
 
-.sm {
-  font-size: $font-sm;
+.input {
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: white;
+  padding: $size-base;
+  font-size: inherit;
+  font-family: inherit;
+  &.sm {
+    padding: $size-base / 2;
+  }
 }
 
-.btn:not(:disabled) {
+.btn {
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -79,6 +89,59 @@ mark {
   & > * + * {
     margin-left: $size-base / 2;
   }
+}
+
+.btn:disabled {
+  cursor: default;
+}
+
+.checkbox {
+  display: inline-block;
+  position: relative;
+  width: $size-base;
+  height: $size-base;
+  overflow: hidden;
+  border: 2px solid darken($accent-color, 10%);
+  input[type=checkbox] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 120%;
+    height: 120%;
+    z-index: 1;
+    visibility: hidden;
+    &:checked + span {
+      opacity: 1;
+    }
+  }
+  & > span {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scale(.5);
+    background-color: darken($accent-color, 10%);
+    opacity: 0;
+  }
+  &.radius {
+    border-radius: 100%;
+    & > span {
+      border-radius: 100%;
+    }
+  }
+}
+
+.sm {
+  font-size: $font-sm;
+}
+
+*:disabled {
+  opacity: .6;
+  cursor: not-allowed !important;
 }
 
 .align-center {
@@ -96,9 +159,47 @@ mark {
 .title-block {
   padding: 0 2px;
   margin: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nav {
+  .navItem {
+    cursor: pointer;
+    opacity: .4;
+    &:hover {
+      opacity: 1;
+    }
+    &.active {
+      opacity: 1;
+      cursor: default;
+    }
+  }
+}
+
+.metrics {
+  a {
+    color: inherit !important;
+  }
+}
+
+.input.dark, .select.dark {
+  padding: $size-base / 2;
+  background-color: rgba(255, 255, 255, .2);
+  color: $accent-color;
+  border: none;
+  &:focus {
+    background-color: $accent-color;
+    color: $primary-color;
+  }
 }
 
 ///////////// Color schemes ///////////////
+
+.box-transparent {
+  background-color: transparent;
+}
 
 .color-primary {
   color: $primary-color;
@@ -153,6 +254,59 @@ mark {
   color: $accent-color;
 }
 
+.input-group {
+  display: flex;
+  align-items: center;
+  & > .input {
+    padding-right: $size-base * 3;
+    & + * {
+      margin-left: -($size-base * 2);
+    }
+  }
+}
+
+.progress {
+  display: flex;
+  height: $size-base;
+  overflow: hidden;
+  font-size: .75rem;
+  background-color: #e9ecef;
+  .progress-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #399ab5;
+    -webkit-transition: width .6s ease;
+    transition: width .6s ease;
+    &.progress-bar-striped {
+      background-image: linear-gradient(
+                      45deg,
+                      hsla(0, 0%, 100%, .15) 25%,
+                      transparent 0,
+                      transparent 50%,
+                      hsla(0, 0%, 100%, .15) 0,
+                      hsla(0, 0%, 100%, .15) 75%,
+                      transparent 0,
+                      transparent);
+      background-size: 1rem 1rem;
+    }
+    &.progress-bar-animated {
+      animation: progress-bar-stripes 1s linear infinite;
+      @keyframes progress-bar-stripes {
+        0% {
+          background-position: 0 0
+        }
+        to {
+          background-position: 1rem 0
+        }
+      }
+    }
+  }
+}
+
 ///////////// end Color schemes ///////////////
 
 #root {
@@ -182,7 +336,7 @@ mark {
       color: $fontColor;
     }
     .app-logo {
-      a {
+      & > * {
         font-weight: 700;
         text-transform: uppercase;
         text-decoration: none;
@@ -298,6 +452,8 @@ mark {
     display: flex;
     flex: 1;
     height: 100%;
+    width: 100vw;
+    overflow: hidden;
     .sidebar {
       color: $accent-color;
       padding: $size-base;
@@ -334,6 +490,7 @@ mark {
           flex-direction: column;
           align-items: center;
           justify-content: center;
+          color: $primary-color;
           .btnConfirm {
             padding: $size-base;
           }
@@ -376,6 +533,7 @@ mark {
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                user-select: none;
                 i {
                   opacity: 0;
                 }
@@ -397,11 +555,32 @@ mark {
               }
             }
           }
+          .skinsWrapCenter {
+            width: 100%;
+            text-align: center;
+            .element {
+              float: none;
+              .title {
+                display: block;
+                width: 100%;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+              }
+              .foot {
+                justify-content: center;
+                .exterior {
+                  display: none;
+                }
+              }
+            }
+          }
         }
       }
 
       .list-scroll {
         height: 100%;
+        max-width: 100%;
         overflow: auto;
         flex-wrap: wrap;
         box-sizing: border-box;
@@ -413,16 +592,46 @@ mark {
           width: 8.33%;
           padding-top: 8.33%;
           position: relative;
+          user-select: none;
+          direction: ltr;
+
+          &.light {
+            background-color: rgba(255, 255, 255, .3);
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, .3);
+          }
+
+          &:hover *, &.light * {
+            opacity: 1;
+          }
 
           & > * {
+            @include dark-theme;
             position: absolute;
             top: 2px;
             bottom: 2px;
             left: 2px;
             right: 2px;
-            @include flex-horizontal;
-            justify-content: center;
-            @include dark-theme;
+            padding: 6px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-size: 70%;
+            line-height: 1;
+            text-shadow: 2px 2px #000;
+            & > * {
+              opacity: .7;
+            }
+            .title {
+              font-size: 90%;
+            }
+            .foot {
+              display: flex;
+              justify-content: space-between;
+            }
           }
           @media (max-width: 1400px) {
             & {
@@ -454,6 +663,12 @@ mark {
       aside {
         flex: 0 0 19.4vw;
         position: relative;
+        .actionBtn {
+          padding: $size-base;
+          &:hover {
+            background-color: lighten($primary-color, 5%);
+          }
+        }
         &[class^=side-] {
           .list-scroll {
             padding: 1rem;
@@ -531,16 +746,6 @@ mark {
   text-decoration: none;
 }
 
-.input {
-  display: block;
-  width: 100%;
-  border: none;
-  background-color: white;
-  padding: $size-base;
-  font-size: inherit;
-  font-family: inherit;
-}
-
 .filter {
   position: relative;
   display: flex;
@@ -560,6 +765,9 @@ mark {
       background-color: $accent-color;
       color: $primary-color;
     }
+  }
+  .select {
+    height: ($size-base * 2.3);
   }
   .icon {
     display: inline-block;
@@ -602,6 +810,7 @@ mark {
     animation-duration: 400ms;
     animation-name: slidein;
     animation-fill-mode: forwards;
+    text-align: center;
     @keyframes slidein {
       to {
         transform: scale(1);
@@ -612,6 +821,7 @@ mark {
     }
     table {
       display: inline-table;
+      text-align: left;
       td {
         padding: ($size-base / 2) 0;
       }
@@ -699,13 +909,6 @@ mark {
   overflow: visible !important;
 }
 
-.popover {
-  box-shadow: 0 5px 10px 0 #000;
-  img {
-    display: block;
-  }
-}
-
 .row-group {
   @include flex-horizontal;
   justify-content: center;
@@ -740,6 +943,92 @@ mark {
       }
     }
   }
+}
+
+.popover {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  background-color: $accent-color;
+  color: $primary-color;
+  border: 1px solid #000;
+  width: 266px;
+  height: 437px;
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow: auto;
+  text-align: left;
+  box-shadow: 0 5px 10px 0 #000;
+  img {
+    display: block;
+  }
+  .header {
+    .title {
+      font-size: 120%;
+      text-align: center;
+    }
+    .sup {
+      text-align: center;
+    }
+    .exterior {
+      font-size: 86%;
+      text-align: center;
+    }
+  }
+  .pic {
+    flex: 1;
+    margin-left: -$size-base;
+    margin-right: -$size-base;
+  }
+  .footer {
+    .days_left {
+      margin-bottom: $size-base / 2;
+      text-align: center;
+    }
+    .float_label {
+      font-size: 86%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .float_chart {
+      position: relative;
+      padding: ($size-base / 2) 0;
+      & > *:not(.current) {
+        height: 4px;
+        float: left;
+      }
+      .current {
+        position: absolute;
+        top: 0;
+        left: 0%;
+        width: 1px;
+        height: 100%;
+        background-color: $primary-color;
+      }
+    }
+    .links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      & > * {
+        padding: $size-base / 2;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: $primary-color;
+      }
+    }
+    .price {
+      font-size: 160%;
+      text-align: center;
+    }
+  }
+}
+
+.popoverMinin {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .horizontal-slider {
@@ -778,12 +1067,15 @@ mark {
 }
 
 .container {
-  margin: 0 auto;
+  display: block;
   padding: 0 $size-base;
-  width: 1400px;
   max-width: 100%;
-  &.x-1000 {
-    width: 1000px;
+  & > * {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    width: 800px;
   }
 }
 
@@ -819,7 +1111,6 @@ mark {
   display: flex;
   justify-content: center;
   padding: 0;
-  margin: 0 -($size-base);
   list-style: none;
   & > * {
     font-size: 80%;
@@ -840,6 +1131,16 @@ mark {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  .input, .select {
+    padding: $size-base / 2;
+    background-color: rgba(255, 255, 255, .2);
+    color: $fontColor;
+    border: none;
+    &:focus {
+      background-color: $accent-color;
+      color: $primary-color;
+    }
+  }
 }
 
 .paymentList {
@@ -848,13 +1149,17 @@ mark {
   margin: 0 -($size-base);
   list-style: none;
   & > * {
-    margin: $size-base;
+    margin: $size-base / 2;
     padding: $size-base;
     display: flex;
     flex-direction: column;
+    align-items: center;
     cursor: pointer;
-    opacity: .7;
+    opacity: .6;
     border: ($size-base / 2) solid lighten($primary-color, 30%);
+    span {
+      font-size: 80%;
+    }
     &:hover, &.active {
       opacity: 1;
       border-color: $primary-color;
@@ -940,129 +1245,6 @@ main#home {
 }
 
 ////////////////// end Home /////////////////
-
-////////////////// Profile /////////////////
-
-.profile-page {
-  height: 100%;
-  display: flex;
-  align-items: flex-start;
-  @media (max-width: 1000px) {
-    & {
-      flex-direction: column;
-      align-items: center;
-    }
-  }
-  & > * {
-    margin: $size-base;
-  }
-  .avatar {
-    position: relative;
-    overflow: hidden;
-    width: 400px;
-    padding-top: 100%;
-    border-radius: 100%;
-    img {
-      display: block;
-      position: absolute;
-      width: 100%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    &:after {
-      display: block;
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      border-radius: 100%;
-      box-shadow: inset 0 0 80px 0 rgba(0, 0, 0, .7);
-    }
-  }
-  .metrics {
-    table {
-      tr {
-        td {
-          text-align: left;
-          vertical-align: top;
-          padding: $size-base;
-          border-bottom: 1px dotted $primary-color;
-          &:first-child {
-            text-align: right;
-            white-space: nowrap;
-            font-size: $font-sm + 4;
-            font-weight: 500;
-            border-right: 1px dotted $primary-color;
-          }
-          .input {
-            display: block;
-            padding: $size-base;
-            margin: -($size-base) 0;
-            width: 100%;
-          }
-        }
-        &:last-child {
-          td {
-            border-bottom: none;
-          }
-        }
-      }
-    }
-  }
-}
-
-////////////////// end Profile /////////////////
-
-////////////////// Settings /////////////////
-
-.settings-page {
-  height: 100%;
-  width: 900px;
-  table {
-    display: inline-table;
-    width: 800px;
-    max-width: 100%;
-    margin: 0 auto;
-    tr {
-      td {
-        text-align: left;
-        vertical-align: top;
-        padding: $size-base;
-        border-bottom: 1px dotted $primary-color;
-        &:first-child {
-          text-align: right;
-          white-space: nowrap;
-          font-size: $font-sm + 4;
-          font-weight: 500;
-          width: 1%;
-          white-space: nowrap;
-        }
-        .input, .select {
-          padding: $size-base / 2;
-          margin-top: -($size-base / 2);
-          margin-bottom: -($size-base / 2);
-          background-color: rgba(255, 255, 255, .2);
-          color: $accent-color;
-          border: none;
-          &:focus {
-            background-color: $accent-color;
-            color: $primary-color;
-          }
-        }
-      }
-      &:last-child {
-        td {
-          border-bottom: none;
-        }
-      }
-    }
-  }
-}
-
-////////////////// end Settings /////////////////
 
 @media (max-width: 1000px) {
   .medium-hide1000 {
