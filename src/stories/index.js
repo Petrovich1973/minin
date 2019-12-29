@@ -22,6 +22,7 @@ import ReplenishBalance from "../Components/ReplenishBalance";
 import Purchase from "../Components/Purchase";
 import DialogAction from "../Components/DialogAction";
 import Exchange from "../Components/Exchange";
+import img from "../anychart.png";
 
 //////////////////////
 storiesOf('Модули', module)
@@ -136,6 +137,66 @@ storiesOf('Модули', module)
                         skinsUser={[...Array(number('Количество скинов', 10)).keys()]
                             .map(el => ({id: el + 1, price: 2132}))}/>
                 </DialogAction>
+            </section>
+        </main>
+    </div>)
+    .add('Market', () => <div className="main">
+        <main>
+            <aside style={{flex: 0, padding: '0 1rem'}}>
+                <div
+                    title="Отменить"
+                    className="align-center pointer effect_01"
+                    style={{fontSize: '300%'}}
+                    onClick={() => {
+                    }}><span>&#10005;</span></div>
+            </aside>
+            <aside className="side-left metrics" style={{flex: '0 0 20vw'}}>
+                <h3 className="title-block row-group">Наименование скина</h3>
+                <Popover {...{
+                    position: {x: 0, y: 0},
+                    style: {
+                        position: 'relative',
+                        boxShadow: 'none',
+                        border: 'none',
+                        background: 'transparent',
+                        color: 'inherit',
+                        width: '100%',
+                        height: 500,
+                        flexDirection: 'column-reverse'
+                    },
+                    content: {
+                        title: '',
+                        float_value: 0.6456456354,
+                        price: `$ ${3000}.00`
+                    }
+                }}/>
+            </aside>
+            <aside style={{flex: '0 0 15vw', padding: '0 1rem'}}>
+                <h3 className="title-block row-group">Цена продажи</h3>
+                <div style={{padding: '1rem 0'}}>
+                    <input
+                        className="input dark"
+                        value={3000}
+                        onChange={e => {
+                        }}/>
+                </div>
+                <div style={{padding: '1rem 0'}}>
+                    <button
+                        style={{padding: '1rem', width: '100%'}}
+                        className="btn btnConfirm box-primary"
+                        onClick={() => {
+                        }}>Добавить для продажи
+                    </button>
+                </div>
+            </aside>
+            <section style={{flex: 1, padding: '0 1rem'}}>
+                <h3 className="title-block row-group">График цен на площадке продажи</h3>
+                <div className="list-scroll">
+                    <img
+                        style={{display: 'block', width: '100%'}}
+                        alt={''}
+                        src={img}/>
+                </div>
             </section>
         </main>
     </div>)
