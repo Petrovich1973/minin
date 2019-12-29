@@ -21,6 +21,7 @@ import Popover from "../Components/Popover";
 import ReplenishBalance from "../Components/ReplenishBalance";
 import Purchase from "../Components/Purchase";
 import DialogAction from "../Components/DialogAction";
+import Exchange from "../Components/Exchange";
 
 //////////////////////
 storiesOf('Модули', module)
@@ -110,17 +111,30 @@ storiesOf('Модули', module)
     }}/>)
     .add('Replenishment', () => <div className="main">
         <main>
-            <section style={{height: '100vh'}} className="storybook-for-scroll-list">
+            <section style={{height: '100vh', overflow: 'auto'}} className="storybook-for-scroll-list">
                 <ReplenishBalance/>
             </section>
         </main>
     </div>)
     .add('Purchase', () => <div className="main">
         <main>
-            <section style={{height: '100vh'}} className="storybook-for-scroll-list">
+            <section style={{height: '100vh', overflow: 'auto'}} className="storybook-for-scroll-list">
                 <DialogAction>
                     <Purchase skins={[...Array(number('Количество скинов', 8)).keys()]
                         .map(el => ({id: el + 1, price: 2341}))}/>
+                </DialogAction>
+            </section>
+        </main>
+    </div>)
+    .add('Exchange', () => <div className="main">
+        <main>
+            <section style={{height: '100vh', overflow: 'auto'}} className="storybook-for-scroll-list">
+                <DialogAction>
+                    <Exchange
+                        skinsBot={[...Array(number('Количество скинов', 10)).keys()]
+                            .map(el => ({id: el + 1, price: 2341}))}
+                        skinsUser={[...Array(number('Количество скинов', 10)).keys()]
+                            .map(el => ({id: el + 1, price: 2132}))}/>
                 </DialogAction>
             </section>
         </main>
