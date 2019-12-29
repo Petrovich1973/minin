@@ -23,6 +23,7 @@ import Purchase from "../Components/Purchase";
 import DialogAction from "../Components/DialogAction";
 import Exchange from "../Components/Exchange";
 import img from "../anychart.png";
+import Steam from "../Components/Steam";
 
 //////////////////////
 storiesOf('Модули', module)
@@ -197,6 +198,16 @@ storiesOf('Модули', module)
                         alt={''}
                         src={img}/>
                 </div>
+            </section>
+        </main>
+    </div>)
+    .add('MoveToSteam', () => <div className="main">
+        <main>
+            <section style={{height: '100vh', overflow: 'auto'}} className="storybook-for-scroll-list">
+                <DialogAction>
+                    <Steam skinsUser={[...Array(number('Количество скинов', 8)).keys()]
+                        .map(el => ({id: el + 1, price: 2341}))}/>
+                </DialogAction>
             </section>
         </main>
     </div>)
