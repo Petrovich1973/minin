@@ -144,7 +144,31 @@ mark {
 
 .title-block {
   padding: 0 2px;
-  margin: 1rem; }
+  margin: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+.nav .navItem {
+  cursor: pointer;
+  opacity: .4; }
+  .nav .navItem:hover {
+    opacity: 1; }
+  .nav .navItem.active {
+    opacity: 1;
+    cursor: default; }
+
+.metrics a {
+  color: inherit !important; }
+
+.input.dark, .select.dark {
+  padding: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #f8f9fa;
+  border: none; }
+  .input.dark:focus, .select.dark:focus {
+    background-color: #f8f9fa;
+    color: #343a40; }
 
 .box-transparent {
   background-color: transparent; }
@@ -787,6 +811,12 @@ mark {
     flex: 1 1;
     margin-left: -1rem;
     margin-right: -1rem; }
+  .popover .stickers {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .popover .stickers > * {
+      width: 40px; }
   .popover .footer .days_left {
     margin-bottom: 0.5rem;
     text-align: center; }
