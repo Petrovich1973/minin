@@ -567,9 +567,6 @@ mark {
                   width: 16px;
                 }
               }
-              .confirmation {
-                display: block;
-              }
               .title {
                 display: block;
                 width: 100%;
@@ -599,8 +596,10 @@ mark {
         .element {
           float: left;
           display: inline-flex;
-          width: 8.33%;
-          padding-top: 8.33%;
+          //width: 8.33%;
+          //padding-top: 8.33%;
+          width: 12.5%;
+          padding-top: 12.5%;
           position: relative;
           user-select: none;
           direction: ltr;
@@ -654,7 +653,7 @@ mark {
               }
             }
             .confirmation {
-              display: none;
+              display: block;
               position: absolute;
               top: 10%;
               right: 10%;

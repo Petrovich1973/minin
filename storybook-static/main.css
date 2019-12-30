@@ -466,7 +466,11 @@ mark {
             width: 100%;
             text-align: center; }
             #root .main main > *.DialogAction .skinsWrapCenter .element {
-              float: none; }
+              float: none;
+              width: 12.5%;
+              padding-top: 12.5%; }
+              #root .main main > *.DialogAction .skinsWrapCenter .element .stickers > * {
+                width: 16px; }
               #root .main main > *.DialogAction .skinsWrapCenter .element .title {
                 display: block;
                 width: 100%;
@@ -487,8 +491,8 @@ mark {
         #root .main main .list-scroll .element {
           float: left;
           display: inline-flex;
-          width: 8.33%;
-          padding-top: 8.33%;
+          width: 12.5%;
+          padding-top: 12.5%;
           position: relative;
           -webkit-user-select: none;
              -moz-user-select: none;
@@ -520,6 +524,43 @@ mark {
             text-shadow: 2px 2px #000; }
             #root .main main .list-scroll .element > * > * {
               opacity: .7; }
+            #root .main main .list-scroll .element > * .stickers {
+              opacity: 1;
+              position: absolute;
+              right: 2px;
+              top: 2px;
+              bottom: 2px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center; }
+              #root .main main .list-scroll .element > * .stickers > * {
+                margin: 2px; }
+                #root .main main .list-scroll .element > * .stickers > *:hover {
+                  -webkit-transform: scale(3);
+                          transform: scale(3); }
+            #root .main main .list-scroll .element > * .confirmation {
+              display: block;
+              position: absolute;
+              top: 10%;
+              right: 10%;
+              width: 30%;
+              padding-top: 30%;
+              border-radius: 100%;
+              background-color: #f8f9fa;
+              overflow: hidden; }
+              #root .main main .list-scroll .element > * .confirmation.check:before {
+                position: absolute;
+                display: block;
+                content: '';
+                background-color: #2f804c;
+                width: 60%;
+                padding-top: 60%;
+                border-radius: 100%;
+                top: 50%;
+                left: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                        transform: translate(-50%, -50%); }
             #root .main main .list-scroll .element > * .title {
               font-size: 90%; }
             #root .main main .list-scroll .element > * .foot {

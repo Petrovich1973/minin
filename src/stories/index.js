@@ -108,7 +108,10 @@ storiesOf('Модули', module)
             title: text('Наименование', 'StatTrak™ Керамбит'),
             float_value: number('Float', 0.3006860896),
             exterior: '',
-            pic: text('Изображение скина https://s.cs.money/LMc1Q9f_preview.png?v=22', 'https://s.cs.money/XKSYtz5_preview.png')
+            pic: text('Изображение скина https://s.cs.money/LMc1Q9f_preview.png?v=22', 'https://s.cs.money/XKSYtz5_preview.png'),
+            stickers: [
+                'https://pic.csgo.trade/pq6.jpg?v=22',
+                'https://pic.csgo.trade/pw7.jpg?v=22']
         }
     }}/>)
     .add('Replenishment', () => <div className="main">
@@ -123,7 +126,11 @@ storiesOf('Модули', module)
             <section style={{height: '100vh', overflow: 'auto'}} className="storybook-for-scroll-list">
                 <DialogAction>
                     <Purchase skins={[...Array(number('Количество скинов', 8)).keys()]
-                        .map(el => ({id: el + 1, price: 2341}))}/>
+                        .map(el => ({
+                            id: el + 1, price: 2341, stickers: [
+                                'https://pic.csgo.trade/pq6.jpg?v=22',
+                                'https://pic.csgo.trade/pw7.jpg?v=22']
+                        }))}/>
                 </DialogAction>
             </section>
         </main>
@@ -134,9 +141,17 @@ storiesOf('Модули', module)
                 <DialogAction>
                     <Exchange
                         skinsBot={[...Array(number('Количество скинов', 10)).keys()]
-                            .map(el => ({id: el + 1, price: 2341}))}
+                            .map(el => ({
+                                id: el + 1, price: 2341, stickers: [
+                                    'https://pic.csgo.trade/pq6.jpg?v=22',
+                                    'https://pic.csgo.trade/pw7.jpg?v=22']
+                            }))}
                         skinsUser={[...Array(number('Количество скинов', 10)).keys()]
-                            .map(el => ({id: el + 1, price: 2132}))}/>
+                            .map(el => ({
+                                id: el + 1, price: 2132, stickers: [
+                                    'https://pic.csgo.trade/pq6.jpg?v=22',
+                                    'https://pic.csgo.trade/pw7.jpg?v=22']
+                            }))}/>
                 </DialogAction>
             </section>
         </main>
@@ -168,7 +183,10 @@ storiesOf('Модули', module)
                     content: {
                         title: '',
                         float_value: 0.6456456354,
-                        price: `$ ${3000}.00`
+                        price: `$ ${3000}.00`,
+                        stickers: [
+                            'https://pic.csgo.trade/pq6.jpg?v=22',
+                            'https://pic.csgo.trade/pw7.jpg?v=22']
                     }
                 }}/>
             </aside>
@@ -206,7 +224,11 @@ storiesOf('Модули', module)
             <section style={{height: '100vh', overflow: 'auto'}} className="storybook-for-scroll-list">
                 <DialogAction>
                     <Steam skinsUser={[...Array(number('Количество скинов', 8)).keys()]
-                        .map(el => ({id: el + 1, price: 2341}))}/>
+                        .map(el => ({
+                            id: el + 1, price: 2341, stickers: [
+                                'https://pic.csgo.trade/pq6.jpg?v=22',
+                                'https://pic.csgo.trade/pw7.jpg?v=22']
+                        }))}/>
                 </DialogAction>
             </section>
         </main>
