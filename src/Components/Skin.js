@@ -14,7 +14,8 @@ const Skin = ({
                       float = 0.01,
                       star = false,
                       price = 3000,
-                      pic = ''
+                      pic = '',
+                      stickers = []
                   },
                   isPopover = null,
                   onClick = () => {
@@ -70,15 +71,19 @@ const Skin = ({
                         link_on_bot: 'https://s.cs.money/afb7Guo_image.jpg',
                         link_in_steam: 'https://s.cs.money/afb7Guo_image.jpg',
                         price: `$ ${price}.00`,
-                        pic: pic || skin
+                        pic: pic || skin,
+                        stickers
                     }
                 }
                 onRightClick(popover)
             }}>
                 <span style={{backgroundImage: `url(${pic || skin})`}}>
+                    <div className="stickers">
+                        {stickers.map((st, i) => <img alt="" key={i} src={st} width={24}/>)}
+                    </div>
                     <span className="title">{star && <i className="fa fa-star" title="StatTrak"/>} {title}</span>
                     <span className="foot">
-                        <span className="price">$ {price}.00</span>
+                        <span className="price">{price}.00</span>
                         <span className="exterior">{floatRender(float, 'label')}</span>
                     </span>
                 </span>

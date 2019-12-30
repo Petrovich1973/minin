@@ -560,6 +560,13 @@ mark {
             text-align: center;
             .element {
               float: none;
+              width: 12.5%;
+              padding-top: 12.5%;
+              .stickers {
+                & > * {
+                  width: 16px;
+                }
+              }
               .title {
                 display: block;
                 width: 100%;
@@ -624,6 +631,24 @@ mark {
             text-shadow: 2px 2px #000;
             & > * {
               opacity: .7;
+            }
+            .stickers {
+              opacity: 1;
+              position: absolute;
+              right: 2px;
+              top: 2px;
+              bottom: 2px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              //background-color: rgba(255, 255, 255, .2);
+              & > * {
+                margin: 2px;
+                &:hover {
+                  transform: scale(3);
+                }
+              }
             }
             .title {
               font-size: 90%;

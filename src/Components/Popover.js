@@ -17,7 +17,7 @@ const Popover = ({
                          link_in_steam = '/',
                          price = '$ 200.00',
                          pic = 'https://s.cs.money/XKSYtz5_preview.png',
-                         stickers = ['https://pic.csgo.trade/pw7.jpg?v=22', 'https://pic.csgo.trade/pwe.jpg?v=22', 'https://pic.csgo.trade/rwl.jpg?v=22']
+                         stickers = []
                      },
                      onHide = () => {
                      }

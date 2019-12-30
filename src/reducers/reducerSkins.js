@@ -19,6 +19,18 @@ const randomTitles = [
     'USP-S',
     'StatTrak™ Talon Knife'
 ]
+const stickers = [
+    'https://pic.csgo.trade/pq6.jpg?v=22',
+    'https://pic.csgo.trade/pw7.jpg?v=22',
+    'https://pic.csgo.trade/pwe.jpg?v=22',
+    'https://pic.csgo.trade/rwl.jpg?v=22',
+    'https://pic.csgo.trade/jc7.jpg?v=22',
+    'https://pic.csgo.trade/pkb.jpg?v=22',
+    'https://pic.csgo.trade/udv.jpg?v=22',
+    'https://pic.csgo.trade/u96.jpg?v=22',
+    'https://pic.csgo.trade/v71.jpg?v=22',
+    'https://pic.csgo.trade/v3t.jpg?v=22'
+]
 const randomIntFromInterval = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
@@ -31,7 +43,8 @@ export const initialState = {
             float: Math.random(),
             star: Math.random() >= 0.5,
             price: randomIntFromInterval(1, 14000),
-            pic: randomUrlsPic[Math.floor(Math.random() * randomUrlsPic.length)]
+            pic: randomUrlsPic[Math.floor(Math.random() * randomUrlsPic.length)],
+            stickers: [...Array(randomIntFromInterval(0, 4)).keys()].map(() => stickers[Math.floor(Math.random() * stickers.length)])
         })),
     bot: [...Array(240).keys()]
         .map(skin => ({
@@ -40,7 +53,8 @@ export const initialState = {
             float: Math.random(),
             star: Math.random() >= 0.5,
             price: randomIntFromInterval(1, 14000),
-            pic: randomUrlsPic[Math.floor(Math.random() * randomUrlsPic.length)]
+            pic: randomUrlsPic[Math.floor(Math.random() * randomUrlsPic.length)],
+            stickers: [...Array(randomIntFromInterval(0, 4)).keys()].map(() => stickers[Math.floor(Math.random() * stickers.length)])
         })),
     popover: {
         isOpen: false,

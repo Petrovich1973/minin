@@ -148,7 +148,8 @@ const ModeMarket = ({skins: {user = [], popover = {}}, dispatch}) => {
                                     title: '',
                                     float_value: metrics.float,
                                     pic: metrics.pic,
-                                    price: `$ ${metrics.price}.00`
+                                    price: `$ ${metrics.price}.00`,
+                                    stickers: metrics.stickers
                                 }
                             }}/>
                         </aside>
