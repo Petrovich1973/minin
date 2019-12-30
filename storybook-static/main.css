@@ -491,8 +491,8 @@ mark {
         #root .main main .list-scroll .element {
           float: left;
           display: inline-flex;
-          width: 12.5%;
-          padding-top: 12.5%;
+          width: 8.33%;
+          padding-top: 8.33%;
           position: relative;
           -webkit-user-select: none;
              -moz-user-select: none;
