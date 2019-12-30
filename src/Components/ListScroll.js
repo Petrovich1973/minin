@@ -10,7 +10,11 @@ const ListScroll = ({
                         },
                         onHidePopover = () => {
                         },
-                        popoverId = null
+                        popoverId = null,
+                        isConfirm = false,
+                        valueConfirm = [],
+                        onClickConfirmation = () => {
+                        }
                     }) => {
 
     const scrollNode = useRef(null)
@@ -30,6 +34,7 @@ const ListScroll = ({
     return (
         <div className="list-scroll" style={{direction}} ref={scrollNode}>
             {list.map((skin, idx) => {
+                const checkConfirm = valueConfirm.includes(skin.id)
                 return (
                     <Skin
                         key={idx}
@@ -37,7 +42,10 @@ const ListScroll = ({
                         onClick={onClickSkin}
                         onRightClick={handleRightClickSkin}
                         hide={onHidePopover}
-                        isPopover={popoverId === skin.id}/>
+                        isPopover={popoverId === skin.id}
+                        isConfirm={isConfirm}
+                        valueConfirm={checkConfirm}
+                        onClickConfirmation={onClickConfirmation}/>
                 )
             })}
         </div>

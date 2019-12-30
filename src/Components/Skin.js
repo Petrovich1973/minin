@@ -21,6 +21,10 @@ const Skin = ({
                   onClick = () => {
                   },
                   onRightClick = () => {
+                  },
+                  isConfirm = false,
+                  valueConfirm = false,
+                  onClickConfirmation = () => {
                   }
               }) => {
 
@@ -86,6 +90,11 @@ const Skin = ({
                         <span className="price">{price}.00</span>
                         <span className="exterior">{floatRender(float, 'label')}</span>
                     </span>
+                    {isConfirm ?
+                        <i
+                            title="Подтвердить"
+                            className={classnames("confirmation", valueConfirm && "check")}
+                            onClick={() => onClickConfirmation(id)}/> : null}
                 </span>
         </div>
     )

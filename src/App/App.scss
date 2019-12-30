@@ -567,6 +567,9 @@ mark {
                   width: 16px;
                 }
               }
+              .confirmation {
+                display: block;
+              }
               .title {
                 display: block;
                 width: 100%;
@@ -648,6 +651,29 @@ mark {
                 &:hover {
                   transform: scale(3);
                 }
+              }
+            }
+            .confirmation {
+              display: none;
+              position: absolute;
+              top: 10%;
+              right: 10%;
+              width: 30%;
+              padding-top: 30%;
+              border-radius: 100%;
+              background-color: $accent-color;
+              overflow: hidden;
+              &.check:before {
+                position: absolute;
+                display: block;
+                content: '';
+                background-color: $green-color;
+                width: 60%;
+                padding-top: 60%;
+                border-radius: 100%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
               }
             }
             .title {
