@@ -117,7 +117,7 @@ const ModeMoveToSteam = () => {
                 </ul>
                 <button
                     className="btn"
-                    onClick={handleClickBtn}>Завершить выврд
+                    onClick={handleClickBtn}>Завершить вывод
                 </button>
 
             </DialogAction> : null}

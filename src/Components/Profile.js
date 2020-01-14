@@ -117,7 +117,7 @@ const Profile = () => {
                                             <tr>
                                                 <td>History</td>
                                                 <td/>
-                                                <td><Link to={'/transactions'}>Транзакции</Link></td>
+                                                <td><Link className="color-light" to={'/transactions'}>Транзакции</Link></td>
                                             </tr>
                                             </tbody>
                                         </table>

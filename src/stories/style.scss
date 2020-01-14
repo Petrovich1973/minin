@@ -1,0 +1,47 @@
+.storybook-colors-box {
+  display: flex;
+  padding: 1rem;
+  background-color: #a1adb4;
+  & > * {
+    width: 50%;
+    & > * {
+      padding: 1rem;
+    }
+  }
+}
+.info__overlay {
+  & > div {
+    width: 100%;
+  }
+}
+.inner_post {
+  padding: 2rem;
+}
+.buttons-list {
+  padding: 1rem;
+  .btn {
+    display: inline-flex;
+  }
+}
+.storybook-for-scroll-list {
+  .skinsWrapCenter {
+    width: 800px;
+    text-align: center;
+    .element {
+      float: none !important;
+      .title {
+        display: block !important;
+        width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+      .foot {
+        justify-content: center !important;
+        .exterior {
+          display: none;
+        }
+      }
+    }
+  }
+}

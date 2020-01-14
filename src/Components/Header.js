@@ -1,77 +1,68 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-const Header = ({user}) => (
+const Header = ({user: {
+                    login = 'UserLogin',
+                    avatar = 'https://cdn.pixabay.com/photo/2016/11/24/21/39/sexy-1857310_960_720.jpg',
+                    balance = '',
+                    currency = ''
+                }}) => (
     <header>
         <div>
             <div className="app-logo">
-                <Link to={'/'}>Logo$type</Link>
+                <span>Logo$type</span>
             </div>
         </div>
         <div className="group-center">
             <div className="nav">
                 <ul className="navbar">
-                    {/*<li className="medium-hide768">
-                        <Link to="/faq"><i className="fa fa-question-circle-o"/>
-                            <nobr>F.A.Q.</nobr>
-                        </Link>
-                    </li>*/}
-                    {user.auth ? <li className="medium-hide1000">
+                    <li className="medium-hide1000">
                         <Link to="/profile"><i className="fa fa-angle-double-down color-green"/>
                             <nobr className="color-green">5% комиссия</nobr>
                         </Link>
-                    </li> : null}
+                    </li>
                 </ul>
             </div>
-            {user.auth ? <div className="user">
+            <div className="user">
                 <div className="user-balance">
-                    <nobr>$ 2 000.34</nobr>
+                    <nobr>{currency} {balance}</nobr>
                 </div>
                 <div className="user-avatar">
-                    <img src={user.avatar_img} alt=""/>
+                    <img src={avatar} alt=""/>
                 </div>
-                <div className="user-name" title={user.login || "minin-deniska@gmail.com"}>
-                    <nobr>{user.login || "minin-deniska@gmail.com"}</nobr>
+                <div className="user-name" title={login || "minin-deniska@gmail.com"}>
+                    <nobr>{login || "minin-deniska@gmail.com"}</nobr>
                 </div>
                 <div className="drop-down">
                     <ul>
                         <li>
-                            <Link to="/replenish-balance">
+                            <Link className="item" to="/balance-replenishment">
                                 <i className="fa fa-plus-circle"/>
-                                <span>Пополнить баланс</span>
+                                <nobr>Пополнить баланс</nobr>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/profile">
+                            <Link className="item" to="/profile">
                                 <i className="fa fa-user-o"/>
-                                <span>You profile</span>
+                                <nobr>You profile</nobr>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/transactions">
+                            <Link className="item" to="/transactions">
                                 <i className="fa fa-exchange"/>
-                                <span>Проведенные транзакции</span>
+                                <nobr>Проведенные транзакции</nobr>
                             </Link>
                         </li>
-                        <li className="box-green">
+                        <li className="item box-green">
                             <i className="fa fa-check"/>
-                            <span>Ссылка на обмен</span>
+                            <nobr>Ссылка на обмен</nobr>
                         </li>
                     </ul>
                 </div>
-            </div> : null}
-            {/*{user.auth ? <div className="nav">
-                <ul className="navbar">
-                    <li className="medium-hide1000">
-                        <Link to="/settings"><i className="fa fa-cogs"/>
-                            <nobr>View settings</nobr>
-                        </Link>
-                    </li>
-                </ul>
-            </div> : null}*/}
+            </div>
         </div>
         <div className="align-right">
-            {user.auth ? <a className="logout" href="/">Log out</a> : null}
+            <Link className="logout" to="/">Log out</Link>
         </div>
     </header>
 )

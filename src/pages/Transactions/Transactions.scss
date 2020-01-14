@@ -1,0 +1,27 @@
+@import "../../App/App.scss";
+
+.Transactions {
+  flex-direction: column;
+  .flexCenter {
+    display: flex;
+    justify-content: center;
+  }
+  table {
+    tr {
+      &:hover {
+        @include dark-theme;
+      }
+      td {
+        padding: $size-base;
+        white-space: nowrap;
+        text-align: left;
+        vertical-align: top;
+        border-bottom: 1px dotted darken($accent-color, 50%);
+        .label {
+          font-size: $font-sm;
+          padding: ($size-base / 4) $size-base / 2;
+        }
+      }
+    }
+  }
+}

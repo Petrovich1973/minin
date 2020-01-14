@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import {UserConsumer} from '../UserContext'
 
 const options = {
@@ -30,39 +30,6 @@ const Settings = () => {
                             <div className="settings-page container list-scroll" style={{flex: 1}}>
                                 <table>
                                     <tbody>
-                                    <tr>
-                                        <td>Avatar</td>
-                                        <td><input
-                                            type="text"
-                                            className="input"
-                                            onChange={e => handleChangeLogin({
-                                                ...user,
-                                                avatar_img: e.target.value
-                                            })}
-                                            value={user.avatar_img}/></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Background-color</td>
-                                        <td><input
-                                            type="text"
-                                            className="input"
-                                            onChange={e => handleChangeLogin({
-                                                ...user,
-                                                background: e.target.value
-                                            })}
-                                            value={user.background}/></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Font Color</td>
-                                        <td><input
-                                            type="text"
-                                            className="input"
-                                            onChange={e => handleChangeLogin({
-                                                ...user,
-                                                color: e.target.value
-                                            })}
-                                            value={user.color}/></td>
-                                    </tr>
                                     <tr>
                                         <td>Отображать Float на скинах</td>
                                         <td>

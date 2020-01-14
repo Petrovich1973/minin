@@ -14,9 +14,6 @@ const Step_0 = ({
                 }) => (
     <div className="wizard-current">
         <h4>Выберите способ оплаты</h4>
-        <p>
-            <button onClick={() => handleChangeStep(1)}>Далее</button>
-        </p>
         <ul className="payList selectItem">
             {Object.keys(paySystems).map((pay, idx) => {
                 const isActive = paySystem === pay
@@ -30,6 +27,11 @@ const Step_0 = ({
                 )
             })}
         </ul>
+        <p>
+            {paySystem.length ?
+                <button className="btn" onClick={() => handleChangeStep(1)}>Далее</button> :
+                null}
+        </p>
     </div>
 )
 

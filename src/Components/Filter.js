@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
-import ReactSlider from "react-slider";
+import ReactSlider from "react-slider"
+import onClickOutside from "react-onclickoutside"
 
 const options = {
     type: [
@@ -123,7 +124,7 @@ const Detail = ({
                     price: {from = '', to = ''},
                     type = 0,
                     quality = 0,
-                    skins = 0,
+                    skins = 1,
                     blocked = true,
                     blockedDays = 8,
                     StatTrak = false,
@@ -151,14 +152,15 @@ const Detail = ({
                         <i
                             className="icon fa fa-toggle-on pointer"
                             onClick={() => handleChangeFieldFilter({
-                            blocked: !blocked
-                        })}/> :
+                                blocked: !blocked
+                            })}/> :
                         <i
                             className="icon fa fa-toggle-off pointer"
                             onClick={() => handleChangeFieldFilter({
-                            blocked: !blocked
-                        })}/>}
-                    {blocked ? <span>&nbsp;не более&nbsp;
+                                blocked: !blocked
+                            })}/>}
+                    &nbsp;
+                    {blocked ? <small>&nbsp;не более&nbsp;
                             <ReactSlider
                                 className="horizontal-slider"
                                 thumbClassName="example-thumb"
@@ -171,7 +173,7 @@ const Detail = ({
                                     blockedDays: value
                                 })}
                             />&nbsp;
-                            <span>дней</span></span> :
+                            <span>дней</span></small> :
                         null}
                 </td>
             </tr>
@@ -357,8 +359,13 @@ const Detail = ({
                     </div>
                 </td>
             </tr>
+            </tbody>
+        </table>
+        <table>
+            <tbody>
             <tr>
                 <td colSpan={2}>
+                    &nbsp;
                     <h4>Наклейки</h4>
                 </td>
             </tr>
@@ -435,6 +442,7 @@ const Filter = () => {
         souvenir: false,
         nametag: false,
         type: 0,
+        skins: 0,
         quality: 0,
         sort: true
     })
@@ -442,6 +450,8 @@ const Filter = () => {
     const handleVisible = () => setVisible(!visible)
 
     const handleChangeFieldFilter = value => setFilter({...filter, ...value})
+
+    Filter.handleClickOutside = () => setVisible(false)
 
     return (
         <div className="filter">
@@ -463,30 +473,35 @@ const Filter = () => {
                     <i className="fa fa-sort-amount-asc"/> :
                     <i className="fa fa-sort-amount-desc"/>}
             </div>
-            <div className="result">
-                {filter.price.from.length ? <span><small>от</small>
-                    {filter.price.from}</span> : null}
-                {filter.price.to.length ? <span><small>до</small>
-                    {filter.price.to}</span> : null}
+            <div className="result sm">
+                {filter.price.from.length ? <nobr><small>от</small>
+                    {filter.price.from}</nobr> : null}
+                {filter.price.to.length ? <nobr><small>до</small>
+                    {filter.price.to}</nobr> : null}
+                {filter.blocked ?
+                    <nobr>С блоком {filter.blockedDays} дн.</nobr> :
+                    null}
                 {filter.type ?
-                    <span>{options.type.find(f => f.value === filter.type).label}</span> :
+                    <nobr>{options.type.find(f => f.value === filter.type).label}</nobr> :
                     null}
                 {filter.quality ?
-                    <span>{options.quality.find(f => f.value === filter.quality).label}</span> :
+                    <nobr>{options.quality.find(f => f.value === filter.quality).label}</nobr> :
                     null}
                 {filter.teams ?
-                    <span>{options.teams.find(f => f.value === filter.teams).label}</span> :
+                    <nobr>{options.teams.find(f => f.value === filter.teams).label}</nobr> :
                     null}
                 {filter.collections ?
-                    <span>{options.collections.find(f => f.value === filter.collections).label}</span> :
+                    <nobr>{options.collections.find(f => f.value === filter.collections).label}</nobr> :
                     null}
-                {filter.skins ?
-                    <span>{options.skins.find(f => f.value === filter.skins).label}</span> :
-                    null}
+                <nobr>{options.skins.find(f => f.value === filter.skins).label}</nobr>
             </div>
             {visible ? <Detail {...{...filter, handleChangeFieldFilter}}/> : null}
         </div>
     )
 }
 
-export default Filter
+const clickOutsideConfig = {
+    handleClickOutside: () => Filter.handleClickOutside
+}
+
+export default onClickOutside(Filter, clickOutsideConfig)

@@ -1,14 +1,25 @@
-import React from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 
 const IconWithdraw = ({width = 32, height = 32}) => {
+    const el = useRef(null)
+    const [color, setColor] = useState('none')
+    useEffect(() => {
+        onChangeColor()
+        window.addEventListener('click', onChangeColor, false)
+        return () => {
+            window.removeEventListener('click', onChangeColor, false)
+        }
+    }, [])
+    const onChangeColor = e => setColor(getComputedStyle(el.current, null)["color"])
     return (
         <svg
+            ref={el}
             width={width}
             height={height}
             viewBox="0 0 156 156"
             fill="none"
             xmlns="http://www.w3.org/2000/svg">
-            <g fill="white">
+            <g fill={color}>
                 <path
                     d="M62 112C62 117.523 57.5228 122 52 122C46.4772 122 42 117.523 42 112C42 106.477 46.4772 102 52 102C57.5228 102 62 106.477 62 112Z"/>
                 <path
