@@ -1239,6 +1239,32 @@ mark {
   }
 }
 
+.onboarding {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .group {
+    display: flex;
+    align-items: center;
+    small {
+      white-space: nowrap;
+      padding: ($size-base / 2) $size-base;
+    }
+    input {
+      padding: ($size-base / 2) $size-base;
+      border: none;
+      font-size: inherit;
+      font-family: inherit;
+    }
+  }
+}
+
 ////////////////// Login /////////////////
 
 .form-authorization {

@@ -4,6 +4,7 @@ import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom'
 import {routes} from './routes'
 import './App.scss'
 //////////
+import Onboarding from "../Components/Onboarding"
 import Header from "../Components/Header"
 import Footer from "../Components/Footer"
 import Sidebar from "../Components/Sidebar"
@@ -32,10 +33,9 @@ const App = ({user}) => {
     //     // eslint-disable-next-line
     // }, [])
 
-
     return (
         <BrowserRouter>
-            <>
+            {user.login && user.tradeUrl ? <>
                 <Header {...{user}}/>
 
                 <div className="main">
@@ -53,7 +53,7 @@ const App = ({user}) => {
                 </div>
 
                 <Footer/>
-            </>
+            </> : <Onboarding/>}
         </BrowserRouter>
     )
 }

@@ -1,11 +1,11 @@
 export const initialState = {
-    login: 'minin-deniska@gmail.com',
+    login: '',
     password: null,
     avatar: 'https://cdn.pixabay.com/photo/2016/11/24/21/39/sexy-1857310_960_720.jpg',
     balance: '2 000.34',
     bonus: true,
     steamGuard: true,
-    tradeUrl: 'https://steamcommunity.com/traseoffer/new/?partner=34676787&token=Wk4u9PHw',
+    tradeUrl: '',
     sellerLink: 'https://steamcommunity.com/traseoffer/new/?partner=34676787&token=Wk4u9PHw',
     steamID64: '76561197998942485',
     language: 'RU',
